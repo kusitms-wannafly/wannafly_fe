@@ -5,6 +5,13 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": ".",
+    "paths": {
+      "@features/*": ["src/features/*"],
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
