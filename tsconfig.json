@@ -11,7 +11,8 @@
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@recoil/*": ["src/recoil/*"]
     },
 
     /* Bundler mode */
