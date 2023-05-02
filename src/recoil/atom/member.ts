@@ -5,7 +5,6 @@ export interface Member {
   name: string;
   email: string;
   profileUrl: string;
-  empty: boolean; //신규 사용자 여부
 }
 
 export const MemberState = atom<Member>({
@@ -15,6 +14,5 @@ export const MemberState = atom<Member>({
     name: '',
     email: '',
     profileUrl: '',
-    empty: false,
   },
 });
