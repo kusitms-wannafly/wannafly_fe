@@ -7,6 +7,8 @@ const colors = {
   white: '#FFFFFF',
   blue: '#163CFC',
   black: '#000000',
+  red: '#FF4242',
+  green: '#A0CD664D',
 };
 
 export type ColorTypes = typeof colors;

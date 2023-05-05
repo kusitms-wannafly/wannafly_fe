@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Banner = () => {
   return (
@@ -8,7 +9,7 @@ export const Banner = () => {
         작성 완료한 지원서, 작성 중인 지원서를 한 곳에 보관하여 한 번에
         확인하세요.
       </Description>
-      <ApplyButton>지원서 추가하기</ApplyButton>
+      <ApplyButton to="/apply">지원서 추가하기</ApplyButton>
     </BannerContainer>
   );
 };
@@ -20,7 +21,7 @@ const BannerContainer = styled.div`
 `;
 
 const Title = styled.div`
-  padding-top: 12px;
+  padding-top: 30px;
   padding-left: 348px;
   font-size: 35px;
   font-weight: bold;
@@ -32,7 +33,7 @@ const Description = styled.div`
   font-size: 22px;
 `;
 
-const ApplyButton = styled.div`
+const ApplyButton = styled(Link)`
   width: 188px;
   height: 33px;
   padding-left: 1rem;

@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@styles/theme';
-
 import { Header } from '@components/Layout/Header';
 import { Banner } from '@components/Layout/Banner';
 
