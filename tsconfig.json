@@ -12,7 +12,8 @@
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@api/*": ["src/api/*"],
-      "@recoil/*": ["src/recoil/*"]
+      "@recoil/*": ["src/recoil/*"],
+      "@assets/*": ["src/assets/*"]
     },
 
     /* Bundler mode */
