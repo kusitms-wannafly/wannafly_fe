@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //TODO: proxy, cors 설정 찾아보기
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: import.meta.env.BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

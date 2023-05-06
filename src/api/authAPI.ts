@@ -1,8 +1,8 @@
 //로그인
-export const GoogleSocialLoginAPI = '/oauth2/authorization/google';
+export const GoogleSocialLoginAPI = '/api/oauth2/authorization/google';
 
 //accessToken 재발급
-export const AccessTokenAPI = '/accessToken';
+export const AccessTokenAPI = '/api/accessToken';
 
 //로그아웃
-export const LogoutAPI = '/refreshToken';
+export const LogoutAPI = '/api/refreshToken';
