@@ -17,9 +17,9 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Link to="/">
-        <Logo src="public/wannafly-logo.png" alt="로고 이미지" />
+        <Logo src="/wannafly-logo.png" alt="로고 이미지" />
       </Link>
-      <Link to="/apply">
+      <Link to="/">
         <MyApplyButton>내 지원서</MyApplyButton>
       </Link>
       <Link to="/apply">

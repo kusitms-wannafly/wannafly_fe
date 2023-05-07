@@ -25,6 +25,11 @@ const colors = {
   blue: '#163CFC',
   red: '#FF4242',
   green: '#A0CD664D',
+  purple1: '#E5D1FF',
+  pink1: '#FFD1E8',
+  green1: '#D1FFF0',
+  orange1: '#FFDFD1',
+  blue1: '#D1EBFF',
 };
 
 export type ColorTypes = typeof colors;

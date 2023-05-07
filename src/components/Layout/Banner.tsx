@@ -37,7 +37,7 @@ const Title = styled.div`
 const Description = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
   padding-left: 348px;
-  padding-top: 22px;
+  padding-top: 20px;
   font-size: 20px;
   color: ${(props) => props.theme.colors.grey5};
 `;

@@ -16,11 +16,11 @@ export const ClubBox = ({
   return (
     <ClubBoxContainer>
       <ClubName>{clubName}</ClubName>
-      <ModifiedDate>{modifiedDate}</ModifiedDate>
-      <Date>{date}</Date>
       <IsApplied isApplied={isApplied}>
         {isApplied ? '작성중' : '작성완료'}
       </IsApplied>
+      <ModifiedDate>{modifiedDate}</ModifiedDate>
+      <Date>{date}</Date>
     </ClubBoxContainer>
   );
 };
@@ -28,7 +28,6 @@ export const ClubBox = ({
 const ClubBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 396px;
   height: 191px;
   padding: 20px;
@@ -49,7 +48,6 @@ const ModifiedDate = styled.div`
 
 const Date = styled.div`
   font-size: 18px;
-  margin-bottom: 10px;
   color: ${(props) => props.theme.colors.grey4};
 `;
 
@@ -58,9 +56,17 @@ interface IsAppliedProps {
 }
 
 const IsApplied = styled.div<IsAppliedProps>`
-  font-size: 20px;
-  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: normal;
   text-align: center;
+  width: 63px;
+  height: 36px;
+  background-color: ${(props) =>
+    props.isApplied ? props.theme.colors.blue1 : props.theme.colors.orange1};
   color: ${(props) =>
-    props.isApplied ? props.theme.colors.navy5 : props.theme.colors.red};
+    props.isApplied ? props.theme.colors.blue : props.theme.colors.red_caution};
 `;
+

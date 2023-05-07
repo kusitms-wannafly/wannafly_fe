@@ -16,15 +16,46 @@ export const MainPage = () => {
   return (
     <PageContainer header banner>
       <ClubBoxGrid>
-        <ClubBox clubName="IT 동아리" modifiedDate="4월 13일 수정" date="2023년 상반기" isApplied={false} />
-        <ClubBox clubName="경영학회" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
-        <ClubBox clubName="여행 동아리" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
-        <ClubBox clubName="창업 동아리" modifiedDate="5월 7일 수정" date="2021년 하반기" isApplied={true} />
-        <ClubBox clubName="대외활동" modifiedDate="5월 7일 수정" date="2020년 상반기" isApplied={true} />
-        <ClubBox clubName="서포터즈" modifiedDate="5월 7일 수정" date="2019년 상반기" isApplied={true} />
-        <ClubBox clubName="청년 기자단" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
-        <ClubBox clubName="친목 동아리" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
-        <ClubBox clubName="개발 동아리" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="큐시즘" modifiedDate="4월 13일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="넥스터즈" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="디프만" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="SOPT" modifiedDate="5월 7일 수정" date="2021년 하반기" isApplied={true} />
+        <ClubBox clubName="IVE" modifiedDate="5월 7일 수정" date="2020년 상반기" isApplied={true} />
+        <ClubBox clubName="르세라핌" modifiedDate="5월 7일 수정" date="2019년 상반기" isApplied={true} />
+        <ClubBox clubName="멋쟁이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="THE 1975" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="예쁜이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="건축학개론" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="큐시즘" modifiedDate="4월 13일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="넥스터즈" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="디프만" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="SOPT" modifiedDate="5월 7일 수정" date="2021년 하반기" isApplied={true} />
+        <ClubBox clubName="IVE" modifiedDate="5월 7일 수정" date="2020년 상반기" isApplied={true} />
+        <ClubBox clubName="르세라핌" modifiedDate="5월 7일 수정" date="2019년 상반기" isApplied={true} />
+        <ClubBox clubName="멋쟁이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="THE 1975" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="예쁜이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="건축학개론" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="큐시즘" modifiedDate="4월 13일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="넥스터즈" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="디프만" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="SOPT" modifiedDate="5월 7일 수정" date="2021년 하반기" isApplied={true} />
+        <ClubBox clubName="IVE" modifiedDate="5월 7일 수정" date="2020년 상반기" isApplied={true} />
+        <ClubBox clubName="르세라핌" modifiedDate="5월 7일 수정" date="2019년 상반기" isApplied={true} />
+        <ClubBox clubName="멋쟁이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="THE 1975" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="예쁜이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="건축학개론" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="큐시즘" modifiedDate="4월 13일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="넥스터즈" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="디프만" modifiedDate="5월 7일 수정" date="2023년 상반기" isApplied={false} />
+        <ClubBox clubName="SOPT" modifiedDate="5월 7일 수정" date="2021년 하반기" isApplied={true} />
+        <ClubBox clubName="IVE" modifiedDate="5월 7일 수정" date="2020년 상반기" isApplied={true} />
+        <ClubBox clubName="르세라핌" modifiedDate="5월 7일 수정" date="2019년 상반기" isApplied={true} />
+        <ClubBox clubName="멋쟁이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="THE 1975" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="예쁜이사자처럼" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
+        <ClubBox clubName="건축학개론" modifiedDate="5월 7일 수정" date="2020년 하반기" isApplied={true} />
       </ClubBoxGrid>
     </PageContainer>
   );
