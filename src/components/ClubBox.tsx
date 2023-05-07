@@ -2,17 +2,24 @@ import styled from 'styled-components';
 
 interface ClubBoxProps {
   clubName: string;
+  modifiedDate: string;
   date: string;
   isApplied: boolean;
 }
 
-export const ClubBox = ({ clubName, date, isApplied }: ClubBoxProps) => {
+export const ClubBox = ({
+  clubName,
+  modifiedDate,
+  date,
+  isApplied,
+}: ClubBoxProps) => {
   return (
     <ClubBoxContainer>
       <ClubName>{clubName}</ClubName>
+      <ModifiedDate>{modifiedDate}</ModifiedDate>
       <Date>{date}</Date>
       <IsApplied isApplied={isApplied}>
-        {isApplied ? '지원 완료' : '지원하기'}
+        {isApplied ? '작성중' : '작성완료'}
       </IsApplied>
     </ClubBoxContainer>
   );
@@ -22,12 +29,10 @@ const ClubBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 222px;
-  height: 106px;
+  width: 396px;
+  height: 191px;
   padding: 20px;
-  border: 1px solid ${(props) => props.theme.colors.grey};
-  border-radius: 30px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
   background-color: white;
 `;
 
@@ -37,9 +42,15 @@ const ClubName = styled.div`
   margin-bottom: 10px;
 `;
 
+const ModifiedDate = styled.div`
+  font-size: 18px;
+  color: ${(props) => props.theme.colors.grey4};
+`;
+
 const Date = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 10px;
+  color: ${(props) => props.theme.colors.grey4};
 `;
 
 interface IsAppliedProps {
@@ -51,5 +62,5 @@ const IsApplied = styled.div<IsAppliedProps>`
   font-weight: bold;
   text-align: center;
   color: ${(props) =>
-    props.isApplied ? props.theme.colors.green : props.theme.colors.red};
+    props.isApplied ? props.theme.colors.navy5 : props.theme.colors.red};
 `;

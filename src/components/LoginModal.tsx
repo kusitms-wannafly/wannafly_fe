@@ -79,7 +79,7 @@ const LoginBoxWrapper = styled.div`
 const LoginBox = styled.div`
   width: 648px;
   height: 85px;
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.blk};
   border-radius: 3px;
   border: 3px solid;
   display: flex;
