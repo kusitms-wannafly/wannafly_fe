@@ -10,7 +10,9 @@
       "@pages/*": ["src/pages/*"],
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@api/*": ["src/api/*"],
+      "@recoil/*": ["src/recoil/*"]
     },
 
     /* Bundler mode */
