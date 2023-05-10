@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-//TODO: proxy, cors 설정 찾아보기
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.BASE_URL,
+export const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

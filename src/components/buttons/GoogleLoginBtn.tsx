@@ -4,7 +4,9 @@ import { googleSocialLogin } from '@features/social-login/googleSocialLogin';
 
 export const GoogleLoginBtn = () => {
   return (
-    <BtnContainer>
+    <BtnContainer
+      href={`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`}
+    >
       <LoginBtnImg
         src={google_login_btn_url}
         alt="google social login"
@@ -14,7 +16,7 @@ export const GoogleLoginBtn = () => {
   );
 };
 
-const BtnContainer = styled.div`
+const BtnContainer = styled.a`
   width: 200px;
 
   &:is(:hover, :focus) {
