@@ -7,7 +7,7 @@ import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
 //임시 페이지
 import { MemberPage } from '@pages/Member/MemberPage';
 
-import { GoogleRedirect } from '@features/social-login/GoogleRedirect';
+import { GoogleRedirect } from '@features/oauth/GoogleRedirect';
 
 function App() {
   return (

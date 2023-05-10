@@ -26,5 +26,5 @@ export const GoogleRedirect = () => {
     //메인 페이지로 navigate
     navigate('/', { replace: true });
   }, []);
-  return <>redirect</>;
+  return <></>;
 };

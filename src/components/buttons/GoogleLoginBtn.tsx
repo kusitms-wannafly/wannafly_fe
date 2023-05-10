@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import google_login_btn_url from '@assets/images/btn_google_signin_light_normal_web@2x.png';
-import { googleSocialLogin } from '@features/social-login/googleSocialLogin';
+import { handleGoogleLogin } from '@features/oauth/handleGoogleLogin';
 
 export const GoogleLoginBtn = () => {
   return (
@@ -10,7 +10,7 @@ export const GoogleLoginBtn = () => {
       <LoginBtnImg
         src={google_login_btn_url}
         alt="google social login"
-        onClick={googleSocialLogin}
+        onClick={handleGoogleLogin}
       />
     </BtnContainer>
   );

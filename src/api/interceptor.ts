@@ -1,5 +1,5 @@
 import { axiosInstance } from './HttpClient';
-import { accessTokenAPI } from '@features/social-login/signupAPIS';
+import { accessTokenAPI } from '@features/oauth/signupAPIS';
 
 //액세스 토큰 재발급
 export const accessTokenReissue = () => {
@@ -49,12 +49,12 @@ axiosInstance.interceptors.response.use(
 );
 
 //refresh token 요청시, 쿠키에 저장된 refresh token 전송
-axiosInstance.interceptors.request.use(
-  (config) => {
-    config.withCredentials = true;
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+// axiosInstance.interceptors.request.use(
+//   (config) => {
+//     config.withCredentials = true;
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );

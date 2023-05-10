@@ -1,7 +1,7 @@
 import { signupAPI } from './signupAPIS';
 
 //구글 소셜 로그인
-export const googleSocialLogin = () => {
+export const handleGoogleLogin = () => {
   const signupreturn: Promise<any> = signupAPI();
   signupreturn
     .then((res) => {
@@ -11,4 +11,3 @@ export const googleSocialLogin = () => {
       console.error(error);
     });
 };
-
