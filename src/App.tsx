@@ -1,6 +1,8 @@
 import { GlobalStyle } from './styles/global-style';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
+import { MemberPage } from '@pages/Member/MemberPage';
 import { MainPage } from '@pages/Main/MainPage';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
 import { ApplyPage } from '@pages/Main/ApplyPage';
