@@ -28,5 +28,5 @@ const PageContainerBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f7f8fd;
+  background-color: #1e1f20;
 `;
