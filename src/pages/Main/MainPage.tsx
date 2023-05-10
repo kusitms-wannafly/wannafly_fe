@@ -13,6 +13,7 @@ const ClubBoxGrid = styled.div`
 `;
 
 export const MainPage = () => {
+
   return (
     <PageContainer header banner>
       <ClubBoxGrid>
