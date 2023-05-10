@@ -1,6 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+ @font-face {
+  font-family: 'HappinessSansBold';
+  src: url('/fonts/HappinessSansBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PretendardBold';
+  src: url('/fonts/PretendardBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: RobotoInCjk, 'Noto Sans KR', 'Apple SD Gothic Neo',
       'Nanum Gothic', 'Malgun Gothic', sans-serif;

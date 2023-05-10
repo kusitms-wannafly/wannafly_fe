@@ -1,11 +1,10 @@
 import { GlobalStyle } from './styles/global-style';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 
 import { MainPage } from '@pages/Main/MainPage';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
-//임시 페이지
-import { MemberPage } from '@pages/Member/MemberPage';
+import { ApplyPage } from '@pages/Main/ApplyPage';
+import { CategoryPage } from '@pages/Main/CategoryPage';
 
 import { GoogleRedirect } from '@features/oauth/GoogleRedirect';
 
@@ -19,6 +18,8 @@ function App() {
           <Route path="*" element={<NoMatchPage />} />
           <Route path="/member" element={<MemberPage />} />
           <Route path="/token" element={<GoogleRedirect />} />
+          <Route path="/apply" element={<ApplyPage />} />
+          <Route path="/Category" element={<CategoryPage />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
