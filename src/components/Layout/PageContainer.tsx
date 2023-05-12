@@ -15,8 +15,8 @@ export const PageContainer = ({ children, header, banner }: ListProps) => {
   return (
     <PageContainerBox>
       <ThemeProvider theme={theme}>
-        {header === false ? null : <Header />}
-        {banner === false ? null : <Banner />}
+        {header === undefined ? null : <Header />}
+        {banner === undefined ? null : <Banner />}
         {children}
       </ThemeProvider>
     </PageContainerBox>
