@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
+  overflow-y: overlay;
   font-family: RobotoInCjk, 'Noto Sans KR', 'Apple SD Gothic Neo',
       'Nanum Gothic', 'Malgun Gothic', sans-serif;
 }

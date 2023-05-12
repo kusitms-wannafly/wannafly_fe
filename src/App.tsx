@@ -7,6 +7,7 @@ import { MainPage } from '@pages/Main/MainPage';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
 import { ApplyPage } from '@pages/Main/ApplyPage';
 import { CategoryPage } from '@pages/Main/CategoryPage';
+import { ApplicationPage } from '@pages/Application';
 
 import { GoogleRedirect } from '@features/oauth/GoogleRedirect';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/token" element={<GoogleRedirect />} />
           <Route path="/apply" element={<ApplyPage />} />
           <Route path="/Category" element={<CategoryPage />} />
+          <Route path="/application" element={<ApplicationPage />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
