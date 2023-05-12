@@ -83,7 +83,7 @@ const responseData = [
 
 const ApplicationSearchContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.grey7};
-  width: 550px;
+  min-width: 550px;
 
   display: flex;
   flex-direction: column;
