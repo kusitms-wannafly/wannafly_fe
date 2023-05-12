@@ -1,4 +1,4 @@
-import { logoutAPI } from './signupAPIS';
+import { logoutAPI } from '../../api/authAPIS';
 
 //로그아웃 처리
 //1.로그아웃 api 호출

@@ -1,5 +1,5 @@
 import { axiosInstance } from './HttpClient';
-import { accessTokenAPI } from '@features/oauth/signupAPIS';
+import { accessTokenAPI } from '@api/authAPIS';
 
 //액세스 토큰 재발급
 export const accessTokenReissue = () => {
