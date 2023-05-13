@@ -1,10 +1,22 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+
+import { LeaveModal } from './LeaveModal';
 
 export const SaveLeaveBox = () => {
+  const [isOpenLeaveModal, setIsOpenLeaveModal] = useState<boolean>(false);
+
   return (
     <SaveLeaveBoxContainer>
-      <LeaveBtn>나가기</LeaveBtn>
+      <LeaveBtn
+        onClick={() => {
+          setIsOpenLeaveModal(true);
+        }}
+      >
+        나가기
+      </LeaveBtn>
       <SaveBtn>저장하기</SaveBtn>
+      <LeaveModal isOpen={isOpenLeaveModal} setIsOpen={setIsOpenLeaveModal} />
     </SaveLeaveBoxContainer>
   );
 };
