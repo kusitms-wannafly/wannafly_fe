@@ -82,7 +82,7 @@ const responseData = [
 ];
 
 const ApplicationSearchContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.grey7};
+  background-color: rgba(53, 56, 57, 0.5);
   min-width: 550px;
 
   display: flex;
