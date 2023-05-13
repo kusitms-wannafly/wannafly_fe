@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
+import { ApplicationData } from '..';
+
+//TODO: 지원서 작성 api
+//TODO: UI 추가 구현 필요
+
 interface propsType {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  form: ApplicationData;
 }
-export const SaveModal = ({ isOpen, setIsOpen }: propsType) => {
+export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };

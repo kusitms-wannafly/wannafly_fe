@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
+import { ApplicationData } from '..';
 import { LeaveModal } from './LeaveModal';
 import { SaveModal } from './SaveModal';
 
-export const SaveLeaveBox = () => {
+interface propsType {
+  form: ApplicationData;
+}
+
+export const SaveLeaveBox = ({ form }: propsType) => {
   const [isOpenLeaveModal, setIsOpenLeaveModal] = useState<boolean>(false);
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
+
+  const handleClickSaveBtn = () => {
+    if (form.recruiter !== '') {
+      setIsOpenSaveModal(true);
+    }
+  };
 
   return (
     <SaveLeaveBoxContainer>
@@ -17,15 +28,13 @@ export const SaveLeaveBox = () => {
       >
         나가기
       </LeaveBtn>
-      <SaveBtn
-        onClick={() => {
-          setIsOpenSaveModal(true);
-        }}
-      >
-        저장하기
-      </SaveBtn>
+      <SaveBtn onClick={handleClickSaveBtn}>저장하기</SaveBtn>
       <LeaveModal isOpen={isOpenLeaveModal} setIsOpen={setIsOpenLeaveModal} />
-      <SaveModal isOpen={isOpenSaveModal} setIsOpen={setIsOpenSaveModal} />
+      <SaveModal
+        isOpen={isOpenSaveModal}
+        setIsOpen={setIsOpenSaveModal}
+        form={form}
+      />
     </SaveLeaveBoxContainer>
   );
 };
@@ -53,6 +62,10 @@ const LeaveBtn = styled.button`
   height: 45px;
   border-radius: 8px;
   margin: 0 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const SaveBtn = styled.button`
@@ -64,4 +77,8 @@ const SaveBtn = styled.button`
   height: 45px;
   border-radius: 8px;
   margin: 0 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

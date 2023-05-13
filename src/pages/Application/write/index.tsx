@@ -61,7 +61,7 @@ export const ApplicationWrite = () => {
           <AddQuestionBtn onClick={handleClickAddQuestionBtn}>+</AddQuestionBtn>
         </AddQuestion>
       </FormContainer>
-      <SaveLeaveBox />
+      <SaveLeaveBox form={form} />
     </ApplicationWriteContainer>
   );
 };
