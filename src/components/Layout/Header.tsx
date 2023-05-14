@@ -19,15 +19,17 @@ export const Header = () => {
       <Link to="/">
         <Logo src="/wannafly-logo.png" alt="로고 이미지" />
       </Link>
-      <Link to="/">
-        <MyApplyButton>내 지원서</MyApplyButton>
-      </Link>
-      <Link to="/apply">
-        <ApplyContainerButton>지원서보관함</ApplyContainerButton>
-      </Link>
-      <Link to="/category">
-        <CategoryButton>유형별카테고리</CategoryButton>
-      </Link>
+      <HeaderOptions>
+        <Link to="/">
+          <MyApplyButton>내 지원서</MyApplyButton>
+        </Link>
+        <Link to="/apply">
+          <ApplyContainerButton>지원서보관함</ApplyContainerButton>
+        </Link>
+        <Link to="/category">
+          <CategoryButton>유형별카테고리</CategoryButton>
+        </Link>
+      </HeaderOptions>
       <LoginButton onClick={handleLoginButtonClick}>로그인</LoginButton>
       <ModalContainer>
         {modalVisible && <LoginModal onClickToggleModal={handleModalClose} />}
@@ -42,18 +44,24 @@ const HeaderContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 130px;
-  background-color: ${(props) => props.theme.colors.wht};
+  height: 100px;
+  background-color: ${(props) => props.theme.colors.grey8};
 `;
 
+const HeaderOptions = styled.div`
+  gap: 20px;
+  display: flex;
+  padding-right: 500px;
+`
+
 const Logo = styled.img`
-  margin-left: 84.25px;
+  margin-left: 50.25px;
 `;
 
 const ApplyContainerButton = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  font-size: 24px;
-  color: black;
+  font-size: 20px;
+  color: ${(props) => props.theme.colors.wht};
   &:hover {
     color: ${(props) => props.theme.colors.navy4};
   }
@@ -61,8 +69,8 @@ const ApplyContainerButton = styled.div`
 
 const MyApplyButton = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  font-size: 24px;
-  color: black;
+  font-size: 20px;
+  color: ${(props) => props.theme.colors.wht};
   &:hover {
     color: ${(props) => props.theme.colors.navy4};
   }
@@ -70,10 +78,9 @@ const MyApplyButton = styled.div`
 
 const CategoryButton = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  margin-right: 1000px;
-  color: black;
+  color: ${(props) => props.theme.colors.wht};
   &:hover {
     color: ${(props) => props.theme.colors.navy4};
   }
@@ -81,11 +88,11 @@ const CategoryButton = styled.div`
 
 const LoginButton = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   margin-right: 100px;
   &:hover {
-    color: ${(props) => props.theme.colors.navy4};
+    color: ${(props) => props.theme.colors.grey4};
   }
 `;
 
