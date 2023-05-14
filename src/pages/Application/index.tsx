@@ -10,7 +10,7 @@ export const ApplicationPage = () => {
   const [hasApplication, setHasApplication] = useState(false);
 
   useEffect(() => {
-    setHasApplication(false);
+    setHasApplication(true);
   }, []);
 
   return (

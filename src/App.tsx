@@ -23,7 +23,7 @@ function App() {
           <Route path="/token" element={<GoogleRedirect />} />
           <Route path="/apply" element={<ApplyPage />} />
           <Route path="/Category" element={<CategoryPage />} />
-          <Route path="/application" element={<ApplicationPage />} />
+          <Route path="/write" element={<ApplicationPage />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
