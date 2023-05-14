@@ -83,7 +83,8 @@ const responseData = [
 
 const ApplicationSearchContainer = styled.div`
   background-color: rgba(53, 56, 57, 0.5);
-  min-width: 550px;
+  min-width: 560px;
+  padding-left: 10px;
 
   display: flex;
   flex-direction: column;

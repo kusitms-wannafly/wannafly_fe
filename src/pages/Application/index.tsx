@@ -10,7 +10,7 @@ export const ApplicationPage = () => {
   const [hasApplication, setHasApplication] = useState(false);
 
   useEffect(() => {
-    setHasApplication(true);
+    setHasApplication(false);
   }, []);
 
   return (
@@ -26,6 +26,7 @@ export const ApplicationPage = () => {
 const ApplicationPageContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  min-width: 600px;
   display: flex;
   &.center {
     justify-content: center;
