@@ -13,7 +13,8 @@
       "@styles/*": ["src/styles/*"],
       "@api/*": ["src/api/*"],
       "@recoil/*": ["src/recoil/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@types/*": ["src/types/*"]
     },
 
     /* Bundler mode */
