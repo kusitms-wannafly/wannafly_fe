@@ -5,15 +5,15 @@ import {
   LeaveBtn,
   SaveBtn,
 } from '@components/application/SaveLeaveBox';
-import { ApplicationData } from '..';
-import { LeaveModal } from './LeaveModal';
-import { SaveModal } from './SaveModal';
+import { ApplicationEditData } from '..';
+import { LeaveModal } from '@pages/Application/write/components/LeaveModal';
+import { SaveModal } from '@pages/Application/write/components/SaveModal';
 
 interface propsType {
-  form: ApplicationData;
+  form: ApplicationEditData;
 }
 
-export const SaveLeaveBox = ({ form }: propsType) => {
+export const SaveLeaveEditBox = ({ form }: propsType) => {
   const [isOpenLeaveModal, setIsOpenLeaveModal] = useState<boolean>(false);
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
 

@@ -9,19 +9,20 @@ import {
   LengthCount,
   SpellCheckBtn,
 } from '@components/application/AnswerForm';
-import { ApplicationItem, ApplicationData } from '..';
-import { getTrimmedLength } from '../util/getTrimmedLength';
+import { ApplicationEditItem, ApplicationEditData } from '..';
+import { getTrimmedLength } from '@pages/Application/write/util/getTrimmedLength';
 
 interface propsType {
   index: number;
-  item: ApplicationItem;
-  form: ApplicationData;
-  setForm: React.Dispatch<React.SetStateAction<ApplicationData>>;
+  item: ApplicationEditItem;
+  form: ApplicationEditData;
+  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData>>;
 }
-export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
+export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
   const handleChangeQuestionInput = (e: React.FormEvent<HTMLInputElement>) => {
     const newItems = [...form.applicationItems];
     newItems[index] = {
+      applicationItemId: null,
       applicationQuestion: e.currentTarget.value,
       applicationAnswer: item.applicationAnswer,
     };
@@ -33,6 +34,7 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
   ) => {
     const newItems = [...form.applicationItems];
     newItems[index] = {
+      applicationItemId: null,
       applicationQuestion: item.applicationQuestion,
       applicationAnswer: e.currentTarget.value,
     };
