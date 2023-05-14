@@ -14,7 +14,10 @@ export const SaveLeaveBox = ({ form }: propsType) => {
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
 
   const handleClickSaveBtn = () => {
-    if (form.recruiter !== '') {
+    const hasEmptyQuestion = form.applicationItems.some(
+      (item) => item.applicationQuestion.trim() === ''
+    );
+    if (form.recruiter !== '' && !hasEmptyQuestion) {
       setIsOpenSaveModal(true);
     }
   };
