@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DropDown } from './YearDropDown';
+import { DropDown } from '@pages/Main/componenets/YearDropDown';
 
 export const YearMenu: React.FC = (): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
