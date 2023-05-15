@@ -11,11 +11,11 @@ export const handleLogout = () => {
     .then(() => {
       localStorage.removeItem('accessToken');
       localStorage.setItem('isLogin', 'false');
-      location.reload();
+      window.location.replace('/');
     })
     .catch(() => {
       localStorage.removeItem('accessToken');
       localStorage.setItem('isLogin', 'false');
-      location.reload();
+      window.location.replace('/');
     });
 };
