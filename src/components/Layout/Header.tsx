@@ -1,104 +1,164 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LoginModal } from '@components/LoginModal';
+import logo_yello from '@assets/logo/logo-yellow.svg';
 
+import { handleLogout } from '@features/oauth/handleLogout';
+
+enum HeaderSelection {
+  MYAPPLY,
+  WRITE,
+  CATEGORIZE,
+}
 export const Header = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
+  const [selection, setSelection] = useState<HeaderSelection>(
+    HeaderSelection.MYAPPLY
+  );
+  const isLogin = localStorage.getItem('isLogin');
 
-  const handleLoginButtonClick = () => {
-    setModalVisible(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/write') {
+      setSelection(HeaderSelection.WRITE);
+    } else if (location.pathname === '/') {
+      setSelection(HeaderSelection.MYAPPLY);
+    } else if (location.pathname.startsWith('/applications')) {
+      setSelection(HeaderSelection.MYAPPLY);
+    } else if (location.pathname === '/categorize') {
+      setSelection(HeaderSelection.CATEGORIZE);
+    }
+  }, [location]);
+
+  const handleClickLoginBtn = () => {
+    setIsOpenLoginModal(true);
   };
 
-  const handleModalClose = () => {
-    setModalVisible(false);
+  const handleClickHeaderBtn = (type: string) => {
+    if (isLogin === 'true') {
+      if (type === 'write') {
+        navigate('/write');
+      } else if (type === 'categorize') {
+        navigate('/categorize');
+      }
+    } else {
+      setIsOpenLoginModal(true);
+    }
   };
 
   return (
-    <HeaderContainer>
-      <Link to="/">
-        <Logo src="/wannafly-logo.png" alt="로고 이미지" />
-      </Link>
-      <HeaderOptions>
-        <Link to="/">
-          <MyApplyButton>내 지원서</MyApplyButton>
-        </Link>
-        <Link to="/write">
-          <ApplyContainerButton>지원서 작성하기</ApplyContainerButton>
-        </Link>
-        <Link to="/categorize">
-          <CategoryButton>유형별카테고리</CategoryButton>
-        </Link>
-      </HeaderOptions>
-      <LoginButton onClick={handleLoginButtonClick}>로그인</LoginButton>
-      <ModalContainer>
-        {modalVisible && <LoginModal onClickToggleModal={handleModalClose} />}
-      </ModalContainer>
-    </HeaderContainer>
+    <>
+      <LoginModal isOpen={isOpenLoginModal} setIsOpen={setIsOpenLoginModal} />
+      <HeaderContainer>
+        <Left>
+          <Link to="/">
+            <Logo src={logo_yello} alt="로고 이미지" />
+          </Link>
+          <HeaderOptions>
+            <Link to="/">
+              <HeaderBtn
+                className={
+                  selection === HeaderSelection.MYAPPLY && isLogin === 'true'
+                    ? 'current'
+                    : ''
+                }
+              >
+                내 지원서
+              </HeaderBtn>
+            </Link>
+            <HeaderBtn
+              className={selection === HeaderSelection.WRITE ? 'current' : ''}
+              onClick={() => {
+                handleClickHeaderBtn('write');
+              }}
+            >
+              지원서 작성하기
+            </HeaderBtn>
+            <HeaderBtn
+              className={
+                selection === HeaderSelection.CATEGORIZE ? 'current' : ''
+              }
+              onClick={() => {
+                handleClickHeaderBtn('categorize');
+              }}
+            >
+              유형별 카테고리
+            </HeaderBtn>
+          </HeaderOptions>
+        </Left>
+        <Right>
+          {isLogin === 'true' ? (
+            <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
+          ) : (
+            <LoginButton onClick={handleClickLoginBtn}>로그인</LoginButton>
+          )}
+        </Right>
+      </HeaderContainer>
+    </>
   );
 };
+
+const Left = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Right = styled.div``;
 
 const HeaderContainer = styled.div`
   justify-content: space-between;
   display: flex;
   align-items: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
   width: 100%;
-  height: 100px;
+  height: 75px;
   background-color: ${(props) => props.theme.colors.grey8};
 `;
 
 const HeaderOptions = styled.div`
-  gap: 20px;
   display: flex;
-  padding-right: 500px;
 `;
 
 const Logo = styled.img`
-  margin-left: 50.25px;
+  margin-left: 50px;
+  width: 110px;
+  margin-right: 20px;
 `;
 
-const ApplyContainerButton = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  font-size: 20px;
-  color: ${(props) => props.theme.colors.wht};
+const HeaderBtn = styled.button`
+  font-size: 14px;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.grey4};
+  background-color: transparent;
+  border: none;
+  margin: 0 12px;
+  white-space: nowrap;
   &:hover {
-    color: ${(props) => props.theme.colors.navy4};
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.grey1};
+  }
+  &.current {
+    color: ${(props) => props.theme.colors.grey1};
   }
 `;
 
-const MyApplyButton = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  font-size: 20px;
-  color: ${(props) => props.theme.colors.wht};
+const LoginButton = styled.button`
+  font-size: 14px;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.grey4};
+  background-color: transparent;
+  border: none;
+  margin-right: 50px;
+  margin-left: 10px;
+  white-space: nowrap;
   &:hover {
-    color: ${(props) => props.theme.colors.navy4};
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.grey1};
   }
-`;
-
-const CategoryButton = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-  color: ${(props) => props.theme.colors.wht};
-  &:hover {
-    color: ${(props) => props.theme.colors.navy4};
-  }
-`;
-
-const LoginButton = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 100px;
-  &:hover {
-    color: ${(props) => props.theme.colors.grey4};
-  }
-`;
-
-const ModalContainer = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
 `;
