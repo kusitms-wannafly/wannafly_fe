@@ -28,7 +28,7 @@ export const ClubBox = ({
 const ClubBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 396px;
+  width: 382px;
   height: 191px;
   padding: 20px;
   border-radius: 16px;
@@ -37,7 +37,7 @@ const ClubBoxContainer = styled.div`
 
 const ClubName = styled.div`
   font-size: 25px;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 10px;
 `;
 
