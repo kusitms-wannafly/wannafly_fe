@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { PageContainer } from '@components/Layout/PageContainer';
-import { ApplicationSearch } from '@pages/Application/search';
+import { ApplicationSearch } from '@pages/ApplicationWrite/search';
 import { ApplicationEditForm } from './edit';
 
-export const ApplicationEdit = () => {
+export const ApplicationEditPage = () => {
   //유저가 작성한 지원서가 있는지 여부
   const [hasApplication, setHasApplication] = useState(false);
   //formId
