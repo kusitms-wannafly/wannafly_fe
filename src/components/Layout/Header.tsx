@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LoginModal } from '@components/LoginModal';
 import logo_yello from '@assets/logo/logo-yellow.svg';
 
@@ -19,6 +19,7 @@ export const Header = () => {
   const isLogin = localStorage.getItem('isLogin');
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname === '/write') {
@@ -36,6 +37,18 @@ export const Header = () => {
     setIsOpenLoginModal(true);
   };
 
+  const handleClickHeaderBtn = (type: string) => {
+    if (isLogin === 'true') {
+      if (type === 'write') {
+        navigate('/write');
+      } else if (type === 'categorize') {
+        navigate('/categorize');
+      }
+    } else {
+      setIsOpenLoginModal(true);
+    }
+  };
+
   return (
     <>
       <LoginModal isOpen={isOpenLoginModal} setIsOpen={setIsOpenLoginModal} />
@@ -48,28 +61,32 @@ export const Header = () => {
             <Link to="/">
               <HeaderBtn
                 className={
-                  selection === HeaderSelection.MYAPPLY ? 'current' : ''
+                  selection === HeaderSelection.MYAPPLY && isLogin === 'true'
+                    ? 'current'
+                    : ''
                 }
               >
                 내 지원서
               </HeaderBtn>
             </Link>
-            <Link to="/write">
-              <HeaderBtn
-                className={selection === HeaderSelection.WRITE ? 'current' : ''}
-              >
-                지원서 작성하기
-              </HeaderBtn>
-            </Link>
-            <Link to="/categorize">
-              <HeaderBtn
-                className={
-                  selection === HeaderSelection.CATEGORIZE ? 'current' : ''
-                }
-              >
-                유형별카테고리
-              </HeaderBtn>
-            </Link>
+            <HeaderBtn
+              className={selection === HeaderSelection.WRITE ? 'current' : ''}
+              onClick={() => {
+                handleClickHeaderBtn('write');
+              }}
+            >
+              지원서 작성하기
+            </HeaderBtn>
+            <HeaderBtn
+              className={
+                selection === HeaderSelection.CATEGORIZE ? 'current' : ''
+              }
+              onClick={() => {
+                handleClickHeaderBtn('categorize');
+              }}
+            >
+              유형별카테고리
+            </HeaderBtn>
           </HeaderOptions>
         </Left>
         <Right>
