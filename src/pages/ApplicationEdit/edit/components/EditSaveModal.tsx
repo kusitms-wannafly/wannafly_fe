@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   ModalContainer,
   ModalBackdrop,
@@ -10,24 +11,80 @@ import {
   NoBtn,
   YesBtn,
 } from '@components/application/SaveModal';
-import { ApplicationEditData } from '..';
+import { ApplicationEditItem, ApplicationEditData } from '..';
+import { patchApplicationAPI } from '@api/applicationAPIS';
+import { axiosInstance } from '@api/HttpClient';
 
 interface propsType {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   form: ApplicationEditData;
+  formId: number;
 }
-export const EditSaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
+export const EditSaveModal = ({
+  isOpen,
+  setIsOpen,
+  form,
+  formId,
+}: propsType) => {
+  const navigate = useNavigate();
+
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
 
+  //새로운 지원항목추가 post api request
+  const postNewItems = async (newItems: ApplicationEditItem[]) => {
+    const postedItems: ApplicationEditItem[] = [];
+    newItems.forEach((item) => {
+      axiosInstance
+        .post(`/api/application-forms/${formId}/items`, item)
+        .then((response) => {
+          const location = response.headers['location'];
+          const postedItemId = Number(location.split('/').pop());
+          postedItems.push({ ...item, applicationItemId: postedItemId });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+
+    return postedItems;
+  };
+
+  const patchApplication = (allItems: ApplicationEditItem[]) => {
+    //기존 질문답변셋과 새로 등록할 질문답변셋 분리
+    const existedItems = allItems.filter(
+      (item) => item.applicationItemId !== null
+    );
+    const newItems = allItems.filter((item) => item.applicationItemId === null);
+
+    //새로운 지원항목들 추가 api request
+    postNewItems(newItems)
+      .then((postedItems) => {
+        const postForm: ApplicationEditData = {
+          ...form!,
+          applicationItems: [...existedItems, ...postedItems],
+        };
+        const patchResponse = patchApplicationAPI(formId, postForm);
+        return patchResponse;
+      })
+      .then(() => {
+        navigate('/');
+      })
+      .catch(() => {
+        setIsOpen(false);
+      });
+  };
+
   const handleClickNoBtn = () => {
     //TODO: 작성완료로 저장
+    patchApplication(form.applicationItems);
   };
 
   const handleClickYesBtn = () => {
     //TODO: 작성중으로 저장
+    patchApplication(form.applicationItems);
   };
 
   return (

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { getApplicationDetailAPI } from '@api/applicationAPIS';
 import { ApplicationEditInfo } from './components/ApplicationEditInfo';
 import { AnswerEditForm } from './components/AnswerEditForm';
-import { SaveLeaveEditBox } from './components/EditSaveLeaveBox';
+import { SaveLeaveEditBox } from './components/SaveLeaveEditBox';
 
 //새로 등록된 지원 항목은 applicationItemId: null
 export interface ApplicationEditItem {
@@ -81,7 +81,7 @@ export const ApplicationEditForm = ({ formId }: propsType) => {
           <AddQuestionBtn onClick={handleClickAddQuestionBtn}>+</AddQuestionBtn>
         </AddQuestion>
       </FormContainer>
-      <SaveLeaveEditBox form={form} />
+      <SaveLeaveEditBox formId={formId} form={form} />
     </ApplicationWriteContainer>
   );
 };

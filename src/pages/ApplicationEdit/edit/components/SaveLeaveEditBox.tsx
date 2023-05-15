@@ -10,10 +10,11 @@ import { LeaveModal } from '@pages/Application/write/components/LeaveModal';
 import { EditSaveModal } from './EditSaveModal';
 
 interface propsType {
+  formId: number;
   form: ApplicationEditData;
 }
 
-export const SaveLeaveEditBox = ({ form }: propsType) => {
+export const SaveLeaveEditBox = ({ formId, form }: propsType) => {
   const [isOpenLeaveModal, setIsOpenLeaveModal] = useState<boolean>(false);
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
 
@@ -41,6 +42,7 @@ export const SaveLeaveEditBox = ({ form }: propsType) => {
         isOpen={isOpenSaveModal}
         setIsOpen={setIsOpenSaveModal}
         form={form}
+        formId={formId}
       />
     </SaveLeaveBoxContainer>
   );

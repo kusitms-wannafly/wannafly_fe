@@ -20,7 +20,7 @@ export const ApplicationEdit = () => {
     <PageContainer>
       <ApplicationPageContainer className={hasApplication ? '' : 'center'}>
         {hasApplication ? <ApplicationSearch /> : null}
-        <ApplicationEditForm formId={formId} />
+        <ApplicationEditForm formId={Number(formId)} />
       </ApplicationPageContainer>
     </PageContainer>
   );
