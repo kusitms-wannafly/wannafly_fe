@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import {
   ModalContainer,
   ModalBackdrop,
@@ -11,56 +10,24 @@ import {
   NoBtn,
   YesBtn,
 } from '@components/application/SaveModal';
-import { axiosInstance } from '@api/HttpClient';
-import {
-  postApplicationAPI,
-  patchApplicationState,
-} from '@api/applicationAPIS';
-import { ApplicationData } from '..';
-
-//TODO: UI 추가 구현 필요
+import { ApplicationEditData } from '..';
 
 interface propsType {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  form: ApplicationData;
+  form: ApplicationEditData;
 }
-export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
-  const navigate = useNavigate();
-
+export const EditSaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
 
   const handleClickNoBtn = () => {
-    //작성완료로 저장
-    axiosInstance
-      .post('/api/application-forms', form)
-      .then((response) => {
-        const headers = response.headers;
-        const location = headers['location'];
-        const formId = Number(location.split('/').pop());
-        return formId;
-      })
-      .then((formId) => {
-        patchApplicationState(formId);
-        navigate('/');
-      })
-      .catch(() => {
-        setIsOpen(false);
-      });
+    //TODO: 작성완료로 저장
   };
 
   const handleClickYesBtn = () => {
-    //작성중으로 저장
-    const apiReturn: Promise<any> = postApplicationAPI(form);
-    apiReturn
-      .then(() => {
-        navigate('/');
-      })
-      .catch(() => {
-        setIsOpen(false);
-      });
+    //TODO: 작성중으로 저장
   };
 
   return (

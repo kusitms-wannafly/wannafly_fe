@@ -7,7 +7,7 @@ import {
 } from '@components/application/SaveLeaveBox';
 import { ApplicationEditData } from '..';
 import { LeaveModal } from '@pages/Application/write/components/LeaveModal';
-import { SaveModal } from '@pages/Application/write/components/SaveModal';
+import { EditSaveModal } from './EditSaveModal';
 
 interface propsType {
   form: ApplicationEditData;
@@ -37,7 +37,7 @@ export const SaveLeaveEditBox = ({ form }: propsType) => {
       </LeaveBtn>
       <SaveBtn onClick={handleClickSaveBtn}>저장하기</SaveBtn>
       <LeaveModal isOpen={isOpenLeaveModal} setIsOpen={setIsOpenLeaveModal} />
-      <SaveModal
+      <EditSaveModal
         isOpen={isOpenSaveModal}
         setIsOpen={setIsOpenSaveModal}
         form={form}
