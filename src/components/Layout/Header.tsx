@@ -46,22 +46,13 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
   background-color: ${(props) => props.theme.colors.grey8};
-<<<<<<< HEAD
-=======
 `;
 
 const HeaderOptions = styled.div`
   gap: 20px;
   display: flex;
   padding-right: 500px;
->>>>>>> develop
 `;
-
-const HeaderOptions = styled.div`
-  gap: 20px;
-  display: flex;
-  padding-right: 500px;
-`
 
 const Logo = styled.img`
   margin-left: 50.25px;
