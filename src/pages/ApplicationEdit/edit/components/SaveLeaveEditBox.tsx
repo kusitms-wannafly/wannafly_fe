@@ -6,7 +6,7 @@ import {
   SaveBtn,
 } from '@components/application/SaveLeaveBox';
 import { ApplicationEditData } from '..';
-import { LeaveModal } from '@pages/Application/write/components/LeaveModal';
+import { LeaveModal } from '@pages/ApplicationWrite/write/components/LeaveModal';
 import { EditSaveModal } from './EditSaveModal';
 
 interface propsType {

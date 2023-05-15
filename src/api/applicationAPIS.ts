@@ -4,7 +4,7 @@ import {
   ApplicationEditItem,
   ApplicationEditData,
 } from '@pages/ApplicationEdit/edit';
-import { ApplicationData } from '@pages/Application/write';
+import { ApplicationData } from '@pages/ApplicationWrite/write';
 
 //지원서 단건 조회
 export const getApplicationDetailAPI = async (formId: number) => {

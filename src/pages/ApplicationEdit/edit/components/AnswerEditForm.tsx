@@ -10,7 +10,7 @@ import {
   SpellCheckBtn,
 } from '@components/application/AnswerForm';
 import { ApplicationEditItem, ApplicationEditData } from '..';
-import { getTrimmedLength } from '@pages/Application/write/util/getTrimmedLength';
+import { getTrimmedLength } from '@pages/ApplicationWrite/write/util/getTrimmedLength';
 
 interface propsType {
   index: number;

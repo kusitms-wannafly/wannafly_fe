@@ -5,7 +5,7 @@ import {
   SemesterSelectBox,
   Semester,
 } from '@components/application/ApplicationInfo';
-import { getYearOptions } from '@pages/Application/write/util/getYearOptions';
+import { getYearOptions } from '@pages/ApplicationWrite/write/util/getYearOptions';
 import { ApplicationEditData } from '..';
 
 interface propsType {

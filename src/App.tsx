@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 import { MemberPage } from '@pages/Member/MemberPage';
-import { MainPage } from '@pages/Main/MainPage';
+
+import { MainPage } from '@pages/Main';
+import { ApplicationsPage } from '@pages/Applications';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
-import { ApplyPage } from '@pages/Main/ApplyPage';
-import { CategoryPage } from '@pages/Main/CategoryPage';
-import { ApplicationPage } from '@pages/Application';
-import { ApplicationEdit } from '@pages/ApplicationEdit';
+import { ApplicationWritePage } from '@pages/ApplicationWrite';
+import { ApplicationEditPage } from '@pages/ApplicationEdit';
 
 import { GoogleRedirect } from '@features/oauth/GoogleRedirect';
 
@@ -19,13 +19,13 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="*" element={<NoMatchPage />} />
+          <Route path="/applications" element={<ApplicationsPage />} />
+          <Route path="/applications/:year" element={<ApplicationsPage />} />
           <Route path="/member" element={<MemberPage />} />
           <Route path="/token" element={<GoogleRedirect />} />
-          <Route path="/apply" element={<ApplyPage />} />
-          <Route path="/Category" element={<CategoryPage />} />
-          <Route path="/write" element={<ApplicationPage />} />
-          <Route path="/edit/:formId" element={<ApplicationEdit />} />
+          <Route path="/write" element={<ApplicationWritePage />} />
+          <Route path="/edit/:formId" element={<ApplicationEditPage />} />
+          <Route path="*" element={<NoMatchPage />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

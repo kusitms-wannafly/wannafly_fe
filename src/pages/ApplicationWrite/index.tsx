@@ -5,7 +5,7 @@ import { PageContainer } from '@components/Layout/PageContainer';
 import { ApplicationSearch } from './search';
 import { ApplicationWrite } from './write';
 
-export const ApplicationPage = () => {
+export const ApplicationWritePage = () => {
   //유저가 작성한 지원서가 있는지 여부
   const [hasApplication, setHasApplication] = useState(false);
 
