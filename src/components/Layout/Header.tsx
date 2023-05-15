@@ -85,7 +85,7 @@ export const Header = () => {
                 handleClickHeaderBtn('categorize');
               }}
             >
-              유형별카테고리
+              유형별 카테고리
             </HeaderBtn>
           </HeaderOptions>
         </Left>
