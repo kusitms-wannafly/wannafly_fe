@@ -27,6 +27,5 @@ const PageContainerBox = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: white;
+  background-color: black;
 `;
