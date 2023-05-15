@@ -1,100 +1,92 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { ModalContainer, ModalBackdrop } from './application/SaveModal';
+import logo_grey from '@assets/logo/logo-grey.svg';
+import { GoogleLoginBtn } from '@components/buttons/GoogleLoginBtn';
 
-interface ModalDefaultType {
-  onClickToggleModal: () => void;
+interface propsType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+export const LoginModal = ({ isOpen, setIsOpen }: propsType) => {
+  const openModalHandler = () => {
+    setIsOpen(!isOpen);
+  };
 
-export const LoginModal = ({
-  onClickToggleModal,
-  children,
-}: PropsWithChildren<ModalDefaultType>) => {
   return (
     <ModalContainer>
-      <DialogBox>
-        <SmallBox>{children}</SmallBox>
-        <LoginBoxWrapper>
-          <LoginBox>Google 로그인</LoginBox>
-          <LoginBox>카카오 로그인</LoginBox>
-          <LoginBox>네이버 로그인</LoginBox>
-        </LoginBoxWrapper>
-      </DialogBox>
-      <Backdrop
-        onClick={(e: React.MouseEvent) => {
-          e.preventDefault();
-
-          if (onClickToggleModal) {
-            onClickToggleModal();
-          }
-        }}
-      />
+      {isOpen ? (
+        <ModalBackdrop onClick={openModalHandler}>
+          <ModalView onClick={(e) => e.stopPropagation()}>
+            <GuideText>
+              <LogoContainer src={logo_grey} alt="logo" />
+              <TextContainer>
+                <div>작성 완료한 지원서, 작성 중인 지원서를</div>
+                <div>한 곳에 보관하여 한 번에 확인하세요.</div>
+              </TextContainer>
+            </GuideText>
+            <LoginBtnsContainer>
+              <SocialLogin>간편 로그인</SocialLogin>
+              <GoogleLoginBtn />
+            </LoginBtnsContainer>
+          </ModalView>
+        </ModalBackdrop>
+      ) : null}
     </ModalContainer>
   );
 };
 
-const ModalContainer = styled.div`
+const ModalView = styled.div`
+  width: 420px;
+  height: 450px;
+
+  background-color: rgba(30, 31, 32, 1);
+  border: 1px solid #686a70;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const GuideText = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-`;
-
-const DialogBox = styled.dialog`
-  width: 795px;
-  height: 699px;
+  height: 180px;
+  border-radius: 15px 15px 0 0;
+  background-color: ${({ theme }) => theme.colors.grey1};
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
-  box-sizing: border-box;
-  background-color: white;
-  z-index: 10000;
-`;
-
-const SmallBox = styled.div`
-  width: 528px;
-  height: 333px;
-  margin-top: 20px;
-  background-color: #eeeeee;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 16px;
-  border: solid 3px;
 `;
 
-const LoginBoxWrapper = styled.div`
+const LogoContainer = styled.img`
+  width: 200px;
+  margin-bottom: 5px;
+`;
+
+const TextContainer = styled.div`
   display: flex;
-  margin-top: 20px;
-  width: 648px;
   flex-direction: column;
-  gap: 10px;
-`;
-
-const LoginBox = styled.div`
-  width: 648px;
-  height: 85px;
-  color: ${(props) => props.theme.colors.blk};
-  border-radius: 3px;
-  border: 3px solid;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 35px;
-  font-weight: bold;
+  color: ${({ theme }) => theme.colors.grey8};
+  font-size: 15px;
+  div {
+    margin: 4px 0;
+  }
 `;
 
-const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.2);
+const LoginBtnsContainer = styled.div`
+  width: 100%;
+  flex: 1;
+  padding: 30px 40px 0;
+
+  a {
+    width: 200px;
+  }
+`;
+
+const SocialLogin = styled.div`
+  color: ${({ theme }) => theme.colors.wht};
+  font-size: 13px;
 `;
