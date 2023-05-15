@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@styles/theme';
 import { Header } from '@components/Layout/Header';
-import { Banner } from '@components/Layout/Banner';
 
 interface ListProps {
   children: ReactNode;
@@ -11,12 +10,11 @@ interface ListProps {
   banner?: boolean;
 }
 
-export const PageContainer = ({ children, header, banner }: ListProps) => {
+export const PageContainer = ({ children, header }: ListProps) => {
   return (
     <PageContainerBox>
       <ThemeProvider theme={theme}>
         {header === undefined ? null : <Header />}
-        {banner === undefined ? null : <Banner />}
         {children}
       </ThemeProvider>
     </PageContainerBox>
