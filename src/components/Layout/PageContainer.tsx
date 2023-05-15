@@ -7,7 +7,6 @@ import { Header } from '@components/Layout/Header';
 interface ListProps {
   children: ReactNode;
   header?: boolean;
-  banner?: boolean;
 }
 
 export const PageContainer = ({ children, header }: ListProps) => {
