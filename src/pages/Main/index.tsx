@@ -49,8 +49,8 @@ const FolderContainer = styled.div`
 `;
 
 const Folder = styled.img`
-  width: 250px;
-  height: 200px;
+  width: 280px;
+  height: 220px;
   padding-right: 20px;
 `;
 const UnionButterfly = styled.img`
