@@ -4,16 +4,19 @@ import { Link, useLocation } from 'react-router-dom';
 import { LoginModal } from '@components/LoginModal';
 import logo_yello from '@assets/logo/logo-yellow.svg';
 
+import { handleLogout } from '@features/oauth/handleLogout';
+
 enum HeaderSelection {
   MYAPPLY,
   WRITE,
   CATEGORIZE,
 }
 export const Header = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [selection, setSelection] = useState<HeaderSelection>(
     HeaderSelection.MYAPPLY
   );
+  const isLogin = localStorage.getItem('isLogin');
 
   const location = useLocation();
 
@@ -27,56 +30,57 @@ export const Header = () => {
     } else if (location.pathname === '/categorize') {
       setSelection(HeaderSelection.CATEGORIZE);
     }
-    console.log(location);
   }, [location]);
 
-  const handleLoginButtonClick = () => {
-    setModalVisible(true);
-  };
-
-  const handleModalClose = () => {
-    setModalVisible(false);
+  const handleClickLoginBtn = () => {
+    setIsOpenLoginModal(true);
   };
 
   return (
-    <HeaderContainer>
-      <Left>
-        <Link to="/">
-          <Logo src={logo_yello} alt="로고 이미지" />
-        </Link>
-        <HeaderOptions>
+    <>
+      <LoginModal isOpen={isOpenLoginModal} setIsOpen={setIsOpenLoginModal} />
+      <HeaderContainer>
+        <Left>
           <Link to="/">
-            <HeaderBtn
-              className={selection === HeaderSelection.MYAPPLY ? 'current' : ''}
-            >
-              내 지원서
-            </HeaderBtn>
+            <Logo src={logo_yello} alt="로고 이미지" />
           </Link>
-          <Link to="/write">
-            <HeaderBtn
-              className={selection === HeaderSelection.WRITE ? 'current' : ''}
-            >
-              지원서 작성하기
-            </HeaderBtn>
-          </Link>
-          <Link to="/categorize">
-            <HeaderBtn
-              className={
-                selection === HeaderSelection.CATEGORIZE ? 'current' : ''
-              }
-            >
-              유형별카테고리
-            </HeaderBtn>
-          </Link>
-        </HeaderOptions>
-      </Left>
-      <Right>
-        <LoginButton onClick={handleLoginButtonClick}>로그인</LoginButton>
-      </Right>
-      <ModalContainer>
-        {modalVisible && <LoginModal onClickToggleModal={handleModalClose} />}
-      </ModalContainer>
-    </HeaderContainer>
+          <HeaderOptions>
+            <Link to="/">
+              <HeaderBtn
+                className={
+                  selection === HeaderSelection.MYAPPLY ? 'current' : ''
+                }
+              >
+                내 지원서
+              </HeaderBtn>
+            </Link>
+            <Link to="/write">
+              <HeaderBtn
+                className={selection === HeaderSelection.WRITE ? 'current' : ''}
+              >
+                지원서 작성하기
+              </HeaderBtn>
+            </Link>
+            <Link to="/categorize">
+              <HeaderBtn
+                className={
+                  selection === HeaderSelection.CATEGORIZE ? 'current' : ''
+                }
+              >
+                유형별카테고리
+              </HeaderBtn>
+            </Link>
+          </HeaderOptions>
+        </Left>
+        <Right>
+          {isLogin === 'true' ? (
+            <LoginButton onClick={handleLogout}>로그아웃</LoginButton>
+          ) : (
+            <LoginButton onClick={handleClickLoginBtn}>로그인</LoginButton>
+          )}
+        </Right>
+      </HeaderContainer>
+    </>
   );
 };
 
@@ -140,11 +144,4 @@ const LoginButton = styled.button`
     cursor: pointer;
     color: ${(props) => props.theme.colors.grey1};
   }
-`;
-
-const ModalContainer = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
 `;
