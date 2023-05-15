@@ -4,7 +4,7 @@ type DropDownProps = {
   years: string[];
   showDropDown: boolean;
   toggleDropDown: () => void;
-  yearSelection: (city: string) => void;
+  yearSelection: (year: string) => void;
 };
 
 export const DropDown: React.FC<DropDownProps> = ({
@@ -30,18 +30,17 @@ export const DropDown: React.FC<DropDownProps> = ({
   return (
     <>
       <div className={showDropDown ? 'dropdown' : 'dropdown active'}>
-        {years.map((city: string, index: number) => (
+        {years.map((year: string, index: number) => (
           <p
             key={index}
             onClick={() => {
-              onClickHandler(city);
+              onClickHandler(year);
             }}
           >
-            {city}
+            {year}
           </p>
         ))}
       </div>
     </>
   );
 };
-

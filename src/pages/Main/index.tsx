@@ -1,6 +1,6 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
-import { YearMenu } from '@components/YearMenu';
+import { YearMenu } from '@pages/Main/componenets/YearMenu';
 
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
