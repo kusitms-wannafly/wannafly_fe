@@ -1,5 +1,6 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
+import { YearMenu } from '@components/YearMenu';
 
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
@@ -14,8 +15,11 @@ export const MainPage = () => {
         <UnionButterfly src={Butterfly} alt="butterfly" />
       </Banner>
       <FolderContainer>
-        <Folder src={GreyFolderImage} alt="yellow-folder-img" />
-        <Folder src={YellowFolderImage} alt="grey-folder-img" />
+        <YearChooseButton>
+          <YearMenu />
+        </YearChooseButton>
+        <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+        <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
       </FolderContainer>
     </PageContainer>
   );
@@ -46,13 +50,30 @@ const BannerDescription = styled.div`
 const FolderContainer = styled.div`
   padding-left: 348px;
   padding-top: 50px;
+  margin-top: 250px;
+  position: absolute;
 `;
 
-const Folder = styled.img`
+const YearChooseButton = styled.div`
+  width: 120px;
+  height: 50px;
+  margin-top: 100px;
+  margin-left: 60px;
+  position: absolute;
+`;
+
+const GreyFolder = styled.img`
   width: 280px;
   height: 220px;
   padding-right: 20px;
 `;
+
+const YellowFolder = styled.img`
+  width: 280px;
+  height: 220px;
+  padding-right: 20px;
+`;
+
 const UnionButterfly = styled.img`
   padding-left: 1100px;
 `;
