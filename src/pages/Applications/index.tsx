@@ -14,7 +14,7 @@ const ClubBoxGrid = styled.div`
 
 export const ApplicationsPage = () => {
   return (
-    <PageContainer header banner>
+    <PageContainer header>
       <ClubBoxGrid>
         <ClubBox
           clubName="큐시즘"
