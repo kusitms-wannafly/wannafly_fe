@@ -1,4 +1,4 @@
-import { signupAPI } from './signupAPIS';
+import { signupAPI } from '../../api/authAPIS';
 
 //구글 소셜 로그인
 export const handleGoogleLogin = () => {

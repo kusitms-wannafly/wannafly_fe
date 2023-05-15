@@ -23,10 +23,10 @@ export const Header = () => {
         <Link to="/">
           <MyApplyButton>내 지원서</MyApplyButton>
         </Link>
-        <Link to="/apply">
-          <ApplyContainerButton>지원서보관함</ApplyContainerButton>
+        <Link to="/write">
+          <ApplyContainerButton>지원서 작성하기</ApplyContainerButton>
         </Link>
-        <Link to="/category">
+        <Link to="/categorize">
           <CategoryButton>유형별카테고리</CategoryButton>
         </Link>
       </HeaderOptions>
@@ -46,6 +46,15 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
   background-color: ${(props) => props.theme.colors.grey8};
+<<<<<<< HEAD
+=======
+`;
+
+const HeaderOptions = styled.div`
+  gap: 20px;
+  display: flex;
+  padding-right: 500px;
+>>>>>>> develop
 `;
 
 const HeaderOptions = styled.div`

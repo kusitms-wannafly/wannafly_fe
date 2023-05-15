@@ -1,4 +1,4 @@
-import HttpClient from '@api/HttpClient';
+import { HttpClient } from '@api/HttpClient';
 
 //get 요청 -> 구글 로그인창으로 redirect
 //발생 가능한 예외: MEMBER_DUPLICATE_EMAIL(1001, 400, "이미 가입된 사용자의 이메일입니다.")
@@ -18,7 +18,7 @@ export const signupAPI = async () => {
 export const accessTokenAPI = async () => {
   try {
     const response = await HttpClient.post('/accessToken', {}, {});
-    return response.data;
+    return response;
   } catch (error) {
     return null;
   }

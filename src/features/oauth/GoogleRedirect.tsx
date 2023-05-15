@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '@api/HttpClient';
+//import { axiosInstance } from '@api/HttpClient';
 
 export const GoogleRedirect = () => {
   const navigate = useNavigate();
@@ -18,9 +18,9 @@ export const GoogleRedirect = () => {
       localStorage.setItem('accessToken', 'Bearer ' + accessToken);
       localStorage.setItem('isLogin', 'true');
       //axios instance default header 설정
-      axiosInstance.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${accessToken}`;
+      // axiosInstance.defaults.headers.common[
+      //   'Authorization'
+      // ] = `Bearer ${accessToken}`;
     }
 
     //메인 페이지로 navigate
