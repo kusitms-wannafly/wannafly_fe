@@ -5,15 +5,15 @@ import {
   SemesterSelectBox,
   Semester,
 } from '@components/application/ApplicationInfo';
-import { getYearOptions } from '../util/getYearOptions';
-import { ApplicationData } from '..';
+import { getYearOptions } from '@pages/Application/write/util/getYearOptions';
+import { ApplicationEditData } from '..';
 
 interface propsType {
-  form: ApplicationData | null;
-  setForm: React.Dispatch<React.SetStateAction<ApplicationData>>;
+  form: ApplicationEditData | null;
+  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData>>;
 }
 
-export const ApplicationInfo = ({ form, setForm }: propsType) => {
+export const ApplicationEditInfo = ({ form, setForm }: propsType) => {
   const handleChangeRecruiterInput = (e: React.FormEvent<HTMLInputElement>) => {
     setForm({ ...form!, recruiter: e.currentTarget.value });
   };

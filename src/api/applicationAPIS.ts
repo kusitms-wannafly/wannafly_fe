@@ -1,5 +1,9 @@
 import { HttpClient } from '@api/HttpClient';
 
+import {
+  ApplicationEditItem,
+  ApplicationEditData,
+} from '@pages/ApplicationEdit/edit';
 import { ApplicationData } from '@pages/Application/write';
 
 //지원서 단건 조회
@@ -10,7 +14,7 @@ export const getApplicationDetailAPI = async (formId: number) => {
       {},
       {}
     );
-    return response.data;
+    return response;
   } catch {
     return null;
   }
@@ -35,5 +39,39 @@ export const patchApplicationState = async (formId: number) => {
     return;
   } catch {
     return;
+  }
+};
+
+//지원서 문항 추가
+export const postApplicationQuestion = async (
+  formId: number,
+  item: ApplicationEditItem
+) => {
+  try {
+    const response = await HttpClient.post(
+      `/api/application-forms/${formId}/items`,
+      item,
+      {}
+    );
+    return response;
+  } catch {
+    return null;
+  }
+};
+
+//지원서 수정
+export const patchApplicationAPI = async (
+  formId: number,
+  form: ApplicationEditData
+) => {
+  try {
+    const response = await HttpClient.patch(
+      `/api/application-forms/${formId}`,
+      form,
+      {}
+    );
+    return response;
+  } catch {
+    return null;
   }
 };

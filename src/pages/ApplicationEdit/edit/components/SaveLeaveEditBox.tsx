@@ -5,15 +5,16 @@ import {
   LeaveBtn,
   SaveBtn,
 } from '@components/application/SaveLeaveBox';
-import { ApplicationData } from '..';
-import { LeaveModal } from './LeaveModal';
-import { SaveModal } from './SaveModal';
+import { ApplicationEditData } from '..';
+import { LeaveModal } from '@pages/Application/write/components/LeaveModal';
+import { EditSaveModal } from './EditSaveModal';
 
 interface propsType {
-  form: ApplicationData;
+  formId: number;
+  form: ApplicationEditData;
 }
 
-export const SaveLeaveBox = ({ form }: propsType) => {
+export const SaveLeaveEditBox = ({ formId, form }: propsType) => {
   const [isOpenLeaveModal, setIsOpenLeaveModal] = useState<boolean>(false);
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
 
@@ -37,10 +38,11 @@ export const SaveLeaveBox = ({ form }: propsType) => {
       </LeaveBtn>
       <SaveBtn onClick={handleClickSaveBtn}>저장하기</SaveBtn>
       <LeaveModal isOpen={isOpenLeaveModal} setIsOpen={setIsOpenLeaveModal} />
-      <SaveModal
+      <EditSaveModal
         isOpen={isOpenSaveModal}
         setIsOpen={setIsOpenSaveModal}
         form={form}
+        formId={formId}
       />
     </SaveLeaveBoxContainer>
   );
