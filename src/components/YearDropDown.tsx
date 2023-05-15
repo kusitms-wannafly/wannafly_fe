@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 type DropDownProps = {
-  cities: string[];
+  years: string[];
   showDropDown: boolean;
   toggleDropDown: () => void;
-  citySelection: (city: string) => void;
+  yearSelection: (city: string) => void;
 };
 
 export const DropDown: React.FC<DropDownProps> = ({
-  cities,
-  citySelection,
+  years,
+  yearSelection,
 }: DropDownProps) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
 
@@ -17,10 +17,10 @@ export const DropDown: React.FC<DropDownProps> = ({
    * Handle passing the city name
    * back to the parent component
    *
-   * @param city  The selected city
+   * @param year  The selected city
    */
-  const onClickHandler = (city: string): void => {
-    citySelection(city);
+  const onClickHandler = (year: string): void => {
+    yearSelection(year);
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const DropDown: React.FC<DropDownProps> = ({
   return (
     <>
       <div className={showDropDown ? 'dropdown' : 'dropdown active'}>
-        {cities.map((city: string, index: number) => (
+        {years.map((city: string, index: number) => (
           <p
             key={index}
             onClick={() => {
