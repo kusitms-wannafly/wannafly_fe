@@ -21,6 +21,8 @@ export const PageContainer = ({ children, header }: ListProps) => {
 };
 
 const PageContainerBox = styled.div`
+  margin-top: 75px;
+  min-width: 1200px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
