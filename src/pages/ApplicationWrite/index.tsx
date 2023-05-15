@@ -14,7 +14,7 @@ export const ApplicationWritePage = () => {
   }, []);
 
   return (
-    <PageContainer>
+    <PageContainer header>
       <ApplicationPageContainer className={hasApplication ? '' : 'center'}>
         {hasApplication ? <ApplicationSearch /> : null}
         <ApplicationWrite />
@@ -24,7 +24,8 @@ export const ApplicationWritePage = () => {
 };
 
 const ApplicationPageContainer = styled.div`
-  width: 100vw;
+  background-color: ${(props) => props.theme.colors.grey8};
+  width: 100%;
   height: 100vh;
   min-width: 600px;
   display: flex;

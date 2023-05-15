@@ -17,13 +17,11 @@ export const GoogleLoginBtn = () => {
 };
 
 const BtnContainer = styled.a`
-  width: 200px;
-
   &:is(:hover, :focus) {
     cursor: pointer;
   }
 `;
 
 const LoginBtnImg = styled.img`
-  width: 100%;
+  width: 200px;
 `;

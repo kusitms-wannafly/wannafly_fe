@@ -49,10 +49,10 @@ export const YearMenu: React.FC = (): JSX.Element => {
         <div>{selectCity ? selectCity : '연도를 선택하세요'} </div>
         {showDropDown && (
           <DropDown
-            cities={cities()}
+            years={cities()}
             showDropDown={false}
             toggleDropDown={(): void => toggleDropDown()}
-            citySelection={citySelection}
+            yearSelection={citySelection}
           />
         )}
       </button>
