@@ -1,7 +1,6 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
-import { YearMenu } from '@pages/Main/componenets/YearMenu';
-
+import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
 import Butterfly from '@assets/images/Unionbutterfly.png';
@@ -16,7 +15,7 @@ export const MainPage = () => {
       </Banner>
       <FolderContainer>
         <YearChooseButton>
-          <YearMenu />
+          <SelectMenu />
         </YearChooseButton>
         <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
         <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
