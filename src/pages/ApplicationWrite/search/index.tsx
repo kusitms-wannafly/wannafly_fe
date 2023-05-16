@@ -16,12 +16,25 @@ export interface SearchState {
   currentState: State;
 }
 
+interface ApplicationForm {
+  applicationFormId: number;
+  recruiter: string;
+  year: number;
+  semester: string;
+  isCompleted: boolean;
+  lastModifiedTime: string;
+}
+
+const APIQUERYSIZE = 9;
+
 export const ApplicationSearch = () => {
   const [searchState, setSearchState] = useState<SearchState>({
     currentState: State.all,
   });
   //지원서 상세보기에서 보여줄 지원서의 id
   const [detailId, setDetailId] = useState(0);
+  //지원서 목록
+  const [applications, setApplications] = useState<ApplicationForm[]>([]);
 
   return (
     <ApplicationSearchContainer>
@@ -93,9 +106,6 @@ const ApplicationSearchContainer = styled.div`
 `;
 
 const ApplicationFolders = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   overflow-y: scroll;
   /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
   &::-webkit-scrollbar {

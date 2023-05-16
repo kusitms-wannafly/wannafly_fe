@@ -37,6 +37,7 @@ const ApplicationPageContainer = styled.div`
   width: 100%;
   height: 100vh;
   min-width: 600px;
+  padding-top: 75px;
   display: flex;
   &.center {
     justify-content: center;
