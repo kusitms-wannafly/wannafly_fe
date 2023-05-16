@@ -82,7 +82,7 @@ export const Select = ({ options, onChange, value, small, dropUp = false }) => {
   );
 };
 
-const itemHeightBig = '36px';
+const itemHeightBig = '40px';
 const itemHeightSmall = '22px';
 
 const getItemHightSize = (small: boolean) =>
