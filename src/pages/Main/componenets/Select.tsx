@@ -216,7 +216,7 @@ const SelectWrapper = styled.div<{
 }>`
   cursor: pointer;
 
-  color: #99999f;
+  color: white;
   z-index: 1;
   font-family: Roboto;
   font-style: normal;
@@ -226,14 +226,14 @@ const SelectWrapper = styled.div<{
   min-width: ${(props) => (props.small ? '60px' : '80px')};
   min-height: ${(props) => getItemHightSize(props.small)};
   max-height: ${(props) => getItemHightSize(props.small)};
-  background: #454550;
+  background: black;
 
   ${(props) =>
     getSelectWrapperBorderRaius(
       props.dropUp,
       props.open
-    )}/* border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: ${(props) => (props.open ? '0px' : '10px')};
-  border-bottom-right-radius: ${(props) => (props.open ? '0px' : '10px')}; */
+    )}/* border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  border-bottom-left-radius: ${(props) => (props.open ? '0px' : '0px')};
+  border-bottom-right-radius: ${(props) => (props.open ? '0px' : '0px')}; */
 `;
