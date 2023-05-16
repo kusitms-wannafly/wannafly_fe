@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalContainer, ModalBackdrop } from './application/SaveModal';
+import { ModalBackdrop } from './application/SaveModal';
 import logo_grey from '@assets/logo/logo-grey.svg';
 import { GoogleLoginBtn } from '@components/buttons/GoogleLoginBtn';
 
@@ -14,7 +14,7 @@ export const LoginModal = ({ isOpen, setIsOpen }: propsType) => {
   };
 
   return (
-    <ModalContainer>
+    <LoginModalContainer>
       {isOpen ? (
         <ModalBackdrop onClick={openModalHandler}>
           <ModalView onClick={(e) => e.stopPropagation()}>
@@ -32,9 +32,13 @@ export const LoginModal = ({ isOpen, setIsOpen }: propsType) => {
           </ModalView>
         </ModalBackdrop>
       ) : null}
-    </ModalContainer>
+    </LoginModalContainer>
   );
 };
+
+const LoginModalContainer = styled.div`
+  z-index: 500;
+`;
 
 const ModalView = styled.div`
   width: 420px;
@@ -70,6 +74,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
   color: ${({ theme }) => theme.colors.grey8};
+  font-family: 'PretendardMedium';
   font-size: 15px;
   div {
     margin: 4px 0;
@@ -88,5 +93,6 @@ const LoginBtnsContainer = styled.div`
 
 const SocialLogin = styled.div`
   color: ${({ theme }) => theme.colors.wht};
+  font-family: 'PretendardMedium';
   font-size: 13px;
 `;
