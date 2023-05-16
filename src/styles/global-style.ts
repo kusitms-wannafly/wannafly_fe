@@ -1,10 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-body {
-  font-family: RobotoInCjk, 'Noto Sans KR', 'Apple SD Gothic Neo',
-      'Nanum Gothic', 'Malgun Gothic', sans-serif;
-}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
