@@ -14,7 +14,7 @@ import {
 import { axiosInstance } from '@api/HttpClient';
 import {
   postApplicationAPI,
-  patchApplicationState,
+  patchApplicationStateAPI,
 } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
 
@@ -43,7 +43,7 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
         return formId;
       })
       .then((formId) => {
-        patchApplicationState(formId);
+        patchApplicationStateAPI(formId);
         navigate('/');
       })
       .catch(() => {
