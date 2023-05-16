@@ -12,6 +12,13 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: ./
+      - name: Setting .env
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          cat .env
+        working-directory: ./
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
       - name: Build
         run: npm run build
         working-directory: ./
