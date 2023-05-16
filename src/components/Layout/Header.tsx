@@ -85,7 +85,7 @@ export const Header = () => {
                 handleClickHeaderBtn('categorize');
               }}
             >
-              유형별 카테고리
+              유형별 카테고리화
             </HeaderBtn>
           </HeaderOptions>
         </Left>
@@ -132,8 +132,8 @@ const Logo = styled.img`
 `;
 
 const HeaderBtn = styled.button`
+  font-family: 'PretendardSemiBold';
   font-size: 14px;
-  font-weight: 700;
   color: ${(props) => props.theme.colors.grey4};
   background-color: transparent;
   border: none;
