@@ -56,7 +56,7 @@ const FolderContainer = styled.div`
 const YearChooseButton = styled.div`
   width: 150px;
   height: 50px;
-  margin-top: 120px;
+  margin-top: 110px;
   margin-left: 50px;
   position: absolute;
 `;

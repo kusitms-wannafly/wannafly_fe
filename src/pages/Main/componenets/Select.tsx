@@ -83,7 +83,7 @@ export const Select = ({ options, onChange, value, small, dropUp = false }) => {
 };
 
 const itemHeightBig = '40px';
-const itemHeightSmall = '22px';
+const itemHeightSmall = '40px';
 
 const getItemHightSize = (small: boolean) =>
   small ? itemHeightSmall : itemHeightBig;
@@ -193,18 +193,18 @@ const SelectCurrent = styled(ItemStyled)<{ small: boolean; open: boolean }>`
 const getSelectWrapperBorderRaius = (dropUp, open) => {
   if (dropUp) {
     return `
-      border-top-left-radius: ${open ? '0px' : '10px'};
-      border-top-right-radius: ${open ? '0px' : '10px'};
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
+      border-top-left-radius: ${open ? '0px' : '1px'};
+      border-top-right-radius: ${open ? '0px' : '1px'};
+      border-bottom-left-radius: 1px;
+      border-bottom-right-radius: 1px;
     `;
   }
 
   return `
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-left-radius: ${open ? '0px' : '10px'};
-      border-bottom-right-radius: ${open ? '0px' : '10px'};
+      border-top-left-radius: 1px;
+      border-top-right-radius: 1px;
+      border-bottom-left-radius: ${open ? '0px' : '1px'};
+      border-bottom-right-radius: ${open ? '0px' : '1px'};
   `;
 };
 
