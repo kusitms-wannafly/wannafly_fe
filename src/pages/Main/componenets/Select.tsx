@@ -13,13 +13,8 @@ export interface UiSelectItem {
 
 interface Props {
   items: UiSelectItem[];
-
-  // Open to up or to down flag
   dropUp?: boolean;
-
-  // Small or big size, big is default
   small?: boolean;
-
   onSelect(selected: UiSelectItem): any;
 }
 
@@ -38,7 +33,6 @@ export const Select = ({ options, onChange, value, small, dropUp = false }) => {
       // inside click
       return;
     }
-    // outside click
     setOpen(false);
   };
 
@@ -87,11 +81,6 @@ const itemHeightSmall = '40px';
 
 const getItemHightSize = (small: boolean) =>
   small ? itemHeightSmall : itemHeightBig;
-
-// ${({ dropUp }) => getSelectListItemBorderRadius(dropUp)}
-
-// border-bottom-left-radius: ${props => (props.last ? "10px" : "0px")};
-// border-bottom-right-radius: ${props => (props.last ? "10px" : "0px")};
 
 const SelectListItem = styled.div<{
   small: boolean;
