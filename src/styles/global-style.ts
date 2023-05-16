@@ -1,25 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
- @font-face {
-  font-family: 'HappinessSansBold';
-  src: url('/fonts/HappinessSansBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: 'PretendardBold';
-  src: url('/fonts/PretendardBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-  overflow-y: overlay;
-  font-family: RobotoInCjk, 'Noto Sans KR', 'Apple SD Gothic Neo',
-      'Nanum Gothic', 'Malgun Gothic', sans-serif;
-}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

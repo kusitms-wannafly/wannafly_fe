@@ -1,4 +1,5 @@
 import { GlobalStyle } from './styles/global-style';
+import GlobalFonts from './assets/fonts/fonts';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
@@ -17,6 +18,7 @@ function App() {
     <RecoilRoot>
       <BrowserRouter>
         <GlobalStyle />
+        <GlobalFonts />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/applications" element={<ApplicationsPage />} />
