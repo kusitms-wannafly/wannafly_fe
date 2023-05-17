@@ -33,9 +33,18 @@ export const postApplicationAPI = async (form: ApplicationData) => {
 };
 
 //지원서 작성 완료 상태 수정
-export const patchApplicationStateAPI = async (formId: number) => {
+export const patchApplicationStateAPI = async (
+  formId: number,
+  state: boolean
+) => {
   try {
-    await HttpClient.patch(`/api/application-forms/${formId}/state`, {}, {});
+    await HttpClient.patch(
+      `/api/application-forms/${formId}/state`,
+      {
+        isCompleted: state,
+      },
+      {}
+    );
     return;
   } catch {
     return;
