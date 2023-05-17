@@ -40,26 +40,31 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
         const headers = response.headers;
         const location = headers['location'];
         const formId = Number(location.split('/').pop());
-        return formId;
+        return patchApplicationStateAPI(formId, true);
       })
-      .then((formId) => {
-        patchApplicationStateAPI(formId);
+      .then(() => {
         navigate('/');
       })
       .catch(() => {
-        setIsOpen(false);
+        navigate('/');
       });
   };
 
   const handleClickYesBtn = () => {
     //작성중으로 저장
-    const apiReturn: Promise<any> = postApplicationAPI(form);
-    apiReturn
+    axiosInstance
+      .post('/api/application-forms', form)
+      .then((response) => {
+        const headers = response.headers;
+        const location = headers['location'];
+        const formId = Number(location.split('/').pop());
+        return patchApplicationStateAPI(formId, false);
+      })
       .then(() => {
         navigate('/');
       })
       .catch(() => {
-        setIsOpen(false);
+        navigate('/');
       });
   };
 
