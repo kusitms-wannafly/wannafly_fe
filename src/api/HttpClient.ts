@@ -25,7 +25,7 @@ axiosInstance.interceptors.response.use(
     //Refresh Token으로 새로운 AccessToken 요청
     try {
       const apiresult: Promise<any> = accessTokenAPI();
-      apiresult.then((res) => {
+      return apiresult.then((res) => {
         const newAccessToken = res.accessToken;
 
         //새로운 AccessToken으로 원래 요청 재시도
@@ -43,7 +43,6 @@ axiosInstance.interceptors.response.use(
       //refresh Token이 만료된 경우 메인 페이지로 이동
       window.location.replace('/');
     }
-    return Promise.reject(error);
   }
 );
 
