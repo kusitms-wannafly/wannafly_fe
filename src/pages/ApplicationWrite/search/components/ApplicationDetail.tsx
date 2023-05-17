@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { State, SearchState } from '..';
 import { ApplicationItem } from './ApplicationItem';
 
-//import { getApplicationDetailAPI } from '@pages/Application/api/applicationAPIS';
+import { getApplicationDetailAPI } from '@api/applicationAPIS';
 
 import icon_back from '@assets/icons/icon-back.svg';
 
@@ -53,12 +53,14 @@ export const ApplicationDetail = ({ detailId, setSearchState }: propsType) => {
 
   //지원서 단건 조회해서 정보 가져옴
   useEffect(() => {
-    //TODO: 추후 api 호출 확인 후 주석 해제
-    // const apiReturn: Promise<any> = getApplicationDetailAPI(detailId);
-    // apiReturn.then((data: ApplicationData) => {
-    //   setApplicationDetail(data);
-    // });
-    setApplicationDetail(responseData);
+    const apiReturn: Promise<any> = getApplicationDetailAPI(detailId);
+    apiReturn
+      .then((data: ApplicationData) => {
+        setApplicationDetail(data);
+      })
+      .catch(() => {
+        setApplicationDetail(null);
+      });
   }, []);
 
   return (
