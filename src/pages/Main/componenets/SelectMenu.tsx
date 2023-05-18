@@ -14,22 +14,17 @@ const years = [
   '2013년',
 ];
 
-export default function SelectMenu() {
+export default function SelectMenu({ onYearSelect: number }) {
   const [Select, setSelect] = useState(years[0]);
 
-  // secondSelect 값을 postFolderAPI로 전달
   const handleYearSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //const response = await postFolderAPI(parseInt(year));
-    //console.log(response);
     setSelect(e.target.value);
+    onYearSelect(e.target.value);
   };
 
   return (
     <div className="App">
-      <select
-        value={Select}
-        onChange={handleYearSelect}
-      >
+      <select value={Select} onChange={handleYearSelect}>
         {years.map((year, idx) => {
           return (
             <option key={idx} value={year}>
