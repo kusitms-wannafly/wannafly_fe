@@ -1,8 +1,14 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import SelectMenu from './SelectMenu';
 
 export const CreateFolderButton = () => {
-  return <Button>폴더 생성하기</Button>;
-}
+  return (
+    <Button>
+      폴더 생성하기
+    </Button>
+  );
+};
 
 const Button = styled.div`
   position: absolute;
@@ -16,6 +22,7 @@ const Button = styled.div`
   margin-top: 230px;
   margin-left: 65px;
   border-radius: 8px;
+  cursor: pointer;
   background-color: ${(props) => props.theme.colors.navy3};
   &:hover {
     background-color: ${(props) => props.theme.colors.navy4};

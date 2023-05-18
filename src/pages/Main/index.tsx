@@ -1,16 +1,56 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { LoginAlert } from '@features/oauth/LoginAlert';
+import { useLocation } from 'react-router-dom';
+
+// 지원서 보관함 모두 조회 API
+import { getAllFolderAPI } from '@api/folderAPIS';
+
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
 import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
-import { LoginAlert } from '@features/oauth/LoginAlert';
-import { useLocation } from 'react-router-dom';
+import { NotLoginMain } from './componenets/NotLoginMain';
+
+interface Folder {
+  year: number;
+  count: number;
+}
 
 export const MainPage = () => {
   const location = useLocation();
   const loginState = location.state?.loginState;
+
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  useEffect(() => {
+    const localStorageIsLogin = localStorage.getItem('isLogin');
+    if (localStorageIsLogin === 'true') {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
+
+  // 지원서 보관함 불러오기
+  //const [hasFolder, setHasFolder] = useState(false);
+  const [folders, setFolders] = useState<Folder[]>([]);
+
+  useEffect(() => {
+    const apireturn = getAllFolderAPI();
+    apireturn
+      .then((res) => {
+        console.log(res);
+        setFolders(res);
+      })
+      .catch(() => {
+        setFolders([]);
+      });
+  }, []);
+
+  const [selectedYear, setSelectedYear] = useState<number>(2023);
 
   return (
     <PageContainer header>
@@ -19,15 +59,28 @@ export const MainPage = () => {
         <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
         <UnionButterfly src={Butterfly} alt="butterfly" />
       </Banner>
-      <FolderContainer>
-        <CreateFolderButton />
-        <YearChooseButton>
-          <SelectMenu />
-        </YearChooseButton>
-        <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-        <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
-      </FolderContainer>
-      <LoginAlert loginState={loginState} />
+      {isLogin ? (
+        <>
+          <FolderContainer>
+            <CreateFolderButton />
+            <YearChooseButton>
+              <SelectMenu setSelectedYear={setSelectedYear} />
+            </YearChooseButton>
+            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+            <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
+          </FolderContainer>
+          {folders.map((folder) => {
+            return (
+              <div key={folder.year}>
+                {folder.year}
+                <div>개수: {folder.count}</div>
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        <NotLoginMain />
+      )}
     </PageContainer>
   );
 };
@@ -39,7 +92,7 @@ const Banner = styled.div`
 
 const BannerTitle = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  padding-top: 30px;
+  padding-top: 100px;
   padding-left: 348px;
   font-size: 30px;
   font-weight: bold;

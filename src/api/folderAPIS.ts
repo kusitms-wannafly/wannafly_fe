@@ -20,7 +20,7 @@ Content-Type: application/json
 Authorization: Bearer ...
 */
 
-export const getFolderAPI = async () => {
+export const getAllFolderAPI = async () => {
   try {
     const response = await HttpClient.get('/api/application-folders', {}, {});
     return response;
