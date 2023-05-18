@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import SelectMenu from './SelectMenu';
 
 export const CreateFolderButton = () => {
-  const handleClick = () => {
-    console.log('폴더 생성하기');
-  };
-
-  return <Button onClick={handleClick}>폴더 생성하기</Button>;
+  return (
+    <Button>
+      폴더 생성하기
+    </Button>
+  );
 };
 
 const Button = styled.div`

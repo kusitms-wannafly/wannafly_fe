@@ -50,6 +50,8 @@ export const MainPage = () => {
       });
   }, []);
 
+  const [selectedYear, setSelectedYear] = useState<number>(2023);
+
   return (
     <PageContainer header>
       <Banner>
@@ -62,7 +64,7 @@ export const MainPage = () => {
           <FolderContainer>
             <CreateFolderButton />
             <YearChooseButton>
-              <SelectMenu />
+              <SelectMenu setSelectedYear={setSelectedYear} />
             </YearChooseButton>
             <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
             <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
@@ -82,7 +84,6 @@ export const MainPage = () => {
     </PageContainer>
   );
 };
-
 
 const Banner = styled.div`
   width: 100%;

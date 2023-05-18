@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
 
 const years = [
-  '2023년',
-  '2022년',
-  '2021년',
-  '2020년',
-  '2019년',
-  '2018년',
-  '2017년',
-  '2016년',
-  '2015년',
-  '2014년',
-  '2013년',
+  2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013,
 ];
 
-export default function SelectMenu({ onYearSelect: number }) {
+interface propsType {
+  setSelectedYear: React.Dispatch<React.SetStateAction<number>>;
+}
+export default function SelectMenu({ setSelectedYear }: propsType) {
   const [Select, setSelect] = useState(years[0]);
 
   const handleYearSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelect(e.target.value);
-    onYearSelect(e.target.value);
+    setSelectedYear(e.target.value);
   };
 
   return (
