@@ -11,7 +11,6 @@ export const ApplicationWritePage = () => {
   const [hasApplication, setHasApplication] = useState(false);
 
   useEffect(() => {
-    setHasApplication(true);
     const apireturn = getAllApplicationAPI(null, null, null);
     apireturn
       .then((res) => {
