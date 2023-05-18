@@ -7,6 +7,7 @@ import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
 import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
+import { NotLoginMain } from './componenets/NotLoginMain';
 
 export const MainPage = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
@@ -22,13 +23,13 @@ export const MainPage = () => {
 
   return (
     <PageContainer header>
+      <Banner>
+        <BannerTitle>내 지원서 보관함</BannerTitle>
+        <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
+        <UnionButterfly src={Butterfly} alt="butterfly" />
+      </Banner>
       {isLogin ? (
         <>
-          <Banner>
-            <BannerTitle>내 지원서 보관함</BannerTitle>
-            <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
-            <UnionButterfly src={Butterfly} alt="butterfly" />
-          </Banner>
           <FolderContainer>
             <CreateFolderButton />
             <YearChooseButton>
@@ -39,13 +40,11 @@ export const MainPage = () => {
           </FolderContainer>
         </>
       ) : (
-        <NotLogin>로그인 안함</NotLogin>
+        <NotLoginMain />
       )}
     </PageContainer>
   );
 };
-
-const NotLogin = styled.div``;
 
 const Banner = styled.div`
   width: 100%;
@@ -53,7 +52,7 @@ const Banner = styled.div`
 `;
 const BannerTitle = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  padding-top: 30px;
+  padding-top: 100px;
   padding-left: 348px;
   font-size: 30px;
   font-weight: bold;
