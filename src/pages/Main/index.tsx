@@ -1,5 +1,7 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
@@ -7,24 +9,43 @@ import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 
 export const MainPage = () => {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  useEffect(() => {
+    const localStorageIsLogin = localStorage.getItem('isLogin');
+    if (localStorageIsLogin === 'true') {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
+
   return (
     <PageContainer header>
-      <Banner>
-        <BannerTitle>내 지원서 보관함</BannerTitle>
-        <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
-        <UnionButterfly src={Butterfly} alt="butterfly" />
-      </Banner>
-      <FolderContainer>
-        <CreateFolderButton/>
-        <YearChooseButton>
-          <SelectMenu />
-        </YearChooseButton>
-        <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-        <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
-      </FolderContainer>
+      {isLogin ? (
+        <>
+          <Banner>
+            <BannerTitle>내 지원서 보관함</BannerTitle>
+            <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
+            <UnionButterfly src={Butterfly} alt="butterfly" />
+          </Banner>
+          <FolderContainer>
+            <CreateFolderButton />
+            <YearChooseButton>
+              <SelectMenu />
+            </YearChooseButton>
+            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+            <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
+          </FolderContainer>
+        </>
+      ) : (
+        <NotLogin>로그인 안함</NotLogin>
+      )}
     </PageContainer>
   );
 };
+
+const NotLogin = styled.div``;
 
 const Banner = styled.div`
   width: 100%;
