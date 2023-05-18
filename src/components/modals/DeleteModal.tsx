@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { deleteApplicationAPI } from '@api/applicationAPIS';
 
 interface propsType {
   isOpen: boolean;
@@ -9,9 +10,16 @@ export const DeleteModal = ({ isOpen, setIsOpen }: propsType) => {
     setIsOpen(!isOpen);
   };
 
+  //TODO: 삭제할 지원서 formId 수정
   const handleClickYesDeleteBtn = (formId: number) => {
-    console.log('지원서 삭제:', formId);
-    setIsOpen(false);
+    const apireturn = deleteApplicationAPI(formId);
+    apireturn
+      .then(() => {
+        setIsOpen(false);
+      })
+      .catch(() => {
+        setIsOpen(false);
+      });
   };
 
   return (
@@ -30,7 +38,7 @@ export const DeleteModal = ({ isOpen, setIsOpen }: propsType) => {
               </NotDeleteBtn>
               <YesDeleteBtn
                 onClick={() => {
-                  handleClickYesDeleteBtn(1);
+                  handleClickYesDeleteBtn(0);
                 }}
               >
                 네, 삭제할래요
