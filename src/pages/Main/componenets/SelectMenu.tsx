@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Select } from '@pages/Main/componenets/Select';
-import { postFolderAPI } from '@api/folderAPIS';
+import styled from 'styled-components';
 
 const years = [
-  '연도를 선택하세요',
   '2023년',
   '2022년',
   '2021년',
@@ -11,27 +9,39 @@ const years = [
   '2019년',
   '2018년',
   '2017년',
+  '2016년',
+  '2015년',
+  '2014년',
+  '2013년',
 ];
 
 export default function SelectMenu() {
-  const [firstSelect, setFirstSelect] = useState(years[0]);
-  const [secondSelect, setSecondSelect] = useState(years[0]);
+  const [Select, setSelect] = useState(years[0]);
 
   // secondSelect 값을 postFolderAPI로 전달
-  const handleYearSelect = async (year: string) => {
-    const response = await postFolderAPI(parseInt(year));
-    console.log(response);
-    setSecondSelect(year);
+  const handleYearSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    //const response = await postFolderAPI(parseInt(year));
+    //console.log(response);
+    setSelect(e.target.value);
   };
 
   return (
     <div className="App">
-      <Select
-        small={true}
-        options={years}
-        value={secondSelect}
-        onChange={(v) => handleYearSelect(v)}
-      />
+        <select
+          //small={true}
+          //options={years}
+          value={Select}
+          onChange={handleYearSelect}
+        >
+          {years.map((year, idx) => {
+            return (
+              <option key={idx} value={year}>
+                {year}
+              </option>
+            );
+          })}
+        </select>
     </div>
   );
 }
+

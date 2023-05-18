@@ -2,6 +2,9 @@ import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
+// 지원서 보관함 모두 조회 API
+import { getAllFolderAPI } from '@api/folderAPIS';
+
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
@@ -21,6 +24,20 @@ export const MainPage = () => {
     }
   }, []);
 
+  // 지원서 보관함 불러오기
+  const [hasFolder, setHasFolder] = useState(false);
+
+  useEffect(() => {
+    const apireturn = getAllFolderAPI();
+    apireturn
+      .then((res) => {
+        if (res.length > 0) setHasFolder(true);
+      })
+      .catch(() => {
+        setHasFolder(false);
+      });
+  }, []);
+
   return (
     <PageContainer header>
       <Banner>
@@ -30,14 +47,18 @@ export const MainPage = () => {
       </Banner>
       {isLogin ? (
         <>
-          <FolderContainer>
-            <CreateFolderButton />
-            <YearChooseButton>
-              <SelectMenu />
-            </YearChooseButton>
-            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-            <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
-          </FolderContainer>
+          {hasFolder ? (
+            <div>지원서 있음</div>
+          ) : (
+            <FolderContainer>
+              <CreateFolderButton />
+              <YearChooseButton>
+                <SelectMenu />
+              </YearChooseButton>
+              <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+              <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
+            </FolderContainer>
+          )}
         </>
       ) : (
         <NotLoginMain />

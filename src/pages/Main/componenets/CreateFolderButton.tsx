@@ -4,6 +4,7 @@ export const CreateFolderButton = () => {
   return <Button>폴더 생성하기</Button>;
 }
 
+
 const Button = styled.div`
   position: absolute;
   display: flex;
