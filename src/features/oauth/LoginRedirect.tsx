@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import { axiosInstance } from '@api/HttpClient';
 
-export const GoogleRedirect = () => {
+export const LoginRedirect = () => {
   const navigate = useNavigate();
 
   //TODO: 중복 email시 errorCode 처리

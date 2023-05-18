@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { ModalBackdrop } from './application/SaveModal';
 import logo_grey from '@assets/logo/logo-grey.svg';
 import { GoogleLoginBtn } from '@components/buttons/GoogleLoginBtn';
+import { NaverLoginBtn } from './buttons/NaverLoginBtn';
+import { KakaoLoginBtn } from './buttons/KakaoLoginBtn';
 
 interface propsType {
   isOpen: boolean;
@@ -28,6 +30,8 @@ export const LoginModal = ({ isOpen, setIsOpen }: propsType) => {
             <LoginBtnsContainer>
               <SocialLogin>간편 로그인</SocialLogin>
               <GoogleLoginBtn />
+              <NaverLoginBtn />
+              <KakaoLoginBtn />
             </LoginBtnsContainer>
           </ModalView>
         </ModalBackdrop>
@@ -89,6 +93,8 @@ const LoginBtnsContainer = styled.div`
   a {
     width: 200px;
   }
+  display: flex;
+  flex-direction: column;
 `;
 
 const SocialLogin = styled.div`
