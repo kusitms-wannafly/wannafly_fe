@@ -5,8 +5,13 @@ import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
 import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
+import { LoginAlert } from '@features/oauth/LoginAlert';
+import { useLocation } from 'react-router-dom';
 
 export const MainPage = () => {
+  const location = useLocation();
+  const loginState = location.state?.loginState;
+
   return (
     <PageContainer header>
       <Banner>
@@ -15,13 +20,14 @@ export const MainPage = () => {
         <UnionButterfly src={Butterfly} alt="butterfly" />
       </Banner>
       <FolderContainer>
-        <CreateFolderButton/>
+        <CreateFolderButton />
         <YearChooseButton>
           <SelectMenu />
         </YearChooseButton>
         <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
         <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
       </FolderContainer>
+      <LoginAlert loginState={loginState} />
     </PageContainer>
   );
 };
@@ -30,6 +36,7 @@ const Banner = styled.div`
   width: 100%;
   height: 150px;
 `;
+
 const BannerTitle = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
   padding-top: 30px;
