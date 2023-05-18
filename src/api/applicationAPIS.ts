@@ -112,3 +112,12 @@ export const getAllApplicationAPI = async (
     return [];
   }
 };
+
+export const deleteApplicationAPI = async (formId: number) => {
+  try {
+    await HttpClient.delete(`/api/application-forms/${formId}`);
+    return;
+  } catch {
+    return;
+  }
+};
