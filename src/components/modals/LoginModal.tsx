@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalBackdrop } from './application/SaveModal';
+import { ModalBackdrop } from '../application/SaveModal';
 import logo_grey from '@assets/logo/logo-grey.svg';
 import { GoogleLoginBtn } from '@components/buttons/GoogleLoginBtn';
-import { NaverLoginBtn } from './buttons/NaverLoginBtn';
-import { KakaoLoginBtn } from './buttons/KakaoLoginBtn';
+import { NaverLoginBtn } from '../buttons/NaverLoginBtn';
+import { KakaoLoginBtn } from '../buttons/KakaoLoginBtn';
 
 interface propsType {
   isOpen: boolean;
