@@ -1,6 +1,8 @@
 import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { LoginAlert } from '@features/oauth/LoginAlert';
+import { useLocation } from 'react-router-dom';
 
 // 지원서 보관함 모두 조회 API
 import { getAllFolderAPI } from '@api/folderAPIS';
@@ -18,6 +20,9 @@ interface Folder {
 }
 
 export const MainPage = () => {
+  const location = useLocation();
+  const loginState = location.state?.loginState;
+
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   useEffect(() => {
@@ -78,10 +83,12 @@ export const MainPage = () => {
   );
 };
 
+
 const Banner = styled.div`
   width: 100%;
   height: 150px;
 `;
+
 const BannerTitle = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
   padding-top: 100px;
