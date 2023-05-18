@@ -7,13 +7,10 @@ import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { LoginAlert } from '@features/oauth/LoginAlert';
 import { useLocation } from 'react-router-dom';
-import { DeleteModal } from '@components/modals/DeleteModal';
-import { useState } from 'react';
 
 export const MainPage = () => {
   const location = useLocation();
   const loginState = location.state?.loginState;
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(true);
 
   return (
     <PageContainer header>
@@ -30,11 +27,7 @@ export const MainPage = () => {
         <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
         <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
       </FolderContainer>
-      {/* <LoginAlert loginState={loginState} /> */}
-      <DeleteModal
-        isOpen={isOpenDeleteModal}
-        setIsOpen={setIsOpenDeleteModal}
-      />
+      <LoginAlert loginState={loginState} />
     </PageContainer>
   );
 };
