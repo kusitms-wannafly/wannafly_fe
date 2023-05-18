@@ -12,6 +12,11 @@ import Butterfly from '@assets/images/Unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { NotLoginMain } from './componenets/NotLoginMain';
 
+interface Folder {
+  year: number;
+  count: number;
+}
+
 export const MainPage = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
@@ -25,16 +30,18 @@ export const MainPage = () => {
   }, []);
 
   // 지원서 보관함 불러오기
-  const [hasFolder, setHasFolder] = useState(false);
+  //const [hasFolder, setHasFolder] = useState(false);
+  const [folders, setFolders] = useState<Folder[]>([]);
 
   useEffect(() => {
     const apireturn = getAllFolderAPI();
     apireturn
       .then((res) => {
-        if (res.length > 0) setHasFolder(true);
+        console.log(res);
+        setFolders(res);
       })
       .catch(() => {
-        setHasFolder(false);
+        setFolders([]);
       });
   }, []);
 
@@ -47,18 +54,22 @@ export const MainPage = () => {
       </Banner>
       {isLogin ? (
         <>
-          {hasFolder ? (
-            <div>지원서 있음</div>
-          ) : (
-            <FolderContainer>
-              <CreateFolderButton />
-              <YearChooseButton>
-                <SelectMenu />
-              </YearChooseButton>
-              <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-              <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
-            </FolderContainer>
-          )}
+          <FolderContainer>
+            <CreateFolderButton />
+            <YearChooseButton>
+              <SelectMenu />
+            </YearChooseButton>
+            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+            <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
+          </FolderContainer>
+          {folders.map((folder) => {
+            return (
+              <div key={folder.year}>
+                {folder.year}
+                <div>개수: {folder.count}</div>
+              </div>
+            );
+          })}
         </>
       ) : (
         <NotLoginMain />

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
 const years = [
   '2023년',
@@ -27,21 +26,18 @@ export default function SelectMenu() {
 
   return (
     <div className="App">
-        <select
-          //small={true}
-          //options={years}
-          value={Select}
-          onChange={handleYearSelect}
-        >
-          {years.map((year, idx) => {
-            return (
-              <option key={idx} value={year}>
-                {year}
-              </option>
-            );
-          })}
-        </select>
+      <select
+        value={Select}
+        onChange={handleYearSelect}
+      >
+        {years.map((year, idx) => {
+          return (
+            <option key={idx} value={year}>
+              {year}
+            </option>
+          );
+        })}
+      </select>
     </div>
   );
 }
-
