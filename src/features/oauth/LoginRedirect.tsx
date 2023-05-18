@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import { axiosInstance } from '@api/HttpClient';
 
 export const LoginRedirect = () => {
   const navigate = useNavigate();
