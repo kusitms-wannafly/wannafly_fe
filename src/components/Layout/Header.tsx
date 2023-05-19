@@ -96,10 +96,15 @@ export const Header = () => {
             <LoginButton onClick={handleClickLoginBtn}>로그인</LoginButton>
           )}
         </Right>
+        <Version>version 1.1.2</Version>
       </HeaderContainer>
     </>
   );
 };
+
+const Version = styled.div`
+  display: none;
+`;
 
 const Left = styled.div`
   display: flex;
