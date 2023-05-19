@@ -10,7 +10,7 @@ import { getAllFolderAPI } from '@api/folderAPIS';
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
-import Butterfly from '@assets/images/Unionbutterfly.png';
+import Butterfly from '@assets/images/unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { NotLoginMain } from './componenets/NotLoginMain';
 
