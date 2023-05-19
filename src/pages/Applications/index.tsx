@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { getAllApplicationAPI } from '@api/applicationAPIS';
-import { Banner } from './Banner';
+import { Banner } from './components/Banner';
 //import { ClubBox } from '@pages/Applications/ClubBox';
 
 // const ClubBoxGrid = styled.div`
