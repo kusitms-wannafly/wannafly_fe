@@ -3,7 +3,6 @@ import PretendardLight from './Pretendard-Light.woff2';
 import PretendardMedium from './Pretendard-Medium.woff2';
 import PretendardBold from './Pretendard-Bold.woff2';
 import PretendardSemiBold from './Pretendard-SemiBold.woff2';
-import PretendardLight from './Pretendard-Light.woff2';
 import HappinessSansBold from './Happiness-Sans-Bold.woff2';
 
 export default createGlobalStyle`
