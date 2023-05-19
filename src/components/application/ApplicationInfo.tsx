@@ -13,9 +13,10 @@ export const RecruiterInput = styled.input`
     outline: none;
   }
 
-  height: 45px;
-  border-radius: 8px;
+  height: 50px;
+  border-radius: 6px;
   padding: 0 20px;
+  font-family: 'PretendardMedium';
   font-size: 16px;
 `;
 
@@ -27,27 +28,30 @@ export const YearSelect = styled.select`
     outline: none;
   }
 
-  width: 120px;
-  height: 45px;
-  border-radius: 8px;
+  width: 140px;
+  height: 50px;
+  border-radius: 6px;
   padding: 0 20px;
   margin: 0 10px;
+  font-family: 'PretendardMedium';
 `;
 
 export const SemesterSelectBox = styled.div`
   display: flex;
   background-color: rgba(71, 73, 75, 0.5);
 
-  width: 140px;
-  height: 45px;
-  border-radius: 8px;
+  width: 160px;
+  height: 50px;
+  border-radius: 6px;
+  font-family: 'PretendardMedium';
+  font-size: 13px;
 `;
 
 export const Semester = styled.div`
   width: 100%;
   margin: 0 5px;
   text-align: center;
-  line-height: 45px;
+  line-height: 50px;
 
   color: ${({ theme }) => theme.colors.grey4};
   &.selected,

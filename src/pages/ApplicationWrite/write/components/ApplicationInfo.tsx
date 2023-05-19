@@ -35,6 +35,7 @@ export const ApplicationInfo = ({ form, setForm }: propsType) => {
       <RecruiterInput
         value={form?.recruiter}
         onChange={handleChangeRecruiterInput}
+        maxLength={30}
       />
       <YearSelect value={form?.year} onChange={handleChangeSelectYear}>
         <option value="" disabled hidden>

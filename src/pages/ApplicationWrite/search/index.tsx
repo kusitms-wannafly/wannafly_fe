@@ -61,7 +61,8 @@ export const ApplicationSearch = () => {
 
 const ApplicationSearchContainer = styled.div`
   background-color: rgba(53, 56, 57, 0.5);
-  min-width: 560px;
+  width: 550px;
+  min-width: 550px;
   padding-left: 10px;
 
   display: flex;

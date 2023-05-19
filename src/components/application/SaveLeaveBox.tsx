@@ -21,8 +21,9 @@ export const LeaveBtn = styled.button`
 
   width: 200px;
   height: 45px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 0 6px;
+  font-family: 'PretendardMedium';
 
   &:hover {
     cursor: pointer;
@@ -36,8 +37,9 @@ export const SaveBtn = styled.button`
 
   width: 200px;
   height: 45px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 0 6px;
+  font-family: 'PretendardMedium';
 
   &:hover {
     cursor: pointer;

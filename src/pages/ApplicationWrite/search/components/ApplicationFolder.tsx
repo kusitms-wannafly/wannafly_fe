@@ -47,27 +47,37 @@ const FolderContainer = styled.div`
   width: 450px;
   height: 60px;
   margin-bottom: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0 30px;
 
   background-color: ${({ theme }) => theme.colors.grey6};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Recruiter = styled.div`
   color: ${({ theme }) => theme.colors.grey1};
   margin-right: 15px;
+  font-family: 'PretendardMedium';
 `;
 
 const Completed = styled.div`
   background-color: #ffe79e;
   color: #9a6a22;
 
-  padding: 5px;
+  padding: 5px 6px;
   border-radius: 4px;
+
+  font-family: 'PretendardMedium';
+  font-size: 13px;
 `;
 
 const DateInfo = styled.div`
   color: ${({ theme }) => theme.colors.grey3};
+  font-family: 'PretendardLight';
+  font-size: 13px;
 
   position: absolute;
   right: 30px;
