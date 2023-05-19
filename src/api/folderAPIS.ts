@@ -1,4 +1,4 @@
-import { HttpClient } from "@api/HttpClient";
+import { HttpClient } from '@api/HttpClient';
 
 // import {
 // } from '@pages/Main/componenets/YearMenu';
@@ -20,22 +20,18 @@ Content-Type: application/json
 Authorization: Bearer ...
 */
 
-export const getFolderAPI = async () => {
+export const getAllFolderAPI = async () => {
   try {
-    const response = await HttpClient.get(
-      '/api/application-folders',
-      {},
-      {}
-    );
+    const response = await HttpClient.get('/api/application-folders', {}, {});
     return response;
   } catch {
-    return null;
+    return [];
   }
-}
+};
 
-export const postFolderAPI = async (year: number) => {  
+export const postFolderAPI = async (year: number) => {
   try {
-    const response = await HttpClient.post('/api/application-folders', year, {
+    const response = await HttpClient.post('/api/application-folders', {year: year}, {
       Accept: 'application/json',
     });
     return response;

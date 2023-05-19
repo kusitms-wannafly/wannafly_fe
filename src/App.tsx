@@ -11,7 +11,7 @@ import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
 import { ApplicationWritePage } from '@pages/ApplicationWrite';
 import { ApplicationEditPage } from '@pages/ApplicationEdit';
 
-import { GoogleRedirect } from '@features/oauth/GoogleRedirect';
+import { LoginRedirect } from '@features/oauth/LoginRedirect';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="/applications" element={<ApplicationsPage />} />
           <Route path="/applications/:year" element={<ApplicationsPage />} />
           <Route path="/member" element={<MemberPage />} />
-          <Route path="/token" element={<GoogleRedirect />} />
+          <Route path="/token" element={<LoginRedirect />} />
           <Route path="/write" element={<ApplicationWritePage />} />
           <Route path="/edit/:formId" element={<ApplicationEditPage />} />
           <Route path="*" element={<NoMatchPage />} />

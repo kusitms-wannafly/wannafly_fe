@@ -23,14 +23,16 @@ export const HeaderBtn = ({ type, isSelected, setSearchState }: propsType) => {
 
 const Button = styled.button`
   height: 40px;
-  padding: 0 12px;
+  padding: 0 14px;
   margin: 0 3px;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
 
   background-color: ${({ theme }) => theme.colors.grey8};
   color: ${({ theme }) => theme.colors.grey3};
+
+  font-family: 'PretendardMedium';
 
   &:hover {
     cursor: pointer;

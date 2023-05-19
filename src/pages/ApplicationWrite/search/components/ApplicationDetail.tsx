@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { State, SearchState } from '..';
 import { ApplicationItem } from './ApplicationItem';
 
-//import { getApplicationDetailAPI } from '@pages/Application/api/applicationAPIS';
+import { getApplicationDetailAPI } from '@api/applicationAPIS';
 
 import icon_back from '@assets/icons/icon-back.svg';
 
@@ -25,24 +25,6 @@ interface propsType {
   setSearchState: React.Dispatch<React.SetStateAction<SearchState>>;
 }
 
-const responseData: ApplicationData = {
-  recruiter: '큐시즘',
-  year: 2023,
-  semester: 'first_half',
-  applicationItems: [
-    {
-      applicationItemId: 1,
-      applicationQuestion: '지원동는 무엇인가요',
-      applicationAnswer: '저의 지원 동기는...',
-    },
-    {
-      applicationItemId: 2,
-      applicationQuestion: '관련 경험은 무엇인가요',
-      applicationAnswer: '저는...',
-    },
-  ],
-};
-
 export const ApplicationDetail = ({ detailId, setSearchState }: propsType) => {
   const handleClickGoBack = () => {
     setSearchState({ currentState: State.all });
@@ -53,12 +35,14 @@ export const ApplicationDetail = ({ detailId, setSearchState }: propsType) => {
 
   //지원서 단건 조회해서 정보 가져옴
   useEffect(() => {
-    //TODO: 추후 api 호출 확인 후 주석 해제
-    // const apiReturn: Promise<any> = getApplicationDetailAPI(detailId);
-    // apiReturn.then((data: ApplicationData) => {
-    //   setApplicationDetail(data);
-    // });
-    setApplicationDetail(responseData);
+    const apiReturn: Promise<any> = getApplicationDetailAPI(detailId);
+    apiReturn
+      .then((data: ApplicationData) => {
+        setApplicationDetail(data);
+      })
+      .catch(() => {
+        setApplicationDetail(null);
+      });
   }, []);
 
   return (
@@ -115,6 +99,10 @@ const DetailHeader = styled.div`
 const GoBackBtn = styled.button`
   background-color: transparent;
   border: none;
+  img {
+    width: 20px;
+  }
+  padding-top: 5px;
   &:hover {
     cursor: pointer;
   }
@@ -122,8 +110,18 @@ const GoBackBtn = styled.button`
 
 const Recruiter = styled.div`
   color: ${({ theme }) => theme.colors.grey1};
+  font-family: 'PretendardMedium';
+  margin-right: 18px;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
 `;
 
 const Date = styled.div`
   color: ${({ theme }) => theme.colors.grey3};
+  font-family: 'PretendardMedium';
+  font-size: 14px;
+  white-space: nowrap;
 `;

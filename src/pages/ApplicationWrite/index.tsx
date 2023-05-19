@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 
+import { getAllApplicationAPI } from '@api/applicationAPIS';
 import { PageContainer } from '@components/Layout/PageContainer';
 import { ApplicationSearch } from './search';
 import { ApplicationWrite } from './write';
@@ -10,7 +11,14 @@ export const ApplicationWritePage = () => {
   const [hasApplication, setHasApplication] = useState(false);
 
   useEffect(() => {
-    setHasApplication(true);
+    const apireturn = getAllApplicationAPI(null, null, null);
+    apireturn
+      .then((res) => {
+        if (res.length > 0) setHasApplication(true);
+      })
+      .catch(() => {
+        setHasApplication(false);
+      });
   }, []);
 
   return (
@@ -28,6 +36,7 @@ const ApplicationPageContainer = styled.div`
   width: 100%;
   height: 100vh;
   min-width: 600px;
+  padding-top: 75px;
   display: flex;
   &.center {
     justify-content: center;

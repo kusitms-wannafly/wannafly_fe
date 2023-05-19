@@ -83,10 +83,12 @@ const GuideText = styled.div`
     color: ${({ theme }) => theme.colors.grey3};
     font-size: 13px;
     margin-bottom: 20px;
+    font-family: 'PretendardLight';
   }
 
   div.ask {
     color: ${({ theme }) => theme.colors.grey1};
+    font-family: 'PretendardMedium';
   }
 
   margin-top: 20px;
@@ -102,6 +104,7 @@ const NoBtn = styled.button`
   height: 50px;
   margin: 0 5px;
 
+  font-family: 'PretendardMedium';
   border: none;
   border-radius: 4px;
   color: #ffffff;
@@ -117,6 +120,7 @@ const YesBtn = styled.button`
   height: 50px;
   margin: 0 5px;
 
+  font-family: 'PretendardMedium';
   border: none;
   border-radius: 4px;
   color: #ffffff;
