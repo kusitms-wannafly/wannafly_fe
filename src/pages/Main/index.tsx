@@ -19,6 +19,8 @@ interface Folder {
   count: number;
 }
 
+
+
 export const MainPage = () => {
   const location = useLocation();
   const loginState = location.state?.loginState;
@@ -38,16 +40,20 @@ export const MainPage = () => {
   //const [hasFolder, setHasFolder] = useState(false);
   const [folders, setFolders] = useState<Folder[]>([]);
 
+  const getAllFolders = () => {
+        const apireturn = getAllFolderAPI();
+        apireturn
+          .then((res) => {
+            console.log(res);
+            setFolders(res);
+          })
+          .catch(() => {
+            setFolders([]);
+          });
+  };
+
   useEffect(() => {
-    const apireturn = getAllFolderAPI();
-    apireturn
-      .then((res) => {
-        console.log(res);
-        setFolders(res);
-      })
-      .catch(() => {
-        setFolders([]);
-      });
+    getAllFolderAPI();
   }, []);
 
   const [selectedYear, setSelectedYear] = useState<number>(2023);
@@ -62,16 +68,16 @@ export const MainPage = () => {
       {isLogin ? (
         <>
           <FolderContainer>
-            <CreateFolderButton />
+            <CreateFolderButton selectedYear={selectedYear} getAllFolders={getAllFolders}/>
             <YearChooseButton>
               <SelectMenu setSelectedYear={setSelectedYear} />
             </YearChooseButton>
             <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
             <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
           </FolderContainer>
-          {folders.map((folder) => {
+          {folders.map((folder,idx) => {
             return (
-              <div key={folder.year}>
+              <div key={idx}>
                 {folder.year}
                 <div>개수: {folder.count}</div>
               </div>
@@ -80,7 +86,7 @@ export const MainPage = () => {
         </>
       ) : (
         <NotLoginMain />
-      )}
+      )} 
     </PageContainer>
   );
 };
