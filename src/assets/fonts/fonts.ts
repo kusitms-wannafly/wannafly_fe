@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import PretendardLight from './Pretendard-Light.woff2';
 import PretendardMedium from './Pretendard-Medium.woff2';
 import PretendardBold from './Pretendard-Bold.woff2';
 import PretendardSemiBold from './Pretendard-SemiBold.woff2';
