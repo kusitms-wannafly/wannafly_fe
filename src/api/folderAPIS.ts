@@ -31,7 +31,7 @@ export const getAllFolderAPI = async () => {
 
 export const postFolderAPI = async (year: number) => {
   try {
-    const response = await HttpClient.post('/api/application-folders', year, {
+    const response = await HttpClient.post('/api/application-folders', {year: year}, {
       Accept: 'application/json',
     });
     return response;

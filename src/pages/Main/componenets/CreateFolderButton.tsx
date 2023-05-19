@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import SelectMenu from './SelectMenu';
+import {postFolderAPI} from '@api/folderAPIS'
 
-export const CreateFolderButton = () => {
-  return (
-    <Button>
-      폴더 생성하기
-    </Button>
-  );
+interface props {
+  selectedYear: number;
+  getAllFolders: () => void;
+}
+export const CreateFolderButton = ({ selectedYear, getAllFolders }: props) => {
+  const handleclickbutton = () => {
+    const apireturn = postFolderAPI(selectedYear)
+    apireturn.then(() => {
+      getAllFolders();
+    })
+  };
+  return <Button onClick={handleclickbutton}>폴더 생성하기</Button>;
 };
 
 const Button = styled.div`

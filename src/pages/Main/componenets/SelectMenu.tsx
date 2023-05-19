@@ -11,8 +11,8 @@ export default function SelectMenu({ setSelectedYear }: propsType) {
   const [Select, setSelect] = useState(years[0]);
 
   const handleYearSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelect(e.target.value);
-    setSelectedYear(e.target.value);
+    // setSelect(e.target.value);
+    setSelectedYear(Number(e.target.value));
   };
 
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { YearButton } from '@components/Layout/YearButton';
+import { YearButton } from '@pages/Applications/YearButton';
 
 export const Banner = () => {
   return (
@@ -24,24 +24,20 @@ export const Banner = () => {
 const BannerContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #f7f8fd;
+  background-color: black;
 `;
 
-const ApplyOptions = styled.div`
-`
+const ApplyOptions = styled.div``;
 
 const Title = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  padding-top: 30px;
   padding-left: 348px;
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 8px;
 `;
 
 const Description = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  padding-top: 20px;
   padding-left: 348px;
   font-size: 20px;
   color: ${(props) => props.theme.colors.grey5};
@@ -50,8 +46,8 @@ const Description = styled.div`
 const YearButtonGrid = styled.div`
   font-family: 'PretendardBold', sans-serif;
   display: flex;
-  gap: 16px;
-  padding-left: 348px;
+  gap: 13px;
+  padding-left: 120px;
 `;
 
 const ApplyButton = styled.div`
@@ -76,7 +72,6 @@ const SearchBox = styled.div`
   padding-top: 0.7rem;
   font-size: 18px;
   text-align: center;
-  margin-top: 66px;
   background-color: ${(props) => props.theme.colors.grey2};
   color: ${(props) => props.theme.colors.blk};
   cursor: pointer;
