@@ -12,10 +12,7 @@ import {
   YesBtn,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
-import {
-  postApplicationAPI,
-  patchApplicationStateAPI,
-} from '@api/applicationAPIS';
+import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
 
 //TODO: UI 추가 구현 필요

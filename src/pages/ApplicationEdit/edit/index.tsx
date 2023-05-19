@@ -5,6 +5,7 @@ import { getApplicationDetailAPI } from '@api/applicationAPIS';
 import { ApplicationEditInfo } from './components/ApplicationEditInfo';
 import { AnswerEditForm } from './components/AnswerEditForm';
 import { SaveLeaveEditBox } from './components/SaveLeaveEditBox';
+import question_add_icon from '@assets/icons/icon-question-add.svg';
 
 //새로 등록된 지원 항목은 applicationItemId: null
 export interface ApplicationEditItem {
@@ -78,7 +79,9 @@ export const ApplicationEditForm = ({ formId }: propsType) => {
         <AddQuestion>
           <div className="top"></div>
           <div className="bottom"></div>
-          <AddQuestionBtn onClick={handleClickAddQuestionBtn}>+</AddQuestionBtn>
+          <AddQuestionBtn onClick={handleClickAddQuestionBtn}>
+            <img src={question_add_icon} alt="질문추가" />
+          </AddQuestionBtn>
         </AddQuestion>
       </FormContainer>
       <SaveLeaveEditBox formId={formId} form={form} />
@@ -133,6 +136,15 @@ const AddQuestion = styled.div`
 
 const AddQuestionBtn = styled.button`
   position: absolute;
-  top: 25%;
+  top: 0%;
   left: 50%;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+  img {
+    width: 40px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;

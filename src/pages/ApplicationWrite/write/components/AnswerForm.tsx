@@ -71,7 +71,7 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
             자
           </div>
         </LengthCount>
-        <SpellCheckBtn>맞춤법 검사</SpellCheckBtn>
+        <SpellCheckBtn>맞춤법 검사하기</SpellCheckBtn>
       </QuestionEtcBox>
     </AnswerFormContainer>
   );

@@ -14,13 +14,14 @@ export const QuestionAnswerBox = styled.div`
   //height: 280px;
   margin: 15px 0;
   padding: 15px 15px;
-  border-radius: 8px;
+  border-radius: 6px;
 `;
 
 export const Question = styled.div`
   display: flex;
 
   height: 40px;
+  font-family: 'PretendardMedium';
 `;
 
 export const QuestionNumber = styled.div`
@@ -30,6 +31,7 @@ export const QuestionNumber = styled.div`
   font-size: 18px;
   text-align: center;
   line-height: 40px;
+  font-family: 'PretendardMedium';
 `;
 
 export const QuestionInput = styled.input`
@@ -43,12 +45,14 @@ export const QuestionInput = styled.input`
   &:focus {
     outline: none;
   }
+  font-family: 'PretendardMedium';
+  font-size: 16px;
 `;
 
 export const AnswerInput = styled.textarea`
   width: 100%;
   height: 200px;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.grey6};
   border: none;
   color: ${({ theme }) => theme.colors.grey1};
@@ -60,6 +64,9 @@ export const AnswerInput = styled.textarea`
   }
   padding: 20px;
   margin: 10px 0;
+  font-family: 'PretendardLight';
+  font-size: 14px;
+  line-height: 20px;
 `;
 
 export const QuestionEtcBox = styled.div`
@@ -75,11 +82,12 @@ export const LengthCount = styled.div`
   font-size: 12px;
   div {
     margin: 0 10px;
-    width: 80px;
+    width: 90px;
   }
   span {
     color: ${({ theme }) => theme.colors.navy2};
   }
+  font-family: 'PretendardMedium';
 `;
 
 export const SpellCheckBtn = styled.button`
@@ -88,9 +96,10 @@ export const SpellCheckBtn = styled.button`
   color: ${({ theme }) => theme.colors.grey2};
 
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 6px;
 
   &:hover {
     cursor: pointer;
   }
+  font-family: 'PretendardMedium';
 `;

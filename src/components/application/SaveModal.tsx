@@ -33,7 +33,9 @@ export const GuideText = styled.div`
   align-items: center;
 
   color: ${({ theme }) => theme.colors.grey1};
+  font-family: 'PretendardMedium';
   font-size: 16px;
+  line-height: 20px;
 
   margin-top: 40px;
 `;
@@ -66,6 +68,7 @@ export const NoBtn = styled.button`
   border-radius: 4px;
   color: #ffffff;
   background-color: ${({ theme }) => theme.colors.grey6};
+  font-family: 'PretendardMedium';
 
   &:hover {
     cursor: pointer;
@@ -81,6 +84,7 @@ export const YesBtn = styled.button`
   border-radius: 4px;
   color: #ffffff;
   background-color: ${({ theme }) => theme.colors.navy4};
+  font-family: 'PretendardMedium';
 
   &:hover {
     cursor: pointer;

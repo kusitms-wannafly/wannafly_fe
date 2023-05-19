@@ -39,9 +39,11 @@ const SearchHeaderContainer = styled.div`
 
 const FeeInformation = styled.div`
   color: ${({ theme }) => theme.colors.yellow2};
+  font-family: 'PretendardMedium';
+  font-size: 14px;
 
   height: 40px;
   line-height: 40px;
 
-  margin-left: 10px;
+  margin-left: 25px;
 `;
