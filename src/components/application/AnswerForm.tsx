@@ -67,6 +67,11 @@ export const AnswerInput = styled.textarea`
   font-family: 'PretendardLight';
   font-size: 14px;
   line-height: 20px;
+
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const QuestionEtcBox = styled.div`

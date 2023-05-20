@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   AnswerFormContainer,
   QuestionAnswerBox,
@@ -11,6 +12,8 @@ import {
 } from '@components/application/AnswerForm';
 import { ApplicationEditItem, ApplicationEditData } from '..';
 import { getTrimmedLength } from '@pages/ApplicationWrite/write/util/getTrimmedLength';
+import { checkGrammar } from '@features/grammar/checkGrammar';
+import { GrammarCheck } from '@features/grammar/GrammarCheck';
 
 interface propsType {
   index: number;
@@ -19,6 +22,9 @@ interface propsType {
   setForm: React.Dispatch<React.SetStateAction<ApplicationEditData | null>>;
 }
 export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
+  const [showGrammarCheck, setShowGrammarCheck] = useState<boolean>(false);
+  const [checkedAnswer, setCheckedAnswer] = useState<string>('');
+
   const handleChangeQuestion = (e: React.FormEvent<HTMLInputElement>) => {
     let newItems = form.applicationItems;
     newItems[index] = {
@@ -37,6 +43,13 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
     setForm({ ...form!, applicationItems: newItems });
   };
 
+  const handleClickSpellCheckBtn = async () => {
+    checkGrammar(item.applicationAnswer).then((res) => {
+      setCheckedAnswer(res);
+    });
+    setShowGrammarCheck(true);
+  };
+
   return (
     <AnswerFormContainer>
       <QuestionAnswerBox>
@@ -53,6 +66,13 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
           value={form.applicationItems[index].applicationAnswer || ''}
           onChange={handleChangeAnswer}
         />
+        {showGrammarCheck ? (
+          <GrammarCheck
+            setShowGrammarCheck={setShowGrammarCheck}
+            originalAnswer={item.applicationAnswer}
+            checkedAnswer={checkedAnswer}
+          />
+        ) : null}
       </QuestionAnswerBox>
       <QuestionEtcBox>
         <LengthCount>
@@ -69,7 +89,9 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
             자
           </div>
         </LengthCount>
-        <SpellCheckBtn>맞춤법 검사</SpellCheckBtn>
+        <SpellCheckBtn onClick={handleClickSpellCheckBtn}>
+          맞춤법 검사
+        </SpellCheckBtn>
       </QuestionEtcBox>
     </AnswerFormContainer>
   );
