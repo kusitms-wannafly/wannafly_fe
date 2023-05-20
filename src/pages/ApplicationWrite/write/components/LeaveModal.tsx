@@ -33,7 +33,7 @@ export const LeaveModal = ({ isOpen, setIsOpen }: propsType) => {
               </NoBtn>
               <YesBtn
                 onClick={() => {
-                  navigate('/');
+                  navigate('/applications');
                 }}
               >
                 네, 나갈래요
