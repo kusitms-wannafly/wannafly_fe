@@ -10,13 +10,13 @@ import Folder6 from '@assets/images/folder6.png';
 const folderImages = [Folder1, Folder2, Folder3, Folder4, Folder5, Folder6];
 
 export const NewFolder = () => {
-  const newFolderImage = folderImages[6%5];
+  const newFolderImage = folderImages[6%4];
   return (
     <NewFolderContainer>
       <Folder src={newFolderImage} alt="새 폴더 이미지" />
       <FolderInfo>
-        <YearBox>2022년</YearBox>
-        <CountBox>2개</CountBox>
+        <YearBox>?</YearBox>
+        <CountBox>?</CountBox>
       </FolderInfo>
     </NewFolderContainer>
   );

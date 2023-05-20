@@ -77,13 +77,13 @@ export const MainPage = () => {
       {isLogin ? (
         <>
           <FolderContainer>
+            <YearChooseButton>
+              <SelectMenu setSelectedYear={setSelectedYear} />
+            </YearChooseButton>
             <CreateFolderButton
               selectedYear={selectedYear}
               getAllFolders={getAllFolders}
             />
-            <YearChooseButton>
-              <SelectMenu setSelectedYear={setSelectedYear} />
-            </YearChooseButton>
             <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
             <YellowFolder
               src={YellowFolderImage}
@@ -139,6 +139,7 @@ const FolderContainer = styled.div`
   padding-top: 50px;
   margin-top: 250px;
   position: absolute;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 const YearChooseButton = styled.div`
