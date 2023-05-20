@@ -1,9 +1,6 @@
 import { HttpClient } from '@api/HttpClient';
 
-import {
-  ApplicationEditItem,
-  ApplicationEditData,
-} from '@pages/ApplicationEdit/edit';
+import { ApplicationEditData } from '@pages/ApplicationEdit/edit';
 import { ApplicationData } from '@pages/ApplicationWrite/write';
 
 //지원서 단건 조회
@@ -52,9 +49,13 @@ export const patchApplicationStateAPI = async (
 };
 
 //지원서 문항 추가
+interface postApplicationQuestion {
+  applicationQuestion: string;
+  applicationAnswer: string;
+}
 export const postApplicationQuestionAPI = async (
   formId: number,
-  item: ApplicationEditItem
+  item: postApplicationQuestion
 ) => {
   try {
     const response = await HttpClient.post(
@@ -71,7 +72,7 @@ export const postApplicationQuestionAPI = async (
 //지원서 수정
 export const patchApplicationAPI = async (
   formId: number,
-  form: ApplicationEditData
+  form: ApplicationEditData | null
 ) => {
   try {
     const response = await HttpClient.patch(

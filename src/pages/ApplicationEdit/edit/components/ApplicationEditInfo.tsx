@@ -10,7 +10,7 @@ import { ApplicationEditData } from '..';
 
 interface propsType {
   form: ApplicationEditData | null;
-  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData>>;
+  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData | null>>;
 }
 
 export const ApplicationEditInfo = ({ form, setForm }: propsType) => {
@@ -33,7 +33,7 @@ export const ApplicationEditInfo = ({ form, setForm }: propsType) => {
   return (
     <ApplicationInfoContainer>
       <RecruiterInput
-        value={form?.recruiter}
+        value={form?.recruiter || ''}
         onChange={handleChangeRecruiterInput}
       />
       <YearSelect value={form?.year} onChange={handleChangeSelectYear}>

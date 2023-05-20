@@ -11,7 +11,7 @@ import { EditSaveModal } from './EditSaveModal';
 
 interface propsType {
   formId: number;
-  form: ApplicationEditData;
+  form: ApplicationEditData | null;
 }
 
 export const SaveLeaveEditBox = ({ formId, form }: propsType) => {
@@ -19,10 +19,10 @@ export const SaveLeaveEditBox = ({ formId, form }: propsType) => {
   const [isOpenSaveModal, setIsOpenSaveModal] = useState<boolean>(false);
 
   const handleClickSaveBtn = () => {
-    const hasEmptyQuestion = form.applicationItems.some(
+    const hasEmptyQuestion = form?.applicationItems?.some(
       (item) => item.applicationQuestion.trim() === ''
     );
-    if (form.recruiter !== '' && !hasEmptyQuestion) {
+    if (form?.recruiter !== '' && !hasEmptyQuestion) {
       setIsOpenSaveModal(true);
     }
   };

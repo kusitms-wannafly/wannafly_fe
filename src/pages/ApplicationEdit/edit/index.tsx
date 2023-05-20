@@ -7,6 +7,7 @@ import { AnswerEditForm } from './components/AnswerEditForm';
 import { SaveLeaveEditBox } from './components/SaveLeaveEditBox';
 import question_add_icon from '@assets/icons/icon-question-add.svg';
 
+import { axiosInstance } from '@api/HttpClient';
 //새로 등록된 지원 항목은 applicationItemId: null
 export interface ApplicationEditItem {
   applicationItemId: number | null;
@@ -25,18 +26,7 @@ interface propsType {
   formId: number;
 }
 export const ApplicationEditForm = ({ formId }: propsType) => {
-  const [form, setForm] = useState<ApplicationEditData>({
-    recruiter: '',
-    year: 2023,
-    semester: 'first_half',
-    applicationItems: [
-      {
-        applicationItemId: null,
-        applicationQuestion: '',
-        applicationAnswer: '',
-      },
-    ],
-  });
+  const [form, setForm] = useState<ApplicationEditData | null>(null);
 
   useEffect(() => {
     const apireturn = getApplicationDetailAPI(formId);
@@ -44,28 +34,44 @@ export const ApplicationEditForm = ({ formId }: propsType) => {
       .then((res) => {
         setForm(res);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
+        setForm(null);
       });
   }, []);
 
   const handleClickAddQuestionBtn = () => {
-    const newApplicationItems = [
-      ...form.applicationItems,
-      {
-        applicationItemId: null,
+    // 지원항목 추가하기 api request
+    axiosInstance
+      .post(`/api/application-forms/${formId}/items`, {
         applicationQuestion: '',
         applicationAnswer: '',
-      },
-    ];
-    setForm({ ...form!, applicationItems: newApplicationItems });
+      })
+      .then((response) => {
+        const headers = response.headers;
+        const location = headers['location'];
+        const formId = Number(location.split('/').pop());
+        return formId;
+      })
+      .then((formId) => {
+        setForm({
+          ...form!,
+          applicationItems: [
+            ...form!.applicationItems,
+            {
+              applicationItemId: formId,
+              applicationQuestion: '',
+              applicationAnswer: '',
+            },
+          ],
+        });
+      });
   };
 
   return (
     <ApplicationWriteContainer>
       <FormContainer>
         <ApplicationEditInfo form={form} setForm={setForm} />
-        {form.applicationItems.map((item, idx) => {
+        {form?.applicationItems?.map((item, idx) => {
           return (
             <AnswerEditForm
               key={idx}
