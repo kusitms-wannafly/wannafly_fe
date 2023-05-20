@@ -137,3 +137,29 @@ const YearBtn = styled.button`
   }
 `;
 
+// const ApplyButton = styled.div`
+//   font-family: 'HappinessSansBold', sans-serif;
+//   margin-left: 1000px;
+//   width: 185px;
+//   height: 55px;
+//   font-size: 18px;
+//   padding-top: 1.2rem;
+//   text-align: center;
+//   background-color: ${(props) => props.theme.colors.navy4};
+//   color: ${(props) => props.theme.colors.wht};
+//   border-radius: 27.6px;
+//   cursor: pointer;
+// `;
+
+// const SearchBox = styled.div`
+//   font-family: 'HappinessSansBold', sans-serif;
+//   width: 290px;
+//   height: 48px;
+//   margin-left: 1000px;
+//   padding-top: 0.7rem;
+//   font-size: 18px;
+//   text-align: center;
+//   background-color: ${(props) => props.theme.colors.grey2};
+//   color: ${(props) => props.theme.colors.blk};
+//   cursor: pointer;
+// `;
