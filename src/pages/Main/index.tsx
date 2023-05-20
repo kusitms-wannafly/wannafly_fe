@@ -69,45 +69,41 @@ export const MainPage = () => {
 
   return (
     <PageContainer header>
-        {' '}
-        <Banner>
-          <BannerTitle>내 지원서 보관함</BannerTitle>
-          <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
-          <UnionButterfly src={Butterfly} alt="butterfly" />
-        </Banner>
-        {isLogin ? (
-          <>
-            <FolderContainer>
-              <YearChooseButton>
-                <SelectMenu setSelectedYear={setSelectedYear} />
-              </YearChooseButton>
-              <CreateFolderButton
-                selectedYear={selectedYear}
-                getAllFolders={getAllFolders}
-              />
-              <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-              <YellowFolder
-                src={YellowFolderImage}
-                alt="yellow-folder-img"
-                onClick={() => {
-                  handleClickFolder(-1);
-                }}
-              />
-              {folders.map((folder, idx) => {
-                return (
-                  <NewFolder
-                    key={idx}
-                    year={folder.year}
-                    count={folder.count}
-                  />
-                );
-              })}
-            </FolderContainer>
-          </>
-        ) : (
-          <NotLoginMain />
-        )}
-        <LoginAlert loginState={loginState} />
+      {' '}
+      <Banner>
+        <BannerTitle>내 지원서 보관함</BannerTitle>
+        <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
+        <UnionButterfly src={Butterfly} alt="butterfly" />
+      </Banner>
+      {isLogin ? (
+        <>
+          <FolderContainer>
+            <YearChooseButton>
+              <SelectMenu setSelectedYear={setSelectedYear} />
+            </YearChooseButton>
+            <CreateFolderButton
+              selectedYear={selectedYear}
+              getAllFolders={getAllFolders}
+            />
+            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+            <YellowFolder
+              src={YellowFolderImage}
+              alt="yellow-folder-img"
+              onClick={() => {
+                handleClickFolder(-1);
+              }}
+            />
+            {folders.map((folder, idx) => {
+              return (
+                <NewFolder key={idx} year={folder.year} count={folder.count} />
+              );
+            })}
+          </FolderContainer>
+        </>
+      ) : (
+        <NotLoginMain />
+      )}
+      <LoginAlert loginState={loginState} />
     </PageContainer>
   );
 };
