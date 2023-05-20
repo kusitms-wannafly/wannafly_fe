@@ -13,13 +13,12 @@ import YellowFolderImage from '@assets/images/yellow-folder.png';
 import Butterfly from '@assets/images/unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { NotLoginMain } from './componenets/NotLoginMain';
+import { NewFolder } from './componenets/NewFolder';
 
 interface Folder {
   year: number;
   count: number;
 }
-
-
 
 export const MainPage = () => {
   const navigate = useNavigate();
@@ -94,6 +93,7 @@ export const MainPage = () => {
                 handleClickFolder(-1);
               }}
             />
+            <NewFolder />
           </FolderContainer>
           {folders.map((folder, idx) => {
             return (
