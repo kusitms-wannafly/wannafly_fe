@@ -31,7 +31,6 @@ export const ApplicationsPage = () => {
     const apireturn = getAllApplicationAPI(cursor.current, 12, selectedYear);
     apireturn
       .then((res: ApplicationForm[]) => {
-        //console.log(res);
         setApplications((prevApplications) => [...prevApplications, ...res]);
         setHasNextPage(res.length === APIQUERYSIZE);
         if (res.length) {

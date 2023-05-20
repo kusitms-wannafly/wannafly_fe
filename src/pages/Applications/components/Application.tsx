@@ -29,7 +29,7 @@ export const Application = ({ form }: propsType) => {
         }}
       >
         <Recruiter>
-          {form.recruiter}
+          <span className="recruiter">{form.recruiter}</span>
           {form.isCompleted ? null : <Completed>작성중</Completed>}
         </Recruiter>
         <ModifiedDate>
@@ -92,7 +92,10 @@ const Recruiter = styled.div`
   font-family: 'PretendardMedium';
   color: ${({ theme }) => theme.colors.wht};
   flex: 1;
-  line-height: 20px;
+  span.recruiter {
+    margin-right: 8px;
+    line-height: 20px;
+  }
 `;
 
 const ModifiedDate = styled.div`
@@ -109,7 +112,7 @@ const Completed = styled.span`
   font-size: 12px;
   padding: 5px;
   border-radius: 3px;
-  margin-left: 8px;
+  white-space: nowrap;
 `;
 
 const DateInfo = styled.div`
