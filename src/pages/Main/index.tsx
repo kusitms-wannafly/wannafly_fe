@@ -139,9 +139,9 @@ const FolderContainer = styled.div`
 `;
 
 const YearChooseButton = styled.div`
-  width: 150px;
-  height: 50px;
-  margin-top: 110px;
+  width: 100%;
+  height: 100%;
+  margin-top: 105px;
   margin-left: 50px;
   position: absolute;
 `;
