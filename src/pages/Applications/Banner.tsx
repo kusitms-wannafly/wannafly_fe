@@ -1,78 +1,122 @@
 import styled from 'styled-components';
-import { YearButton } from '@pages/Applications/YearButton';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getAllFolderAPI } from '@api/folderAPIS';
+//import { YearButton } from '@pages/Applications/YearButton';
 
+interface Folder {
+  year: number;
+  count: number;
+}
 export const Banner = () => {
+  const navigate = useNavigate();
+
+  const [folders, setFolders] = useState<Folder[]>([]);
+
+  const { year } = useParams();
+
+  useEffect(() => {
+    const apireturn = getAllFolderAPI();
+    apireturn.then(() => {
+      setFolders(folders);
+    });
+  }, []);
+
+  const handleClickWriteBtn = () => {
+    navigate('/write');
+  };
+
   return (
     <BannerContainer>
       <Title>지원서 보관함</Title>
-      <Description>지원서 등록과 수정을 한 곳에서</Description>
-      <ApplyOptions>
-        <YearButtonGrid>
-          <YearButton year="전체" />
-          <YearButton year="2023년" />
-          <YearButton year="2022년" />
-          <YearButton year="2021년" />
-          <YearButton year="2020년" />
-        </YearButtonGrid>
-        <ApplyButton>지원서 추가하기</ApplyButton>
-      </ApplyOptions>
-      <SearchBox>검색</SearchBox>
+      <BtnsContainer>
+        <YearBtns>
+          <YearBtn className={year === undefined ? 'current' : ''}>
+            전체
+          </YearBtn>
+          {folders.map((el) => {
+            return (
+              <YearBtn
+                key={el.year}
+                className={Number(year) === el.year ? 'current' : ''}
+              >
+                {el.year}년
+              </YearBtn>
+            );
+          })}
+        </YearBtns>
+        <WriteBtn onClick={handleClickWriteBtn}>지원서 작성하기</WriteBtn>
+      </BtnsContainer>
     </BannerContainer>
   );
 };
 
 const BannerContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: black;
-`;
+  width: 800px;
+  height: 150px;
+  position: fixed;
+  top: 75px;
 
-const ApplyOptions = styled.div``;
+  background-color: ${({ theme }) => theme.colors.grey8};
+`;
 
 const Title = styled.div`
   font-family: 'HappinessSansBold', sans-serif;
-  padding-left: 348px;
-  font-size: 30px;
-  font-weight: bold;
+  color: ${({ theme }) => theme.colors.grey1};
+  font-size: 24px;
+
+  width: 100%;
+  margin: 20px 0;
 `;
 
-const Description = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  padding-left: 348px;
-  font-size: 20px;
-  color: ${(props) => props.theme.colors.grey5};
-`;
-
-const YearButtonGrid = styled.div`
-  font-family: 'PretendardBold', sans-serif;
+const BtnsContainer = styled.div`
+  width: 100%;
   display: flex;
-  gap: 13px;
-  padding-left: 120px;
 `;
 
-const ApplyButton = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  margin-left: 1000px;
-  width: 185px;
-  height: 55px;
-  font-size: 18px;
-  padding-top: 1.2rem;
-  text-align: center;
-  background-color: ${(props) => props.theme.colors.navy4};
-  color: ${(props) => props.theme.colors.wht};
-  border-radius: 27.6px;
-  cursor: pointer;
+const YearBtns = styled.div`
+  flex: 1;
+  display: flex;
 `;
 
-const SearchBox = styled.div`
-  font-family: 'HappinessSansBold', sans-serif;
-  width: 290px;
-  height: 48px;
-  margin-left: 1000px;
-  padding-top: 0.7rem;
-  font-size: 18px;
-  text-align: center;
-  background-color: ${(props) => props.theme.colors.grey2};
-  color: ${(props) => props.theme.colors.blk};
-  cursor: pointer;
+const WriteBtn = styled.button`
+  border: none;
+  background-color: ${({ theme }) => theme.colors.navy4};
+  color: ${({ theme }) => theme.colors.wht};
+
+  font-family: 'PretendardMedium';
+  font-size: 14px;
+
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
+
+const YearBtn = styled.button`
+  border: none;
+  background-color: ${({ theme }) => theme.colors.grey7};
+  color: ${({ theme }) => theme.colors.grey3};
+
+  font-family: 'PretendardMedium';
+  font-size: 14px;
+
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy4};
+    color: ${({ theme }) => theme.colors.wht};
+  }
+
+  &.current {
+    background-color: ${({ theme }) => theme.colors.navy4};
+    color: ${({ theme }) => theme.colors.wht};
+  }
+`;
+

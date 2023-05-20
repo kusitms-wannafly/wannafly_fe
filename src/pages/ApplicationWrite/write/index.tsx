@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ApplicationInfo } from './components/ApplicationInfo';
 import { AnswerForm } from './components/AnswerForm';
 import { SaveLeaveBox } from './components/SaveLeaveBox';
+import question_add_icon from '@assets/icons/icon-question-add.svg';
 
 export interface ApplicationItem {
   applicationQuestion: string;
@@ -58,7 +59,9 @@ export const ApplicationWrite = () => {
         <AddQuestion>
           <div className="top"></div>
           <div className="bottom"></div>
-          <AddQuestionBtn onClick={handleClickAddQuestionBtn}>+</AddQuestionBtn>
+          <AddQuestionBtn onClick={handleClickAddQuestionBtn}>
+            <img src={question_add_icon} alt="질문추가" />
+          </AddQuestionBtn>
         </AddQuestion>
       </FormContainer>
       <SaveLeaveBox form={form} />
@@ -104,15 +107,25 @@ const AddQuestion = styled.div`
     height: 20px;
   }
   div.top {
-    border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey5};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey5};
   }
   div.bottom {
     border-top: 0.5px solid ${({ theme }) => theme.colors.grey5};
+    visibility: hidden;
   }
 `;
 
 const AddQuestionBtn = styled.button`
   position: absolute;
-  top: 25%;
+  top: 0%;
   left: 50%;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+  img {
+    width: 40px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;

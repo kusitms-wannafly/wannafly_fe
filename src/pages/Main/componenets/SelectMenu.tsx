@@ -8,7 +8,7 @@ interface propsType {
   setSelectedYear: React.Dispatch<React.SetStateAction<number>>;
 }
 export default function SelectMenu({ setSelectedYear }: propsType) {
-  const [Select, setSelect] = useState(years[0]);
+  const [Select] = useState(years[0]);
 
   const handleYearSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     // setSelect(e.target.value);

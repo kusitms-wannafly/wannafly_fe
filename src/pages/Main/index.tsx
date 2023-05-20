@@ -2,7 +2,7 @@ import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { LoginAlert } from '@features/oauth/LoginAlert';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // 지원서 보관함 모두 조회 API
 import { getAllFolderAPI } from '@api/folderAPIS';
@@ -10,7 +10,7 @@ import { getAllFolderAPI } from '@api/folderAPIS';
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
-import Butterfly from '@assets/images/Unionbutterfly.png';
+import Butterfly from '@assets/images/unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { NotLoginMain } from './componenets/NotLoginMain';
 
@@ -22,6 +22,7 @@ interface Folder {
 
 
 export const MainPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const loginState = location.state?.loginState;
 
@@ -41,15 +42,15 @@ export const MainPage = () => {
   const [folders, setFolders] = useState<Folder[]>([]);
 
   const getAllFolders = () => {
-        const apireturn = getAllFolderAPI();
-        apireturn
-          .then((res) => {
-            console.log(res);
-            setFolders(res);
-          })
-          .catch(() => {
-            setFolders([]);
-          });
+    const apireturn = getAllFolderAPI();
+    apireturn
+      .then((res) => {
+        console.log(res);
+        setFolders(res);
+      })
+      .catch(() => {
+        setFolders([]);
+      });
   };
 
   useEffect(() => {
@@ -57,6 +58,16 @@ export const MainPage = () => {
   }, []);
 
   const [selectedYear, setSelectedYear] = useState<number>(2023);
+
+  //보관함 페이지로 이동
+  const handleClickFolder = (year: number) => {
+    //전체
+    if (year === -1) {
+      navigate('/applications');
+    } else {
+      navigate(`/applications/${year}`);
+    }
+  };
 
   return (
     <PageContainer header>
@@ -68,14 +79,23 @@ export const MainPage = () => {
       {isLogin ? (
         <>
           <FolderContainer>
-            <CreateFolderButton selectedYear={selectedYear} getAllFolders={getAllFolders}/>
+            <CreateFolderButton
+              selectedYear={selectedYear}
+              getAllFolders={getAllFolders}
+            />
             <YearChooseButton>
               <SelectMenu setSelectedYear={setSelectedYear} />
             </YearChooseButton>
             <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-            <YellowFolder src={YellowFolderImage} alt="yellow-folder-img" />
+            <YellowFolder
+              src={YellowFolderImage}
+              alt="yellow-folder-img"
+              onClick={() => {
+                handleClickFolder(-1);
+              }}
+            />
           </FolderContainer>
-          {folders.map((folder,idx) => {
+          {folders.map((folder, idx) => {
             return (
               <div key={idx}>
                 {folder.year}
@@ -86,7 +106,8 @@ export const MainPage = () => {
         </>
       ) : (
         <NotLoginMain />
-      )} 
+      )}
+      <LoginAlert loginState={loginState} />
     </PageContainer>
   );
 };
