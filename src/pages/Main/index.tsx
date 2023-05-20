@@ -7,15 +7,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // 지원서 보관함 모두 조회 API
 import { getAllFolderAPI } from '@api/folderAPIS';
 
-import { NotLoginPage } from './componenets/NotLoginPage';
+import { NotLoginPage } from './components/NotLoginPage';
+import { LoginPage } from './components/LoginPage';
 
-import SelectMenu from '@pages/Main/componenets/SelectMenu';
+import SelectMenu from '@pages/Main/components/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
 //import Butterfly from '@assets/images/unionbutterfly.png';
-import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
-import { NotLoginMain } from './componenets/NotLoginMain';
-import { NewFolder } from './componenets/NewFolder';
+import { CreateFolderButton } from '@pages/Main/components/CreateFolderButton';
+import { NewFolder } from './components/NewFolder';
 
 interface Folder {
   year: number;
@@ -72,38 +72,7 @@ export const MainPage = () => {
   return (
     <PageContainer header>
       <MainPageContainer>
-        {isLogin ? (
-          <>
-            <FolderContainer>
-              <YearChooseButton>
-                <SelectMenu setSelectedYear={setSelectedYear} />
-              </YearChooseButton>
-              <CreateFolderButton
-                selectedYear={selectedYear}
-                getAllFolders={getAllFolders}
-              />
-              <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-              <YellowFolder
-                src={YellowFolderImage}
-                alt="yellow-folder-img"
-                onClick={() => {
-                  handleClickFolder(-1);
-                }}
-              />
-              {folders.map((folder, idx) => {
-                return (
-                  <NewFolder
-                    key={idx}
-                    year={folder.year}
-                    count={folder.count}
-                  />
-                );
-              })}
-            </FolderContainer>
-          </>
-        ) : (
-          <NotLoginPage />
-        )}
+        {isLogin ? <LoginPage /> : <NotLoginPage />}
         <LoginAlert loginState={loginState} />
       </MainPageContainer>
     </PageContainer>
@@ -115,33 +84,33 @@ const MainPageContainer = styled.div`
   width: 100vw;
 `;
 
-const FolderContainer = styled.div`
-  padding-left: 348px;
-  padding-top: 50px;
-  margin-top: 250px;
-  position: absolute;
-`;
+// const FolderContainer = styled.div`
+//   padding-left: 348px;
+//   padding-top: 50px;
+//   margin-top: 250px;
+//   position: absolute;
+// `;
 
-const YearChooseButton = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-top: 105px;
-  margin-left: 50px;
-  position: absolute;
-`;
+// const YearChooseButton = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   margin-top: 105px;
+//   margin-left: 50px;
+//   position: absolute;
+// `;
 
-const GreyFolder = styled.img`
-  width: 280px;
-  height: 220px;
-  padding-right: 20px;
-`;
+// const GreyFolder = styled.img`
+//   width: 280px;
+//   height: 220px;
+//   padding-right: 20px;
+// `;
 
-const YellowFolder = styled.img`
-  width: 280px;
-  height: 220px;
-  padding-right: 20px;
-`;
+// const YellowFolder = styled.img`
+//   width: 280px;
+//   height: 220px;
+//   padding-right: 20px;
+// `;
 
-const UnionButterfly = styled.img`
-  padding-left: 1100px;
-`;
+// const UnionButterfly = styled.img`
+//   padding-left: 1100px;
+// `;
