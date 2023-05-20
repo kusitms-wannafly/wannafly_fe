@@ -12,6 +12,7 @@ import {
 import { GrammarCheck } from '@features/grammar/GrammarCheck';
 import { ApplicationItem, ApplicationData } from '..';
 import { getTrimmedLength } from '../util/getTrimmedLength';
+import { checkGrammar } from '@features/grammar/checkGrammar';
 import { useState } from 'react';
 
 interface propsType {
@@ -22,6 +23,7 @@ interface propsType {
 }
 export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
   const [showGrammarCheck, setShowGrammarCheck] = useState<boolean>(false);
+  const [checkedAnswer, setCheckedAnswer] = useState<string>('');
 
   const handleChangeQuestionInput = (e: React.FormEvent<HTMLInputElement>) => {
     const newItems = [...form.applicationItems];
@@ -43,7 +45,10 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
     setForm({ ...form!, applicationItems: newItems });
   };
 
-  const handleClickSpellCheckBtn = () => {
+  const handleClickSpellCheckBtn = async () => {
+    checkGrammar(item.applicationAnswer).then((res) => {
+      setCheckedAnswer(res);
+    });
     setShowGrammarCheck(true);
   };
 
@@ -65,8 +70,9 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
         />
         {showGrammarCheck ? (
           <GrammarCheck
-            showGrammarCheck={showGrammarCheck}
             setShowGrammarCheck={setShowGrammarCheck}
+            originalAnswer={item.applicationAnswer}
+            checkedAnswer={checkedAnswer}
           />
         ) : null}
       </QuestionAnswerBox>

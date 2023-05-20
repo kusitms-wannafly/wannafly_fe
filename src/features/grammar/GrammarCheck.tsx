@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import icon_close from '@assets/icons/icon-close.svg';
+//import { ComparedAnswer } from './ComparedAnswer';
 
 interface propsType {
-  showGrammarCheck: boolean;
   setShowGrammarCheck: React.Dispatch<React.SetStateAction<boolean>>;
+  originalAnswer?: string;
+  checkedAnswer: string;
 }
 export const GrammarCheck = ({
-  showGrammarCheck,
   setShowGrammarCheck,
+  checkedAnswer,
 }: propsType) => {
   const handleClickCloseBtn = () => {
     setShowGrammarCheck(false);
@@ -25,7 +27,10 @@ export const GrammarCheck = ({
           />
         </GrammarCheckCloseBtn>
       </div>
-      <CheckedAnswer>검사 결과라라라라라라</CheckedAnswer>
+      <CheckedAnswer>
+        {checkedAnswer}
+        {/* <ComparedAnswer original={originalAnswer} checked={checkedAnswer} /> */}
+      </CheckedAnswer>
     </GrammarCheckConatiner>
   );
 };
