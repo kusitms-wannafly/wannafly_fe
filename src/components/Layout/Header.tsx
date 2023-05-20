@@ -58,7 +58,7 @@ export const Header = () => {
             <Logo src={logo_yello} alt="로고 이미지" />
           </Link>
           <HeaderOptions>
-            <Link to="/">
+            <Link to="/applications">
               <HeaderBtn
                 className={
                   selection === HeaderSelection.MYAPPLY && isLogin === 'true'
