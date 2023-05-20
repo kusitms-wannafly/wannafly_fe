@@ -1,16 +1,28 @@
 import styled from 'styled-components';
-import google_login_btn_url from '@assets/images/btn_google_signin_light_normal_web@2x.png';
+import google_icon from '@assets/images/google-icon.png';
 
 export const GoogleLoginBtn = () => {
   return (
-    <BtnContainer
-      href={`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`}
-    >
-      <LoginBtnImg src={google_login_btn_url} alt="google social login" />
-    </BtnContainer>
+    <BtnBox>
+      <BtnContainer
+        href={`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`}
+      >
+        <LoginItems>
+          <LoginBtnImg src={google_icon} alt="google social login icon" />
+          <LoginText>구글 로그인</LoginText>
+        </LoginItems>
+      </BtnContainer>
+    </BtnBox>
   );
 };
 
+const BtnBox = styled.button`
+  width: 340px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.grey5};
+  border-color: ${({ theme }) => theme.colors.grey5};
+`;
 const BtnContainer = styled.a`
   &:is(:hover, :focus) {
     cursor: pointer;
@@ -18,5 +30,17 @@ const BtnContainer = styled.a`
 `;
 
 const LoginBtnImg = styled.img`
-  width: 200px;
+  width: 50px;
 `;
+
+const LoginText = styled.div`
+  font-family: 'PretendardBold';
+  font-size: 20px;
+  padding-top: 13px;
+  padding-left: 70px;
+  color: ${({ theme }) => theme.colors.wht};
+`;
+
+const LoginItems = styled.div`
+  display: flex;
+`
