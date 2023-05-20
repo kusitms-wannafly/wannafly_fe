@@ -16,7 +16,7 @@ export const ColorFolder = ({ year, count, idx }: propsType) => {
       }}
     >
       <img
-        src={`/src/assets/images/folder_${((idx + 1) % 5) + 1}.svg`}
+        src={`/images/folder_${((idx + 1) % 5) + 1}.svg`}
         alt="년도 선택 폴더"
       />
       <DarkBox>{year}</DarkBox>
