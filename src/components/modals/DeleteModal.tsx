@@ -66,8 +66,8 @@ export const ModalBackdrop = styled.div`
 `;
 
 const ModalView = styled.div`
-  width: 380px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
 
   background-color: rgba(30, 31, 32, 1);
   border: 1px solid #686a70;
