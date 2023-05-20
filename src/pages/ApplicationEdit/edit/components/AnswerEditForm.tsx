@@ -16,26 +16,22 @@ interface propsType {
   index: number;
   item: ApplicationEditItem;
   form: ApplicationEditData;
-  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData>>;
+  setForm: React.Dispatch<React.SetStateAction<ApplicationEditData | null>>;
 }
 export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
-  const handleChangeQuestionInput = (e: React.FormEvent<HTMLInputElement>) => {
-    const newItems = [...form.applicationItems];
+  const handleChangeQuestion = (e: React.FormEvent<HTMLInputElement>) => {
+    let newItems = form.applicationItems;
     newItems[index] = {
-      applicationItemId: null,
+      ...newItems[index],
       applicationQuestion: e.currentTarget.value,
-      applicationAnswer: item.applicationAnswer,
     };
     setForm({ ...form!, applicationItems: newItems });
   };
 
-  const handleChangeAnswerInput = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const newItems = [...form.applicationItems];
+  const handleChangeAnswer = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    let newItems = form.applicationItems;
     newItems[index] = {
-      applicationItemId: null,
-      applicationQuestion: item.applicationQuestion,
+      ...newItems[index],
       applicationAnswer: e.currentTarget.value,
     };
     setForm({ ...form!, applicationItems: newItems });
@@ -48,14 +44,14 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
           <QuestionNumber>Q{index + 1}</QuestionNumber>
           <QuestionInput
             placeholder="질문을 입력해주세요."
-            value={form.applicationItems[index].applicationQuestion}
-            onChange={handleChangeQuestionInput}
+            value={form.applicationItems[index].applicationQuestion || ''}
+            onChange={handleChangeQuestion}
           />
         </Question>
         <AnswerInput
           placeholder="답변을 입력해주세요."
-          value={form.applicationItems[index].applicationAnswer}
-          onChange={handleChangeAnswerInput}
+          value={form.applicationItems[index].applicationAnswer || ''}
+          onChange={handleChangeAnswer}
         />
       </QuestionAnswerBox>
       <QuestionEtcBox>

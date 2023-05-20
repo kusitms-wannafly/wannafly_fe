@@ -1,23 +1,13 @@
 import styled from 'styled-components';
 import { PageContainer } from '@components/Layout/PageContainer';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { getAllApplicationAPI } from '@api/applicationAPIS';
-import { Banner } from './Banner';
-//import { ClubBox } from '@pages/Applications/ClubBox';
+import { Banner } from './components/Banner';
+import { Application } from './components/Application';
+import { useParams } from 'react-router-dom';
 
-// const ClubBoxGrid = styled.div`
-//   font-family: 'PretendardBold';
-//   display: grid;
-//   flex-direction: row;
-//   grid-template-columns: repeat(3, 1fr);
-//   grid-template-rows: repeat(3, 1fr);
-//   gap: 20px;
-//   margin-top: 142px;
-// `;
-
-interface ApplicationForm {
+export interface ApplicationForm {
   applicationFormId: number;
   recruiter: string;
   year: number;
@@ -29,8 +19,6 @@ interface ApplicationForm {
 const APIQUERYSIZE = 12;
 
 export const ApplicationsPage = () => {
-  const navigate = useNavigate();
-
   const [applications, setApplications] = useState<ApplicationForm[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const cursor = useRef<number | null>(null);
@@ -43,7 +31,6 @@ export const ApplicationsPage = () => {
     const apireturn = getAllApplicationAPI(cursor.current, 12, selectedYear);
     apireturn
       .then((res: ApplicationForm[]) => {
-        //console.log(res);
         setApplications((prevApplications) => [...prevApplications, ...res]);
         setHasNextPage(res.length === APIQUERYSIZE);
         if (res.length) {
@@ -64,45 +51,17 @@ export const ApplicationsPage = () => {
     }
   }, [fetch, hasNextPage, inView]);
 
-  const handleClickApplication = (formId: number) => {
-    navigate(`/edit/${formId}`);
-  };
-
   return (
     <PageContainer header>
       <ApplicationsPageContainer>
         <Banner />
         <ApplicationsContainer>
           {applications.map((el) => {
-            return (
-              <Application
-                key={el.applicationFormId}
-                onClick={() => {
-                  handleClickApplication(el.applicationFormId);
-                }}
-              >
-                {el.recruiter}
-              </Application>
-            );
+            return <Application key={el.applicationFormId} form={el} />;
           })}
           <RefContainer ref={ref}></RefContainer>
         </ApplicationsContainer>
       </ApplicationsPageContainer>
-
-      {/* <ClubBoxGrid>
-        <ClubBox
-          clubName="큐시즘"
-          modifiedDate="4월 13일 수정"
-          date="2023년 상반기"
-          isApplying={false}
-        />
-        <ClubBox
-          clubName="큐시즘"
-          modifiedDate="4월 13일 수정"
-          date="2023년 상반기"
-          isApplying={true}
-        />
-      </ClubBoxGrid> */}
     </PageContainer>
   );
 };
@@ -129,18 +88,6 @@ const ApplicationsContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`;
-
-const Application = styled.div`
-  width: 255px;
-  height: 150px;
-  margin: 8px 0;
-  border-radius: 6px;
-  padding: 20px;
-  background-color: ${(props) => props.theme.colors.grey6};
-
-  font-family: 'PretendardMedium';
-  color: ${({ theme }) => theme.colors.wht};
 `;
 
 const RefContainer = styled.div`

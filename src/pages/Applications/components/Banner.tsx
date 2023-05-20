@@ -8,19 +8,28 @@ interface Folder {
   year: number;
   count: number;
 }
+
 export const Banner = () => {
   const navigate = useNavigate();
-
-  const [folders, setFolders] = useState<Folder[]>([]);
-
   const { year } = useParams();
+  const [folders, setFolders] = useState<Folder[]>([]);
 
   useEffect(() => {
     const apireturn = getAllFolderAPI();
-    apireturn.then(() => {
-      setFolders(folders);
+    apireturn.then((res) => {
+      setFolders(res);
     });
   }, []);
+
+  const handleClickYearBtn = (selectedYear: number) => {
+    if (selectedYear === -1) {
+      navigate(`/applications`);
+      window.location.reload();
+    } else {
+      navigate(`/applications/${selectedYear}`);
+      window.location.reload();
+    }
+  };
 
   const handleClickWriteBtn = () => {
     navigate('/write');
@@ -31,7 +40,12 @@ export const Banner = () => {
       <Title>지원서 보관함</Title>
       <BtnsContainer>
         <YearBtns>
-          <YearBtn className={year === undefined ? 'current' : ''}>
+          <YearBtn
+            className={year === undefined ? 'current' : ''}
+            onClick={() => {
+              handleClickYearBtn(-1);
+            }}
+          >
             전체
           </YearBtn>
           {folders.map((el) => {
@@ -39,6 +53,9 @@ export const Banner = () => {
               <YearBtn
                 key={el.year}
                 className={Number(year) === el.year ? 'current' : ''}
+                onClick={() => {
+                  handleClickYearBtn(el.year);
+                }}
               >
                 {el.year}년
               </YearBtn>

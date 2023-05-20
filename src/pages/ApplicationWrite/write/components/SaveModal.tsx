@@ -40,10 +40,12 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
         return patchApplicationStateAPI(formId, true);
       })
       .then(() => {
-        navigate('/');
+        navigate('/applications');
+        window.location.reload();
       })
       .catch(() => {
-        navigate('/');
+        navigate('/applications');
+        window.location.reload();
       });
   };
 
@@ -58,10 +60,12 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
         return patchApplicationStateAPI(formId, false);
       })
       .then(() => {
-        navigate('/');
+        navigate('/applications');
+        window.location.reload();
       })
       .catch(() => {
-        navigate('/');
+        navigate('/applications');
+        window.location.reload();
       });
   };
 

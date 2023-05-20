@@ -44,7 +44,6 @@ export const MainPage = () => {
     const apireturn = getAllFolderAPI();
     apireturn
       .then((res) => {
-        console.log(res);
         setFolders(res);
       })
       .catch(() => {

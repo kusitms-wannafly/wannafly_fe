@@ -4,21 +4,23 @@ import { deleteApplicationAPI } from '@api/applicationAPIS';
 interface propsType {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  formId: number;
 }
-export const DeleteModal = ({ isOpen, setIsOpen }: propsType) => {
+export const DeleteModal = ({ isOpen, setIsOpen, formId }: propsType) => {
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
 
-  //TODO: 삭제할 지원서 formId 수정
-  const handleClickYesDeleteBtn = (formId: number) => {
+  const handleClickYesDeleteBtn = () => {
     const apireturn = deleteApplicationAPI(formId);
     apireturn
       .then(() => {
         setIsOpen(false);
+        window.location.reload();
       })
       .catch(() => {
         setIsOpen(false);
+        window.location.reload();
       });
   };
 
@@ -36,11 +38,7 @@ export const DeleteModal = ({ isOpen, setIsOpen }: propsType) => {
               >
                 아니요
               </NotDeleteBtn>
-              <YesDeleteBtn
-                onClick={() => {
-                  handleClickYesDeleteBtn(0);
-                }}
-              >
+              <YesDeleteBtn onClick={handleClickYesDeleteBtn}>
                 네, 삭제할래요
               </YesDeleteBtn>
             </BtContainer>
