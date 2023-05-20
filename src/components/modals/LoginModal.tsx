@@ -95,6 +95,7 @@ const LoginBtnsContainer = styled.div`
   }
   display: flex;
   flex-direction: column;
+  gap: 12px;
 `;
 
 const SocialLogin = styled.div`
