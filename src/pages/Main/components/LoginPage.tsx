@@ -16,7 +16,6 @@ export const LoginPage = () => {
     const apireturn = getAllFolderAPI();
     apireturn
       .then((res) => {
-        console.log(res);
         setFolders(res);
       })
       .catch(() => {
@@ -39,7 +38,12 @@ export const LoginPage = () => {
         <AllYearsFolder />
         {folders.map((folder, idx) => {
           return (
-            <ColorFolder year={folder.year} count={folder.count} idx={idx} />
+            <ColorFolder
+              key={folder.year}
+              year={folder.year}
+              count={folder.count}
+              idx={idx}
+            />
           );
         })}
       </FoldersContainer>

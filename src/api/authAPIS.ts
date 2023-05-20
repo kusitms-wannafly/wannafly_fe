@@ -20,7 +20,7 @@ export const accessTokenAPI = async () => {
     const response = await HttpClient.post('/accessToken', {}, {});
     return response;
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
