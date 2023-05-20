@@ -18,7 +18,7 @@ interface propsType {
   form: ApplicationEditData;
   setForm: React.Dispatch<React.SetStateAction<ApplicationEditData | null>>;
 }
-export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
+export const AnswerEditForm = ({ index, form, setForm }: propsType) => {
   const handleChangeQuestion = (e: React.FormEvent<HTMLInputElement>) => {
     let newItems = form.applicationItems;
     newItems[index] = {
