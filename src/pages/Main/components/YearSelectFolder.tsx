@@ -34,18 +34,23 @@ export const YearSelectFolder = ({ getAllFolders }: propsType) => {
     <YearSelectFolderContainer>
       <img src={grey_folder_img} alt="년도 선택 폴더" />
       {selectState ? (
-        <SelectBox onChange={handleChangeSelectYear}>
-          <option value="" disabled hidden>
-            년도 선택
-          </option>
-          {yearoptions.map((year) => {
-            return (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            );
-          })}
-        </SelectBox>
+        <>
+          <SelectBox onChange={handleChangeSelectYear}>
+            <option value="" disabled hidden>
+              년도 선택
+            </option>
+            {yearoptions.map((year) => {
+              return (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              );
+            })}
+          </SelectBox>
+          <AddFolderBtn onClick={handleClickAddFolderBtn}>
+            추가하기
+          </AddFolderBtn>
+        </>
       ) : (
         <DarkBox
           onClick={() => {
@@ -56,9 +61,6 @@ export const YearSelectFolder = ({ getAllFolders }: propsType) => {
           추가하기
         </DarkBox>
       )}
-      {selectState ? (
-        <AddFolderBtn onClick={handleClickAddFolderBtn}>추가하기</AddFolderBtn>
-      ) : null}
     </YearSelectFolderContainer>
   );
 };
@@ -67,7 +69,7 @@ const YearSelectFolderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 220px;
+  height: 200px;
   img {
     width: 220px;
   }
@@ -122,6 +124,8 @@ const SelectBox = styled.select`
 `;
 
 const AddFolderBtn = styled.button`
+  position: absolute;
+  bottom: 40px;
   width: 100px;
   height: 30px;
   margin-top: 10px;

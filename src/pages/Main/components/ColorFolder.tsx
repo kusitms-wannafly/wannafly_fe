@@ -26,7 +26,7 @@ export const ColorFolder = ({ year, count, idx }: propsType) => {
 };
 
 const ColorFolderContainer = styled.div`
-  height: 220px;
+  height: 200px;
   img {
     width: 220px;
   }
@@ -56,7 +56,7 @@ const CountBox = styled.div`
   background-color: ${({ theme }) => theme.colors.wht};
   color: ${({ theme }) => theme.colors.grey7};
   font-family: 'PretendardMedium';
-  top: 60%;
+  top: 68%;
   left: 140px;
 
   width: 45px;
