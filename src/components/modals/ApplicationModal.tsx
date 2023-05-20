@@ -32,11 +32,13 @@ export const ApplicationModal = ({ isOpen, setIsOpen, formId }: propsType) => {
   };
 
   useEffect(() => {
-    const apireturn = getApplicationDetailAPI(formId);
-    apireturn.then((res) => {
-      setApplicationForm(res);
-    });
-  }, []);
+    if (isOpen) {
+      const apireturn = getApplicationDetailAPI(formId);
+      apireturn.then((res) => {
+        setApplicationForm(res);
+      });
+    }
+  }, [isOpen]);
 
   return (
     <ApplicationModalContainer>
@@ -101,6 +103,7 @@ const ModalView = styled.div`
   width: 700px;
   height: 600px;
   padding: 0 35px;
+  margin-top: 40px;
 
   background-color: rgba(30, 31, 32, 1);
   border: 1px solid #686a70;
