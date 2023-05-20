@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-// import { useState } from 'react';
-// import SelectMenu from './SelectMenu';
 import { postFolderAPI } from '@api/folderAPIS';
 
 interface props {
