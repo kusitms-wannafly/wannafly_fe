@@ -12,7 +12,7 @@ export const LoginAlert = ({ loginState }: propsType) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (loginState === 'duplicateError') {
-        alert('중복된 이메일입니다.');
+        alert('이미 가입된 이메일입니다.');
       } else if (loginState === 'loginError') {
         alert('로그인에 실패했습니다.');
       }
