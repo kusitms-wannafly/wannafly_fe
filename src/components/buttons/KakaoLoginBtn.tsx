@@ -28,19 +28,19 @@ const BtnBox = styled.button`
   width: 340px;
   height: 50px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey5};
-  border-color: ${({ theme }) => theme.colors.grey5};
+  background-color: ${({ theme }) => theme.colors.grey7};
+  border: 1px solid ${({ theme }) => theme.colors.grey5};
 `;
 
 const LoginBtnImg = styled.img`
-  width: 20px;
+  width: 17px;
+  margin-left: 12px;
 `;
 
 const LoginText = styled.div`
-  font-family: 'PretendardBold';
-  font-size: 20px;
-  padding-top: 13px;
-  padding-left: 70px;
+  font-family: 'PretendardLight';
+  font-size: 15px;
+  margin-left: 94px;
   color: ${({ theme }) => theme.colors.wht};
 `;
 

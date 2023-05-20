@@ -9,7 +9,7 @@ export const GoogleLoginBtn = () => {
       >
         <LoginItems>
           <LoginBtnImg src={google_icon} alt="google social login icon" />
-          <LoginText>구글 로그인</LoginText>
+          <LoginText>Google 로그인</LoginText>
         </LoginItems>
       </BtnContainer>
     </BtnBox>
@@ -20,8 +20,9 @@ const BtnBox = styled.button`
   width: 340px;
   height: 50px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey5};
-  border-color: ${({ theme }) => theme.colors.grey5};
+  background-color: ${({ theme }) => theme.colors.grey7};
+  border: 1px solid ${({ theme }) => theme.colors.grey5};
+  margin-top: 20px;
 `;
 const BtnContainer = styled.a`
   &:is(:hover, :focus) {
@@ -30,17 +31,17 @@ const BtnContainer = styled.a`
 `;
 
 const LoginBtnImg = styled.img`
-  width: 50px;
+  width: 40px;
 `;
 
 const LoginText = styled.div`
-  font-family: 'PretendardBold';
-  font-size: 20px;
-  padding-top: 13px;
-  padding-left: 70px;
+  font-family: 'PretendardLight';
+  font-size: 15px;
+  padding-top: 10px;
+  padding-left: 80px;
   color: ${({ theme }) => theme.colors.wht};
 `;
 
 const LoginItems = styled.div`
   display: flex;
-`
+`;

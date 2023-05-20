@@ -20,8 +20,8 @@ const BtnBox = styled.button`
   width: 340px;
   height: 50px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey5};
-  border-color: ${({ theme }) => theme.colors.grey5};
+  background-color: ${({ theme }) => theme.colors.grey7};
+  border: 1px solid ${({ theme }) => theme.colors.grey5};
 `;
 
 const BtnContainer = styled.a`
@@ -31,14 +31,14 @@ const BtnContainer = styled.a`
   }
 `;
 const LoginBtnImg = styled.img`
-  width: 30px;
+  width: 21px;
+  margin-left: 10px;
 `;
 
 const LoginText = styled.div`
-  font-family: 'PretendardBold';
-  font-size: 20px;
-  padding-top: 13px;
-  padding-left: 70px;
+  font-family: 'PretendardLight';
+  font-size: 15px;
+  margin-left: 92px;
   color: ${({ theme }) => theme.colors.wht};
 `;
 
