@@ -69,7 +69,6 @@ export const MainPage = () => {
 
   return (
     <PageContainer header>
-      <MainPageContainer>
         {' '}
         <Banner>
           <BannerTitle>내 지원서 보관함</BannerTitle>
@@ -109,14 +108,9 @@ export const MainPage = () => {
           <NotLoginMain />
         )}
         <LoginAlert loginState={loginState} />
-      </MainPageContainer>
     </PageContainer>
   );
 };
-
-const MainPageContainer = styled.div`
-  padding-top: 75px;
-`;
 
 const Banner = styled.div`
   width: 100%;
