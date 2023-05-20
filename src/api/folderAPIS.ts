@@ -1,25 +1,5 @@
 import { HttpClient } from '@api/HttpClient';
 
-// import {
-// } from '@pages/Main/componenets/YearMenu';
-
-/*
-지원서 보관함 생성
-POST /api/application-folders
-Content-Type: application/json
-Authorization: Bearer ...
-{
-	"year": 2023
-}
-*/
-
-/*
-지원서 보관함 모두 조회
-GET /api/application-folders
-Content-Type: application/json
-Authorization: Bearer ...
-*/
-
 export const getAllFolderAPI = async () => {
   try {
     const response = await HttpClient.get('/api/application-folders', {}, {});

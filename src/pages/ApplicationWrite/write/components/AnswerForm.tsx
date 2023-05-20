@@ -9,8 +9,11 @@ import {
   LengthCount,
   SpellCheckBtn,
 } from '@components/application/AnswerForm';
+import { GrammarCheck } from '@features/grammar/GrammarCheck';
 import { ApplicationItem, ApplicationData } from '..';
 import { getTrimmedLength } from '../util/getTrimmedLength';
+import { checkGrammar } from '@features/grammar/checkGrammar';
+import { useState } from 'react';
 
 interface propsType {
   index: number;
@@ -19,6 +22,9 @@ interface propsType {
   setForm: React.Dispatch<React.SetStateAction<ApplicationData>>;
 }
 export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
+  const [showGrammarCheck, setShowGrammarCheck] = useState<boolean>(false);
+  const [checkedAnswer, setCheckedAnswer] = useState<string>('');
+
   const handleChangeQuestionInput = (e: React.FormEvent<HTMLInputElement>) => {
     const newItems = [...form.applicationItems];
     newItems[index] = {
@@ -39,6 +45,13 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
     setForm({ ...form!, applicationItems: newItems });
   };
 
+  const handleClickSpellCheckBtn = async () => {
+    checkGrammar(item.applicationAnswer).then((res) => {
+      setCheckedAnswer(res);
+    });
+    setShowGrammarCheck(true);
+  };
+
   return (
     <AnswerFormContainer>
       <QuestionAnswerBox>
@@ -55,6 +68,13 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
           value={form.applicationItems[index].applicationAnswer}
           onChange={handleChangeAnswerInput}
         />
+        {showGrammarCheck ? (
+          <GrammarCheck
+            setShowGrammarCheck={setShowGrammarCheck}
+            originalAnswer={item.applicationAnswer}
+            checkedAnswer={checkedAnswer}
+          />
+        ) : null}
       </QuestionAnswerBox>
       <QuestionEtcBox>
         <LengthCount>
@@ -71,7 +91,9 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
             자
           </div>
         </LengthCount>
-        <SpellCheckBtn>맞춤법 검사하기</SpellCheckBtn>
+        <SpellCheckBtn onClick={handleClickSpellCheckBtn}>
+          맞춤법 검사하기
+        </SpellCheckBtn>
       </QuestionEtcBox>
     </AnswerFormContainer>
   );
