@@ -7,10 +7,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // 지원서 보관함 모두 조회 API
 import { getAllFolderAPI } from '@api/folderAPIS';
 
+import { NotLoginPage } from './componenets/NotLoginPage';
+
 import SelectMenu from '@pages/Main/componenets/SelectMenu';
 import GreyFolderImage from '@assets/images/grey-folder.png';
 import YellowFolderImage from '@assets/images/yellow-folder.png';
-import Butterfly from '@assets/images/unionbutterfly.png';
+//import Butterfly from '@assets/images/unionbutterfly.png';
 import { CreateFolderButton } from '@pages/Main/componenets/CreateFolderButton';
 import { NotLoginMain } from './componenets/NotLoginMain';
 import { NewFolder } from './componenets/NewFolder';
@@ -70,11 +72,6 @@ export const MainPage = () => {
   return (
     <PageContainer header>
       <MainPageContainer>
-        <Banner>
-          <BannerTitle>내 지원서 보관함</BannerTitle>
-          <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
-          {/* <UnionButterfly src={Butterfly} alt="butterfly" /> */}
-        </Banner>
         {isLogin ? (
           <>
             <FolderContainer>
@@ -105,7 +102,7 @@ export const MainPage = () => {
             </FolderContainer>
           </>
         ) : (
-          <NotLoginMain />
+          <NotLoginPage />
         )}
         <LoginAlert loginState={loginState} />
       </MainPageContainer>
@@ -114,35 +111,8 @@ export const MainPage = () => {
 };
 
 const MainPageContainer = styled.div`
-  border: 1px solid green;
   padding-top: 75px;
   width: 100vw;
-`;
-
-const Banner = styled.div`
-  border: 1px solid blue;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 0;
-`;
-
-const BannerTitle = styled.div`
-  width: 800px;
-  font-family: 'PretendardBold';
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: ${(props) => props.theme.colors.grey3};
-`;
-
-const BannerDescription = styled.div`
-  width: 800px;
-  font-family: 'HappinessSansBold', sans-serif;
-  padding-top: 20px;
-  font-size: 32px;
-  color: ${(props) => props.theme.colors.wht};
 `;
 
 const FolderContainer = styled.div`

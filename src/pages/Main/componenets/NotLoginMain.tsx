@@ -2,12 +2,18 @@ import styled from 'styled-components';
 import AllFolderImage from '@assets/images/all-folders.png';
 
 export const NotLoginMain = () => {
-  return <AllFolder src={AllFolderImage} alt="all-folder-image" />;
+  return (
+    <NotLoginMainContainer>
+      <AllFolder src={AllFolderImage} alt="all-folder-image" />
+    </NotLoginMainContainer>
+  );
 };
 
-const AllFolder = styled.img`
+const NotLoginMainContainer = styled.div`
+  border: 1px solid red;
   width: 800px;
-  height: 450px;
-  margin-left: 300px;
-  margin-top: 130px;
+`;
+
+const AllFolder = styled.img`
+  width: 600px;
 `;
