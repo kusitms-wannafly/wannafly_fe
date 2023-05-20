@@ -14,7 +14,7 @@ interface propsType {
   count: number;
 }
 export const NewFolder = ({ year, count }: propsType) => {
-  const newFolderImage = folderImages[6 % 4];
+  const newFolderImage = folderImages[6 % 5];
   return (
     <NewFolderContainer>
       <Folder src={newFolderImage} alt="새 폴더 이미지" />
