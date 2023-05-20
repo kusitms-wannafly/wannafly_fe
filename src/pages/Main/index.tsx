@@ -69,47 +69,54 @@ export const MainPage = () => {
 
   return (
     <PageContainer header>
-      <Banner>
-        <BannerTitle>내 지원서 보관함</BannerTitle>
-        <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
-        <UnionButterfly src={Butterfly} alt="butterfly" />
-      </Banner>
-      {isLogin ? (
-        <>
-          <FolderContainer>
-            <YearChooseButton>
-              <SelectMenu setSelectedYear={setSelectedYear} />
-            </YearChooseButton>
-            <CreateFolderButton
-              selectedYear={selectedYear}
-              getAllFolders={getAllFolders}
-            />
-            <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
-            <YellowFolder
-              src={YellowFolderImage}
-              alt="yellow-folder-img"
-              onClick={() => {
-                handleClickFolder(-1);
-              }}
-            />
-            <NewFolder />
-          </FolderContainer>
-          {folders.map((folder, idx) => {
-            return (
-              <div key={idx}>
-                {folder.year}
-                <div>개수: {folder.count}</div>
-              </div>
-            );
-          })}
-        </>
-      ) : (
-        <NotLoginMain />
-      )}
-      <LoginAlert loginState={loginState} />
+      <MainPageContainer>
+        {' '}
+        <Banner>
+          <BannerTitle>내 지원서 보관함</BannerTitle>
+          <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
+          <UnionButterfly src={Butterfly} alt="butterfly" />
+        </Banner>
+        {isLogin ? (
+          <>
+            <FolderContainer>
+              <YearChooseButton>
+                <SelectMenu setSelectedYear={setSelectedYear} />
+              </YearChooseButton>
+              <CreateFolderButton
+                selectedYear={selectedYear}
+                getAllFolders={getAllFolders}
+              />
+              <GreyFolder src={GreyFolderImage} alt="grey-folder-img" />
+              <YellowFolder
+                src={YellowFolderImage}
+                alt="yellow-folder-img"
+                onClick={() => {
+                  handleClickFolder(-1);
+                }}
+              />
+              {folders.map((folder, idx) => {
+                return (
+                  <NewFolder
+                    key={idx}
+                    year={folder.year}
+                    count={folder.count}
+                  />
+                );
+              })}
+            </FolderContainer>
+          </>
+        ) : (
+          <NotLoginMain />
+        )}
+        <LoginAlert loginState={loginState} />
+      </MainPageContainer>
     </PageContainer>
   );
 };
+
+const MainPageContainer = styled.div`
+  padding-top: 75px;
+`;
 
 const Banner = styled.div`
   width: 100%;
@@ -139,7 +146,6 @@ const FolderContainer = styled.div`
   padding-top: 50px;
   margin-top: 250px;
   position: absolute;
-  grid-template-columns: repeat(3, 1fr);
 `;
 
 const YearChooseButton = styled.div`

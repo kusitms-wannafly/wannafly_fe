@@ -9,14 +9,18 @@ import Folder6 from '@assets/images/folder6.png';
 
 const folderImages = [Folder1, Folder2, Folder3, Folder4, Folder5, Folder6];
 
-export const NewFolder = () => {
-  const newFolderImage = folderImages[6%4];
+interface propsType {
+  year: number;
+  count: number;
+}
+export const NewFolder = ({ year, count }: propsType) => {
+  const newFolderImage = folderImages[6 % 4];
   return (
     <NewFolderContainer>
       <Folder src={newFolderImage} alt="새 폴더 이미지" />
       <FolderInfo>
-        <YearBox>?</YearBox>
-        <CountBox>?</CountBox>
+        <YearBox>{year}</YearBox>
+        <CountBox>{count}</CountBox>
       </FolderInfo>
     </NewFolderContainer>
   );
@@ -36,8 +40,8 @@ const FolderInfo = styled.div`
 `;
 
 const Folder = styled.img`
-  width: 280px;
-  height: 220px;
+  width: 260px;
+  height: 210px;
 `;
 
 const YearBox = styled.div`
