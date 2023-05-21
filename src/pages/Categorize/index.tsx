@@ -16,7 +16,6 @@ export const CategorizePage = () => {
 };
 
 const CategorizePageContainer = styled.div`
-  border: 1px solid green;
   padding-top: 75px;
   width: 100%;
   height: 100vh;
