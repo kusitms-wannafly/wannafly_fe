@@ -122,3 +122,13 @@ export const deleteApplicationAPI = async (formId: number) => {
     return;
   }
 };
+
+//전체 지원서 개수 조회
+export const getTotalApplicationCount = async () => {
+  try {
+    const response = await HttpClient.get('/api/application-forms/total-count');
+    return response;
+  } catch {
+    return null;
+  }
+};

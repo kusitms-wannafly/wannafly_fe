@@ -34,7 +34,7 @@ export const LoginPage = () => {
         <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
       </Banner>
       <FoldersContainer>
-        <YearSelectFolder getAllFolders={getAllFolders} />
+        <YearSelectFolder folders={folders} getAllFolders={getAllFolders} />
         <AllYearsFolder />
         {folders.map((folder, idx) => {
           return (

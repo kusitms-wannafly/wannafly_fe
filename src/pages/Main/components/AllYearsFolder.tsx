@@ -1,9 +1,23 @@
 import styled from 'styled-components';
 import folder_1 from '@assets/images/folder_1.svg';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getTotalApplicationCount } from '@api/applicationAPIS';
 
 export const AllYearsFolder = () => {
   const navigate = useNavigate();
+  const [totalCount, setTotalCount] = useState<number>(0);
+
+  useEffect(() => {
+    const apireturn = getTotalApplicationCount();
+    apireturn
+      .then((res) => {
+        setTotalCount(res.totalCount);
+      })
+      .catch(() => {
+        setTotalCount(0);
+      });
+  }, []);
 
   return (
     <AllYearsFolderContainer
@@ -13,7 +27,7 @@ export const AllYearsFolder = () => {
     >
       <img src={folder_1} alt="년도 선택 폴더" />
       <DarkBox>전체 지원서</DarkBox>
-      <CountBox>0</CountBox>
+      <CountBox>{totalCount}</CountBox>
     </AllYearsFolderContainer>
   );
 };
