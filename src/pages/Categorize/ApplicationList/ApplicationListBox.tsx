@@ -5,6 +5,10 @@ import { useInView } from 'react-intersection-observer';
 import { getAllApplicationAPI } from '@api/applicationAPIS';
 import { ApplicationBox } from './ApplicationBox';
 
+enum State {
+  'List',
+  'Detail',
+}
 export interface ApplicationForm {
   applicationFormId: number;
   recruiter: string;
@@ -16,8 +20,15 @@ export interface ApplicationForm {
 
 const APIQUERYSIZE = 12;
 
+interface propsType {
+  setSelectedDetailFormId: React.Dispatch<React.SetStateAction<number>>;
+  setPageState: React.Dispatch<React.SetStateAction<State>>;
+}
 //무한스크롤
-export const ApplicationListBox = () => {
+export const ApplicationListBox = ({
+  setSelectedDetailFormId,
+  setPageState,
+}: propsType) => {
   //지원서 목록
   const [applications, setApplications] = useState<ApplicationForm[]>([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
@@ -52,10 +63,13 @@ export const ApplicationListBox = () => {
         return (
           <ApplicationBox
             key={el.applicationFormId}
+            formId={el.applicationFormId}
             recruiter={el.recruiter}
             isCompleted={el.isCompleted}
             year={el.year}
             semester={el.semester}
+            setSelectedDetailFormId={setSelectedDetailFormId}
+            setPageState={setPageState}
           />
         );
       })}
@@ -65,9 +79,13 @@ export const ApplicationListBox = () => {
 };
 
 const ListBoxContainer = styled.div`
-  border: 1px solid blue;
   width: 100%;
-  padding: 0 40px;
+  height: 100%;
+  padding: 80px 40px 40px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const RefContainer = styled.div`

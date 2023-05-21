@@ -1,19 +1,34 @@
 import styled from 'styled-components';
 
+enum State {
+  'List',
+  'Detail',
+}
 interface propsType {
+  formId: number;
   recruiter: string;
   isCompleted: boolean;
   year: number;
   semester: string;
+  setSelectedDetailFormId: React.Dispatch<React.SetStateAction<number>>;
+  setPageState: React.Dispatch<React.SetStateAction<State>>;
 }
 export const ApplicationBox = ({
+  formId,
   recruiter,
   isCompleted,
   year,
   semester,
+  setSelectedDetailFormId,
+  setPageState,
 }: propsType) => {
+  const handleClickApplicationBox = () => {
+    setPageState(State.Detail);
+    setSelectedDetailFormId(formId);
+  };
+
   return (
-    <ApplicationBoxContainer>
+    <ApplicationBoxContainer onClick={handleClickApplicationBox}>
       <MainInfo>
         <Recruiter>{recruiter}</Recruiter>
         {isCompleted ? null : <Completed>작성중</Completed>}
