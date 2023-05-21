@@ -18,7 +18,7 @@ interface propsType {
 }
 export const YearSelectFolder = ({ folders, getAllFolders }: propsType) => {
   const [selectState, setSelectState] = useState<boolean>(false);
-  const [yearOption, setYearOption] = useState<number>(20);
+  const [yearOption, setYearOption] = useState<number>(2023);
 
   const handleChangeSelectYear = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setYearOption(Number(e.currentTarget.value));
@@ -49,7 +49,7 @@ export const YearSelectFolder = ({ folders, getAllFolders }: propsType) => {
       {selectState ? (
         <>
           <SelectBox onChange={handleChangeSelectYear}>
-            <option value="" disabled hidden>
+            <option value="" disabled>
               년도 선택
             </option>
             {filterYearSelectOption().map((year) => {
