@@ -103,3 +103,9 @@ export const YesBtn = styled.button`
     cursor: pointer;
   }
 `;
+
+export const ButtonsInBox = styled.div`
+  margin-left: 230px;
+  display: flex;
+  gap: 5px;
+`
