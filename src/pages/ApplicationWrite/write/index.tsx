@@ -13,7 +13,7 @@ export interface ApplicationItem {
 export interface ApplicationData {
   recruiter: string;
   year: number;
-  semester: '상반기' | '하반기';
+  semester: 'first_half' | 'second_half';
   applicationItems: ApplicationItem[];
 }
 
@@ -21,7 +21,7 @@ export const ApplicationWrite = () => {
   const [form, setForm] = useState<ApplicationData>({
     recruiter: '',
     year: 2023,
-    semester: '상반기',
+    semester: 'first_half',
     applicationItems: [
       {
         applicationQuestion: '',

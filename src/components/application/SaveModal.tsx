@@ -61,7 +61,14 @@ export const ApplicationBoxHeader = styled.div`
   font-family: 'PretendardBold';
 `;
 
-export const ApplicationBoxFooter = styled.div``;
+export const ApplicationBoxFooter = styled.div`
+  font-family: 'PretendardLight';
+  display: flex;
+  gap: 10px;
+  color: ${(props) => props.theme.colors.grey3};
+  margin-top: 80px;
+  padding-right: 140px;
+`;
 
 export const BtnsContainer = styled.div``;
 

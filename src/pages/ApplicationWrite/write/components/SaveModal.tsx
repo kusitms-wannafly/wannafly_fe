@@ -15,6 +15,10 @@ import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
 
+import styled from 'styled-components';
+import edit_icon from '@assets/icons/icon-edit.svg';
+import delete_icon from '@assets/icons/icon-trash.svg';
+
 //TODO: UI 추가 구현 필요
 
 interface propsType {
@@ -83,8 +87,10 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
                 <div>{form.recruiter}</div>
               </ApplicationBoxHeader>
               <ApplicationBoxFooter>
-                <div>{form.semester}</div>
                 <div>{form.year}</div>
+                <div>{form.semester}</div>
+                <EditButton src={edit_icon} alt="수정하기 버튼" />
+                <TrashButton src={delete_icon} alt="삭제하기 버튼" />
               </ApplicationBoxFooter>
             </ApplicationBox>
             <BtnsContainer>
@@ -97,3 +103,13 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
     </ModalContainer>
   );
 };
+
+const EditButton = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+const TrashButton = styled.img`
+  width: 20px;
+  height: 20px;
+`;
