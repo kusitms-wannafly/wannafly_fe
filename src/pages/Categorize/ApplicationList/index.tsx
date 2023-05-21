@@ -25,7 +25,10 @@ export const ApplicationList = () => {
       ) : null}
       {pageState === State.Detail ? (
         <>
-          <ApplicationDetailBox selectedDetailFormId={selectedDetailFormId} />
+          <ApplicationDetailBox
+            setPageState={setPageState}
+            selectedDetailFormId={selectedDetailFormId}
+          />
         </>
       ) : null}
     </ApplicationListContainer>

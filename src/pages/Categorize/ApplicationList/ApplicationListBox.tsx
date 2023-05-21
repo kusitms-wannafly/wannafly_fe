@@ -86,6 +86,10 @@ const ListBoxContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const RefContainer = styled.div`
