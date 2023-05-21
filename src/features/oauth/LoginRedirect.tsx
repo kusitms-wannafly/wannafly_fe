@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LoginState } from './types';
 
 export const LoginRedirect = () => {
   const navigate = useNavigate();
@@ -10,20 +11,18 @@ export const LoginRedirect = () => {
   );
   const errorCode = new URL(window.location.href).searchParams.get('errorCode');
 
-  let loginState = '';
-
   //로그인 에러 발생
   if (errorCode !== null) {
     if (errorCode === '1001') {
       //이메일 중복 에러
       localStorage.setItem('accessToken', '');
       localStorage.setItem('isLogin', 'false');
-      loginState = 'duplicateError';
+      localStorage.setItem('loginState', LoginState[1]);
     } else {
       //다른 로그인 에러
       localStorage.setItem('accessToken', '');
       localStorage.setItem('isLogin', 'false');
-      loginState = 'loginError';
+      localStorage.setItem('loginState', LoginState[2]);
     }
   } else {
     //로그인 성공
@@ -31,17 +30,11 @@ export const LoginRedirect = () => {
     //refreshToken - httpOnly 쿠키로 저장
     localStorage.setItem('accessToken', 'Bearer ' + accessToken);
     localStorage.setItem('isLogin', 'true');
-    loginState = 'success';
-    //axios instance default header 설정
-    // axiosInstance.defaults.headers.common[
-    //   'Authorization'
-    // ] = `Bearer ${accessToken}`;
-    //navigate('/', { replace: true });
+    localStorage.setItem('loginState', LoginState[3]);
   }
 
-  //TODO: 중복 email시 errorCode 처리
   useEffect(() => {
-    navigate('/', { replace: true, state: { loginState: loginState } });
+    navigate('/', { replace: true });
   }, []);
   return <></>;
 };
