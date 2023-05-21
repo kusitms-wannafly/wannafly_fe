@@ -80,9 +80,12 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
             </GuideText>
             <ApplicationBox>
               <ApplicationBoxHeader>
-                <div>야호</div>
+                <div>{form.recruiter}</div>
               </ApplicationBoxHeader>
-              <ApplicationBoxFooter></ApplicationBoxFooter>
+              <ApplicationBoxFooter>
+                <div>{form.semester}</div>
+                <div>{form.year}</div>
+              </ApplicationBoxFooter>
             </ApplicationBox>
             <BtnsContainer>
               <NoBtn onClick={handleClickNoBtn}>아니요, 그냥 저장할게요</NoBtn>
