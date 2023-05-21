@@ -80,7 +80,7 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
             </GuideText>
             <ApplicationBox>
               <ApplicationBoxHeader>
-                <div>큐시즘</div>
+                <div>야호</div>
               </ApplicationBoxHeader>
               <ApplicationBoxFooter></ApplicationBoxFooter>
             </ApplicationBox>

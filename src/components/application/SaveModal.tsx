@@ -53,7 +53,13 @@ export const ApplicationBox = styled.div`
   align-items: center;
 `;
 
-export const ApplicationBoxHeader = styled.div``;
+export const ApplicationBoxHeader = styled.div`
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: ${(props) => props.theme.colors.wht};
+  font-family: 'PretendardBold';
+`;
 
 export const ApplicationBoxFooter = styled.div``;
 
