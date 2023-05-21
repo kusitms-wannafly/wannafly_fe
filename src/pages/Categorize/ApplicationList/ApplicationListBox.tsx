@@ -50,7 +50,13 @@ export const ApplicationListBox = () => {
     <ListBoxContainer>
       {applications.map((el) => {
         return (
-          <ApplicationBox key={el.applicationFormId} recruiter={el.recruiter} />
+          <ApplicationBox
+            key={el.applicationFormId}
+            recruiter={el.recruiter}
+            isCompleted={el.isCompleted}
+            year={el.year}
+            semester={el.semester}
+          />
         );
       })}
       <RefContainer ref={ref}></RefContainer>
