@@ -109,3 +109,13 @@ export const ButtonsInBox = styled.div`
   display: flex;
   gap: 5px;
 `
+
+export const EditButton = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const TrashButton = styled.img`
+  width: 20px;
+  height: 20px;
+`;

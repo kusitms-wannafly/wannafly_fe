@@ -11,12 +11,13 @@ import {
   NoBtn,
   YesBtn,
   ButtonsInBox,
+  EditButton,
+  TrashButton,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
 
-import styled from 'styled-components';
 import edit_icon from '@assets/icons/icon-edit.svg';
 import delete_icon from '@assets/icons/icon-trash.svg';
 
@@ -107,12 +108,3 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
   );
 };
 
-const EditButton = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
-const TrashButton = styled.img`
-  width: 20px;
-  height: 20px;
-`;
