@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ApplicationSearchHeader } from './components/ApplicationSearchHeader';
 import { ApplicationFolders } from './components/ApplicationFolders';
 import { ApplicationDetail } from './components/ApplicationDetail';
+import { Categories } from './components/Categories';
 
 export enum State {
   all = '전체 지원서',
@@ -55,6 +56,8 @@ export const ApplicationSearch = () => {
           setSearchState={setSearchState}
         />
       ) : null}
+      {/* 유형별 카테고리 */}
+      {searchState.currentState === State.category ? <Categories /> : null}
     </ApplicationSearchContainer>
   );
 };
