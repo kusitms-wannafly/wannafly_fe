@@ -56,9 +56,15 @@ export const ApplicationsPage = () => {
       <ApplicationsPageContainer>
         <Banner />
         <ApplicationsContainer>
-          {applications.map((el) => {
-            return <Application key={el.applicationFormId} form={el} />;
-          })}
+          {applications.length === 0 ? (
+            <EmptyBox>
+              <div>등록된 지원서가 없어요 ㅜ^ㅜ</div>
+            </EmptyBox>
+          ) : (
+            applications.map((el) => {
+              return <Application key={el.applicationFormId} form={el} />;
+            })
+          )}
           <RefContainer ref={ref}></RefContainer>
         </ApplicationsContainer>
       </ApplicationsPageContainer>
@@ -75,14 +81,27 @@ const ApplicationsPageContainer = styled.div`
   align-items: center;
 `;
 
+const EmptyBox = styled.div`
+  width: 800px;
+  height: 300px;
+  color: ${({ theme }) => theme.colors.wht};
+  font-family: 'HappinessSansBold';
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const ApplicationsContainer = styled.div`
   width: 800px;
-  height: 800px;
+  //height: 800px;
   margin-top: 150px;
   padding-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: flex-start;
 
   overflow-y: scroll;
   &::-webkit-scrollbar {

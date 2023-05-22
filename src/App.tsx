@@ -10,6 +10,7 @@ import { ApplicationsPage } from '@pages/Applications';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
 import { ApplicationWritePage } from '@pages/ApplicationWrite';
 import { ApplicationEditPage } from '@pages/ApplicationEdit';
+import { CategorizePage } from '@pages/Categorize';
 
 import { LoginRedirect } from '@features/oauth/LoginRedirect';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/token" element={<LoginRedirect />} />
           <Route path="/write" element={<ApplicationWritePage />} />
           <Route path="/edit/:formId" element={<ApplicationEditPage />} />
+          <Route path="/categorize" element={<CategorizePage />} />
           <Route path="*" element={<NoMatchPage />} />
         </Routes>
       </BrowserRouter>
