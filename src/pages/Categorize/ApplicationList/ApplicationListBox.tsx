@@ -59,6 +59,11 @@ export const ApplicationListBox = ({
 
   return (
     <ListBoxContainer>
+      {applications.length === 0 ? (
+        <EmptyListBox>
+          <div>등록된 지원서가 없어요 ㅜ^ㅜ</div>
+        </EmptyListBox>
+      ) : null}
       {applications.map((el) => {
         return (
           <ApplicationBox
@@ -77,6 +82,17 @@ export const ApplicationListBox = ({
     </ListBoxContainer>
   );
 };
+
+const EmptyListBox = styled.div`
+  height: 80%;
+  color: ${({ theme }) => theme.colors.wht};
+  font-family: 'HappinessSansBold';
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const ListBoxContainer = styled.div`
   width: 100%;
