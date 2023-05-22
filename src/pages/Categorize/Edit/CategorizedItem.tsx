@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import icon_minus from '@assets/icons/icon-minus-black.png';
 
 export const CategorizedItem = () => {
   return (
@@ -6,9 +7,9 @@ export const CategorizedItem = () => {
       <QuestionContainer>
         <QuestionNumber>{`Q1`}</QuestionNumber>
         <Question>{'질문'}</Question>
-        {/* <AnswerLength>
-          공백포함 총<span>{1000}</span>자
-        </AnswerLength> */}
+        <MinusBtn>
+          <img src={icon_minus} alt="제거하기" />
+        </MinusBtn>
       </QuestionContainer>
       <Answer>
         {
@@ -52,6 +53,21 @@ const Question = styled.div`
   font-family: 'PretendardMedium';
   flex: 1;
   line-height: 20px;
+`;
+
+const MinusBtn = styled.button`
+  position: absolute;
+  right: 0;
+
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  img {
+    width: 15px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Answer = styled.div`
