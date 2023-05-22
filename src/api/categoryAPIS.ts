@@ -23,3 +23,19 @@ export const getCategorizedItemsAPI = async (categoryId: number) => {
     return [];
   }
 };
+
+//카테고리 추가
+export const addCategoryAPI = async (name: string) => {
+  try {
+    await HttpClient.post(
+      '/api/categories',
+      {
+        name,
+      },
+      {}
+    );
+    return;
+  } catch {
+    return;
+  }
+};

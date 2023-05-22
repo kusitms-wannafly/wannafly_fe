@@ -1,19 +1,23 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import icon_plus from '@assets/icons/icon-plus-dark.svg';
 
+import { CostModal } from '@components/modals/CostModal';
 import { Category } from '.';
-import { useState } from 'react';
+import { addCategoryAPI } from '@api/categoryAPIS';
 
 interface propsType {
-  categories: Category[] | undefined;
-  setCategories: React.Dispatch<React.SetStateAction<Category[] | undefined>>;
+  categories: Category[];
+  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
   selectedCategoryId: number;
   setSelecteCategorydId: React.Dispatch<React.SetStateAction<number>>;
+  getAllCategories: () => void;
 }
 export const EditBox = ({
   categories,
   selectedCategoryId,
   setSelecteCategorydId,
+  getAllCategories,
 }: propsType) => {
   const handleClickCategoryBtn = (id: number) => {
     console.log(id);
@@ -22,6 +26,7 @@ export const EditBox = ({
 
   const [categoryInputValue, setCategoryInputValue] = useState('');
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [isOpenCostModal, setIsOpenCostModal] = useState<boolean>(false);
 
   const handleChangeCategoryInput = (e: React.FormEvent<HTMLInputElement>) => {
     setCategoryInputValue(e.currentTarget.value);
@@ -29,7 +34,21 @@ export const EditBox = ({
 
   const handleKeyPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setEditMode(!editMode);
+      //카테고리 개수 제한 3개
+      if (categories.length < 3) {
+        //카테고리 추가
+        const apireturn = addCategoryAPI(categoryInputValue);
+        apireturn
+          .then(() => {
+            setEditMode(!editMode);
+            getAllCategories();
+          })
+          .catch(() => {
+            setEditMode(!editMode);
+          });
+      } else {
+        setIsOpenCostModal(true);
+      }
     }
   };
 
@@ -75,6 +94,7 @@ export const EditBox = ({
       <EditBtn onClick={handleClickEditBtn}>
         {editMode ? '완료' : '편집'}
       </EditBtn>
+      <CostModal isOpen={isOpenCostModal} setIsOpen={setIsOpenCostModal} />
     </EditBoxContainer>
   );
 };

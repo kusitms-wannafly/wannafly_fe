@@ -12,10 +12,10 @@ export interface Category {
 }
 
 export const CategoryEdit = () => {
-  const [categories, setCategories] = useState<Category[]>();
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategoryId, setSelecteCategorydId] = useState<number>(1);
 
-  useEffect(() => {
+  const getAllCategories = () => {
     const apireturn = getAllCategoriesAPI();
     apireturn
       .then((res) => {
@@ -25,6 +25,10 @@ export const CategoryEdit = () => {
       .catch(() => {
         setCategories([]);
       });
+  };
+
+  useEffect(() => {
+    getAllCategories();
   }, []);
 
   return (
@@ -36,6 +40,7 @@ export const CategoryEdit = () => {
           setCategories={setCategories}
           selectedCategoryId={selectedCategoryId}
           setSelecteCategorydId={setSelecteCategorydId}
+          getAllCategories={getAllCategories}
         />
       </EditFixedContainer>
       <Categorized selectedCategoryId={selectedCategoryId} />
