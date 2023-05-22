@@ -67,7 +67,6 @@ export const ApplicationBoxFooter = styled.div`
   gap: 10px;
   color: ${(props) => props.theme.colors.grey3};
   margin-top: 80px;
-  padding-right: 140px;
 `;
 
 export const BtnsContainer = styled.div``;
@@ -105,7 +104,7 @@ export const YesBtn = styled.button`
 `;
 
 export const ButtonsInBox = styled.div`
-  margin-left: 230px;
+  margin-left: 100px;
   display: flex;
   gap: 5px;
 `
