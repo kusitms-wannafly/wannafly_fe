@@ -1,24 +1,29 @@
 import styled from 'styled-components';
 import icon_minus from '@assets/icons/icon-minus-black.png';
 
-export const CategorizedItem = () => {
+import { CategorizedItem as CategorizedItemType } from './Categorized';
+
+interface propsType {
+  index: number;
+  item: CategorizedItemType;
+}
+
+export const CategorizedItem = ({ index, item }: propsType) => {
   return (
     <CategorizedItemContainer>
       <QuestionContainer>
-        <QuestionNumber>{`Q1`}</QuestionNumber>
-        <Question>{'질문'}</Question>
+        <QuestionNumber>{`Q${index + 1}`}</QuestionNumber>
+        <Question>{item.applicationItem.applicationQuestion}</Question>
         <MinusBtn>
           <img src={icon_minus} alt="제거하기" />
         </MinusBtn>
       </QuestionContainer>
-      <Answer>
-        {
-          '답변을 입력해주세요.안녕하세요, 저는 한국대학교 경영학과에 재학 중인 김아무라고 합니다. 큐시즘 활동을 하며 많은 것을 보고 맛보고 즐기고 뜯고 했답니다. 안녕하세요, 저는 한국대학교 경영학과에 재학 중인 김아무라고 합니다. 큐시즘 활동을 하며 많은 것을 보고 맛보고 즐기고 뜯고 했답니다.답변을 입력해주세요.안녕하세요, 저는 한국대학교 경영학과에 재학 중인 김아무라고 합니다. 큐시즘 활동을 하'
-        }
-      </Answer>
+      <Answer>{item.applicationItem.applicationAnswer}</Answer>
       <InfoConatiner>
-        <span className="recruiter">큐시즘</span>
-        <span className="year">2023년 상반기</span>
+        <span className="recruiter">{item.recruiter}</span>
+        <span className="year">{`${item.year}년 ${
+          item.semester === 'first_half' ? '상반기' : '하반기'
+        }`}</span>
       </InfoConatiner>
     </CategorizedItemContainer>
   );

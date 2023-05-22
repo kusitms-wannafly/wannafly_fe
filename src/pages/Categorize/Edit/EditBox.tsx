@@ -1,19 +1,80 @@
 import styled from 'styled-components';
 import icon_plus from '@assets/icons/icon-plus-dark.svg';
 
-export const EditBox = () => {
+import { Category } from '.';
+import { useState } from 'react';
+
+interface propsType {
+  categories: Category[] | undefined;
+  setCategories: React.Dispatch<React.SetStateAction<Category[] | undefined>>;
+  selectedCategoryId: number;
+  setSelecteCategorydId: React.Dispatch<React.SetStateAction<number>>;
+}
+export const EditBox = ({
+  categories,
+  selectedCategoryId,
+  setSelecteCategorydId,
+}: propsType) => {
+  const handleClickCategoryBtn = (id: number) => {
+    console.log(id);
+    setSelecteCategorydId(id);
+  };
+
+  const [categoryInputValue, setCategoryInputValue] = useState('');
+  const [editMode, setEditMode] = useState<boolean>(false);
+
+  const handleChangeCategoryInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setCategoryInputValue(e.currentTarget.value);
+  };
+
+  const handleKeyPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setEditMode(!editMode);
+    }
+  };
+
+  const handleClickAddBtn = () => {
+    setEditMode(!editMode);
+  };
+
+  const handleClickEditBtn = () => {
+    setEditMode(!editMode);
+  };
+
   return (
     <EditBoxContainer>
       <CategoryBox>
-        <CategoryBtn className="selected">지원동기</CategoryBtn>
-        <CategoryBtn>자기소개</CategoryBtn>
-        <CategoryBtn>자기소개</CategoryBtn>
-        <AddBtn>
-          <img src={icon_plus} alt="추가하기" />
-          추가하기
-        </AddBtn>
+        {categories?.map((el) => {
+          return (
+            <CategoryBtn
+              key={el.categoryId}
+              className={selectedCategoryId === el.categoryId ? 'selected' : ''}
+              onClick={() => {
+                handleClickCategoryBtn(el.categoryId);
+              }}
+            >
+              {el.name}
+            </CategoryBtn>
+          );
+        })}
+        {editMode ? (
+          <CategoryInput
+            value={categoryInputValue}
+            placeholder="카테고리"
+            onChange={handleChangeCategoryInput}
+            onKeyPress={handleKeyPressEnter}
+            maxLength={20}
+          />
+        ) : (
+          <AddBtn onClick={handleClickAddBtn}>
+            <img src={icon_plus} alt="추가하기" />
+            추가하기
+          </AddBtn>
+        )}
       </CategoryBox>
-      <EditBtn>편집</EditBtn>
+      <EditBtn onClick={handleClickEditBtn}>
+        {editMode ? '완료' : '편집'}
+      </EditBtn>
     </EditBoxContainer>
   );
 };
@@ -89,5 +150,24 @@ const AddBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+`;
+
+const CategoryInput = styled.input`
+  width: 100px;
+  border: none;
+  margin: 0;
+  padding: 9px 15px;
+  border-radius: 18px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+
+  background-color: ${({ theme }) => theme.colors.grey6};
+  color: ${({ theme }) => theme.colors.navy2};
+  border: 1px solid ${({ theme }) => theme.colors.navy2};
+  font-family: 'PretendardMedium';
+
+  &:focus {
+    outline: none;
   }
 `;

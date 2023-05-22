@@ -1,18 +1,47 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+
 import { CategorizedItem } from './CategorizedItem';
 
-export const Categorized = () => {
+import { getCategorizedItemsAPI } from '@api/categoryAPIS';
+
+export interface ApplicationItem {
+  applicationItemId: number;
+  applicationQuestion: string;
+  applicationAnswer: string;
+}
+export interface CategorizedItem {
+  applicationItem: ApplicationItem;
+  applicationFormId: number;
+  recruiter: string;
+  year: number;
+  semester: 'first_half' | 'second_half';
+}
+interface propsType {
+  selectedCategoryId: number;
+}
+export const Categorized = ({ selectedCategoryId }: propsType) => {
+  const [categorizedItems, setCategorizedItems] = useState<CategorizedItem[]>();
+
+  useEffect(() => {
+    const apireturn = getCategorizedItemsAPI(selectedCategoryId);
+    apireturn
+      .then((res) => {
+        console.log(res);
+        setCategorizedItems(res);
+      })
+      .catch(() => {
+        setCategorizedItems([]);
+      });
+  }, [selectedCategoryId]);
+
   return (
     <CategorizedContainer>
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
-      <CategorizedItem />
+      {categorizedItems?.map((el, idx) => {
+        return (
+          <CategorizedItem key={el.applicationFormId} index={idx} item={el} />
+        );
+      })}
     </CategorizedContainer>
   );
 };

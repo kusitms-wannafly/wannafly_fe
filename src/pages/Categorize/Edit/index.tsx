@@ -1,16 +1,44 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 
 import { EditBox } from './EditBox';
 import { Categorized } from './Categorized';
 
+import { getAllCategoriesAPI } from '@api/categoryAPIS';
+
+export interface Category {
+  categoryId: number;
+  name: string;
+}
+
 export const CategoryEdit = () => {
+  const [categories, setCategories] = useState<Category[]>();
+  const [selectedCategoryId, setSelecteCategorydId] = useState<number>(1);
+
+  useEffect(() => {
+    const apireturn = getAllCategoriesAPI();
+    apireturn
+      .then((res) => {
+        console.log(res);
+        setCategories(res);
+      })
+      .catch(() => {
+        setCategories([]);
+      });
+  }, []);
+
   return (
     <CategoryEditContainer>
       <EditFixedContainer>
         <EditHeader>카테고리 만들기</EditHeader>
-        <EditBox />
+        <EditBox
+          categories={categories}
+          setCategories={setCategories}
+          selectedCategoryId={selectedCategoryId}
+          setSelecteCategorydId={setSelecteCategorydId}
+        />
       </EditFixedContainer>
-      <Categorized />
+      <Categorized selectedCategoryId={selectedCategoryId} />
     </CategoryEditContainer>
   );
 };
