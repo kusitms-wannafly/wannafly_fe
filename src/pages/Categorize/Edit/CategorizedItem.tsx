@@ -34,7 +34,7 @@ const CategorizedItemContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.grey6};
 
   border-radius: 6px;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   padding: 25px 30px;
 `;
 
