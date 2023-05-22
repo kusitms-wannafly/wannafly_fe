@@ -40,12 +40,13 @@ export const Categorized = ({ selectedCategoryId }: propsType) => {
         <EmptyBox>
           <div>지원항목을 등록해보세요!</div>
         </EmptyBox>
-      ) : null}
-      {categorizedItems?.map((el, idx) => {
-        return (
-          <CategorizedItem key={el.applicationFormId} index={idx} item={el} />
-        );
-      })}
+      ) : (
+        categorizedItems?.map((el, idx) => {
+          return (
+            <CategorizedItem key={el.applicationFormId} index={idx} item={el} />
+          );
+        })
+      )}
     </CategorizedContainer>
   );
 };
