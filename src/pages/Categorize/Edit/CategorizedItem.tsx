@@ -14,9 +14,9 @@ export const CategorizedItem = ({ index, item }: propsType) => {
       <QuestionContainer>
         <QuestionNumber>{`Q${index + 1}`}</QuestionNumber>
         <Question>{item.applicationItem.applicationQuestion}</Question>
-        <MinusBtn>
+        {/* <MinusBtn>
           <img src={icon_minus} alt="제거하기" />
-        </MinusBtn>
+        </MinusBtn> */}
       </QuestionContainer>
       <Answer>{item.applicationItem.applicationAnswer}</Answer>
       <InfoConatiner>
