@@ -39,3 +39,13 @@ export const addCategoryAPI = async (name: string) => {
     return;
   }
 };
+
+//카테고리 삭제
+export const deleteCategoryAPI = async (categoryId: number) => {
+  try {
+    await HttpClient.delete(`/api/categories/${categoryId}`, {});
+    return;
+  } catch {
+    return;
+  }
+};

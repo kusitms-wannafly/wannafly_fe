@@ -13,7 +13,7 @@ export interface Category {
 
 export const CategoryEdit = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategoryId, setSelecteCategorydId] = useState<number>(1);
+  const [selectedCategoryId, setSelecteCategorydId] = useState<number>(0);
 
   const getAllCategories = () => {
     const apireturn = getAllCategoriesAPI();
@@ -21,6 +21,7 @@ export const CategoryEdit = () => {
       .then((res) => {
         console.log(res);
         setCategories(res);
+        setSelecteCategorydId(res[0].categoryId);
       })
       .catch(() => {
         setCategories([]);

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import icon_plus from '@assets/icons/icon-plus-dark.svg';
+import icon_minus_blue from '@assets/icons/icon-minus-blue.png';
 
 import { CostModal } from '@components/modals/CostModal';
 import { Category } from '.';
-import { addCategoryAPI } from '@api/categoryAPIS';
+import { addCategoryAPI, deleteCategoryAPI } from '@api/categoryAPIS';
 
 interface propsType {
   categories: Category[];
@@ -25,22 +26,24 @@ export const EditBox = ({
   };
 
   const [categoryInputValue, setCategoryInputValue] = useState('');
-  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false); //카테고리 추가
+  const [deleteMode, setDeleteMode] = useState<boolean>(false); //카테고리 삭제
   const [isOpenCostModal, setIsOpenCostModal] = useState<boolean>(false);
 
   const handleChangeCategoryInput = (e: React.FormEvent<HTMLInputElement>) => {
     setCategoryInputValue(e.currentTarget.value);
   };
 
+  //카테고리 추가
   const handleKeyPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       //카테고리 개수 제한 3개
       if (categories.length < 3) {
-        //카테고리 추가
         const apireturn = addCategoryAPI(categoryInputValue);
         apireturn
           .then(() => {
             setEditMode(!editMode);
+            setCategoryInputValue('');
             getAllCategories();
           })
           .catch(() => {
@@ -48,16 +51,33 @@ export const EditBox = ({
           });
       } else {
         setIsOpenCostModal(true);
+        setEditMode(!editMode);
       }
     }
   };
 
+  //카테고리 삭제
+  const handleClickMinusBtn = (id: number) => {
+    const apireturn = deleteCategoryAPI(id);
+    apireturn
+      .then(() => {
+        //setDeleteMode(!deleteMode);
+        getAllCategories();
+        setSelecteCategorydId(categories[0].categoryId);
+      })
+      .catch(() => {
+        setDeleteMode(!deleteMode);
+      });
+  };
+
   const handleClickAddBtn = () => {
+    setCategoryInputValue('');
     setEditMode(!editMode);
   };
 
   const handleClickEditBtn = () => {
-    setEditMode(!editMode);
+    setCategoryInputValue('');
+    setDeleteMode(!deleteMode);
   };
 
   return (
@@ -68,11 +88,23 @@ export const EditBox = ({
             <CategoryBtn
               key={el.categoryId}
               className={selectedCategoryId === el.categoryId ? 'selected' : ''}
-              onClick={() => {
-                handleClickCategoryBtn(el.categoryId);
-              }}
             >
-              {el.name}
+              {deleteMode ? (
+                <MinusCategoryBtn
+                  onClick={() => {
+                    handleClickMinusBtn(el.categoryId);
+                  }}
+                >
+                  <img src={icon_minus_blue} alt="카테고리 제거" />
+                </MinusCategoryBtn>
+              ) : null}
+              <span
+                onClick={() => {
+                  handleClickCategoryBtn(el.categoryId);
+                }}
+              >
+                {el.name}
+              </span>
             </CategoryBtn>
           );
         })}
@@ -92,7 +124,7 @@ export const EditBox = ({
         )}
       </CategoryBox>
       <EditBtn onClick={handleClickEditBtn}>
-        {editMode ? '완료' : '편집'}
+        {deleteMode ? '완료' : '편집'}
       </EditBtn>
       <CostModal isOpen={isOpenCostModal} setIsOpen={setIsOpenCostModal} />
     </EditBoxContainer>
@@ -137,6 +169,9 @@ const CategoryBtn = styled.button`
   background-color: ${({ theme }) => theme.colors.grey6};
   color: ${({ theme }) => theme.colors.navy2};
   font-family: 'PretendardMedium';
+
+  display: flex;
+  align-content: center;
 
   &:hover {
     cursor: pointer;
@@ -189,5 +224,18 @@ const CategoryInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+`;
+
+const MinusCategoryBtn = styled.div`
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 4px;
+  background-color: transparent;
+  width: 14px;
+  height: 14px;
+  img {
+    width: 14px;
   }
 `;
