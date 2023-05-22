@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import { accessTokenAPI } from './authAPIS';
+import { accessTokenAPI } from './authAPIS';
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -11,44 +11,54 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-// axiosInstance.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   async (error) => {
-//     const originalRequest = error.config;
-//     if (error.response.status === 401 && !originalRequest._retry) {
-//       console.log('retry');
-//       //무한루프 방지
-//       originalRequest._retry = true;
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      //무한루프 방지
+      originalRequest._retry = true;
 
-//       //Refresh Token으로 새로운 AccessToken 요청
-//       try {
-//         const apiresult: Promise<any> = accessTokenAPI();
-//         return apiresult.then((res) => {
-//           const newAccessToken = res.accessToken;
+      //Refresh Token으로 새로운 AccessToken 요청
+      try {
+        const apiresult: Promise<any> = accessTokenAPI();
+        return apiresult.then((res) => {
+          const newAccessToken = res.accessToken;
 
-//           //새로운 AccessToken으로 원래 요청 재시도
-//           originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-//           axiosInstance.defaults.headers.common[
-//             'Authorization'
-//           ] = `Bearer ${newAccessToken}`;
+          //새로운 AccessToken으로 원래 요청 재시도
+          originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+          axiosInstance.defaults.headers.common[
+            'Authorization'
+          ] = `Bearer ${newAccessToken}`;
 
-//           //로컬스토리지에 새로운 accessToken 저장
-//           localStorage.setItem('accessToken', `Bearer ${newAccessToken}`);
+          //로컬스토리지에 새로운 accessToken 저장
+          localStorage.setItem('accessToken', `Bearer ${newAccessToken}`);
 
-//           return axiosInstance(originalRequest);
-//         });
-//       } catch (err) {
-//         //refresh Token이 만료된 경우 메인 페이지로 이동
-//         window.location.replace('/');
-//         return Promise.reject(err);
-//       }
-//     } else {
-//       return Promise.reject(error);
-//     }
-//   }
-// );
+          //재시도 횟수 최대 3번으로 제한
+          if (originalRequest._retryCount < 3) {
+            originalRequest._retryCount = originalRequest._retryCount || 0;
+            originalRequest._retryCount++;
+            return axiosInstance(originalRequest);
+          } else {
+            //로그아웃 처리
+            //localStorage.setItem('isLogin', 'false');
+            throw new Error('Maximum retry limit exceeded');
+          }
+          //return axiosInstance(originalRequest);
+        });
+      } catch (err) {
+        //refresh Token이 만료된 경우 메인 페이지로 이동
+        window.location.replace('/');
+        //localStorage.setItem('isLogin', 'false');
+        return Promise.reject(err);
+      }
+    } else {
+      return Promise.reject(error);
+    }
+  }
+);
 
 //http request 전 로컬스토리지에 있는 accessToken을 헤더에 포함
 axiosInstance.interceptors.request.use(

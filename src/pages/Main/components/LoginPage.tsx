@@ -16,7 +16,6 @@ export const LoginPage = () => {
     const apireturn = getAllFolderAPI();
     apireturn
       .then((res) => {
-        console.log(res);
         setFolders(res);
       })
       .catch(() => {
@@ -35,11 +34,16 @@ export const LoginPage = () => {
         <BannerDescription>지원서 관리를 한 곳에서</BannerDescription>
       </Banner>
       <FoldersContainer>
-        <YearSelectFolder getAllFolders={getAllFolders} />
+        <YearSelectFolder folders={folders} getAllFolders={getAllFolders} />
         <AllYearsFolder />
         {folders.map((folder, idx) => {
           return (
-            <ColorFolder year={folder.year} count={folder.count} idx={idx} />
+            <ColorFolder
+              key={folder.year}
+              year={folder.year}
+              count={folder.count}
+              idx={idx}
+            />
           );
         })}
       </FoldersContainer>

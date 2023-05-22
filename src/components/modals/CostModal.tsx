@@ -1,24 +1,54 @@
 import styled from 'styled-components';
 
-export const CostModal = () => {
+interface propsType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const CostModal = ({ isOpen, setIsOpen }: propsType) => {
+  const openModalHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <CostModalView>
-      <TextContainer>
-        <ProText>pro</ProText>
-        <DescriptionsText>
-          지원서 작성을 조금 더 빠르고 간편하게 할 수 있는 방법
-        </DescriptionsText>
-        <PayText>4,900원 월간 결제</PayText>
-        <UseBtn>이용하기</UseBtn>
-        <FeatureDescriptionText>
-          <FeatureTitleText>무료 요금제의 모든 기능 +</FeatureTitleText>
-          <FeatureDetail>무제한 카테고리 생성</FeatureDetail>
-          <FeatureDetail>무제한 키워드 검색</FeatureDetail>
-        </FeatureDescriptionText>
-      </TextContainer>
-    </CostModalView>
+    <CostModalContainer>
+      {isOpen ? (
+        <ModalBackdrop onClick={openModalHandler}>
+          <CostModalView onClick={(e) => e.stopPropagation()}>
+            <TextContainer>
+              <ProText>pro</ProText>
+              <DescriptionsText>
+                지원서 작성을 조금 더 빠르고 간편하게 할 수 있는 방법
+              </DescriptionsText>
+              <PayText>4,900원 월간 결제</PayText>
+              <UseBtn>이용하기</UseBtn>
+              <FeatureDescriptionText>
+                <FeatureTitleText>무료 요금제의 모든 기능 +</FeatureTitleText>
+                <FeatureDetail>무제한 카테고리 생성</FeatureDetail>
+                <FeatureDetail>무제한 키워드 검색</FeatureDetail>
+              </FeatureDescriptionText>
+            </TextContainer>
+          </CostModalView>
+        </ModalBackdrop>
+      ) : null}
+    </CostModalContainer>
   );
 };
+
+const CostModalContainer = styled.div`
+  z-index: 500;
+`;
+
+const ModalBackdrop = styled.div`
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const CostModalView = styled.div`
   width: 370px;
@@ -34,7 +64,7 @@ const CostModalView = styled.div`
 `;
 
 const TextContainer = styled.div`
-  left-margin: 10px;
+  margin-left: 10px;
 `;
 
 const ProText = styled.div`

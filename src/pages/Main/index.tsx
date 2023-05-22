@@ -2,15 +2,10 @@ import { PageContainer } from '@components/Layout/PageContainer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { LoginAlert } from '@features/oauth/LoginAlert';
-import { useLocation } from 'react-router-dom';
-
 import { NotLoginPage } from './components/NotLoginPage';
 import { LoginPage } from './components/LoginPage';
 
 export const MainPage = () => {
-  const location = useLocation();
-  const loginState = location.state?.loginState;
-
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,7 +21,7 @@ export const MainPage = () => {
     <PageContainer header>
       <MainPageContainer>
         {isLogin ? <LoginPage /> : <NotLoginPage />}
-        <LoginAlert loginState={loginState} />
+        <LoginAlert />
       </MainPageContainer>
     </PageContainer>
   );
