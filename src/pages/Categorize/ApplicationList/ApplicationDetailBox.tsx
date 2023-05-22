@@ -32,7 +32,12 @@ export const ApplicationDetailBox = ({
   setPageState,
   selectedCategoryId,
 }: propsType) => {
-  const [applicationForm, setApplicationForm] = useState<applicationForm>();
+  const [applicationForm, setApplicationForm] = useState<applicationForm>({
+    recruiter: '',
+    year: 2023,
+    semester: 'first_half',
+    applicationItems: [],
+  });
 
   useEffect(() => {
     const apireturn = getApplicationDetailAPI(selectedDetailFormId);
