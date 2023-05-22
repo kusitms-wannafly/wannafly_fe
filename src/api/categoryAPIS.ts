@@ -49,3 +49,17 @@ export const deleteCategoryAPI = async (categoryId: number) => {
     return;
   }
 };
+
+//카테고리에 지원항목 등록
+export const addItemToCategory = async (categoryId: number, itemId: number) => {
+  try {
+    await HttpClient.post(
+      `/api/categories/${categoryId}/application-items/${itemId}`,
+      {},
+      {}
+    );
+    return;
+  } catch {
+    return;
+  }
+};

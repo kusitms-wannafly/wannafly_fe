@@ -27,7 +27,6 @@ export const Categorized = ({ selectedCategoryId }: propsType) => {
     const apireturn = getCategorizedItemsAPI(selectedCategoryId);
     apireturn
       .then((res) => {
-        console.log(res);
         setCategorizedItems(res);
       })
       .catch(() => {
@@ -37,6 +36,11 @@ export const Categorized = ({ selectedCategoryId }: propsType) => {
 
   return (
     <CategorizedContainer>
+      {categorizedItems?.length === 0 ? (
+        <EmptyBox>
+          <div>지원항목을 등록해보세요!</div>
+        </EmptyBox>
+      ) : null}
       {categorizedItems?.map((el, idx) => {
         return (
           <CategorizedItem key={el.applicationFormId} index={idx} item={el} />
@@ -55,4 +59,15 @@ const CategorizedContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const EmptyBox = styled.div`
+  height: 70%;
+  color: ${({ theme }) => theme.colors.wht};
+  font-family: 'HappinessSansBold';
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

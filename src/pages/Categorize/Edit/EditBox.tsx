@@ -21,7 +21,6 @@ export const EditBox = ({
   getAllCategories,
 }: propsType) => {
   const handleClickCategoryBtn = (id: number) => {
-    console.log(id);
     setSelecteCategorydId(id);
   };
 
@@ -61,7 +60,6 @@ export const EditBox = ({
     const apireturn = deleteCategoryAPI(id);
     apireturn
       .then(() => {
-        //setDeleteMode(!deleteMode);
         getAllCategories();
         setSelecteCategorydId(categories[0].categoryId);
       })

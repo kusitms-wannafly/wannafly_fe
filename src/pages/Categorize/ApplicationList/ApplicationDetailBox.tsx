@@ -25,10 +25,12 @@ interface applicationForm {
 interface propsType {
   selectedDetailFormId: number;
   setPageState: React.Dispatch<React.SetStateAction<State>>;
+  selectedCategoryId: number;
 }
 export const ApplicationDetailBox = ({
   selectedDetailFormId,
   setPageState,
+  selectedCategoryId,
 }: propsType) => {
   const [applicationForm, setApplicationForm] = useState<applicationForm>();
 
@@ -59,8 +61,10 @@ export const ApplicationDetailBox = ({
           <ApplicationItemBox
             key={item.applicationItemId}
             index={idx}
+            itemId={item.applicationItemId}
             question={item.applicationQuestion}
             answer={item.applicationAnswer}
+            selectedCategoryId={selectedCategoryId}
           />
         );
       })}

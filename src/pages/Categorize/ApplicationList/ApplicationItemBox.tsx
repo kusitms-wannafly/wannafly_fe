@@ -1,19 +1,39 @@
 import styled from 'styled-components';
 import icon_plus_black from '@assets/icons/icon-plus-black.svg';
 
+import { addItemToCategory } from '@api/categoryAPIS';
+
 interface propsType {
   index: number;
+  itemId: number;
   question: string;
   answer: string;
+  selectedCategoryId: number;
 }
 
-export const ApplicationItemBox = ({ index, question, answer }: propsType) => {
+export const ApplicationItemBox = ({
+  index,
+  itemId,
+  question,
+  answer,
+  selectedCategoryId,
+}: propsType) => {
+  //카테고리에 지원항목 등록
+  const handleClickAddCateogryBtn = () => {
+    const apireturn = addItemToCategory(selectedCategoryId, itemId);
+    apireturn
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(() => {});
+  };
+
   return (
     <ApplicationItemBoxContainer>
       <QuestionContainer>
         <QuestionNumber>{`Q${index + 1}`}</QuestionNumber>
         <Question>{question}</Question>
-        <PlusBtn>
+        <PlusBtn onClick={handleClickAddCateogryBtn}>
           <img src={icon_plus_black} alt="카테고리에 추가" />
         </PlusBtn>
       </QuestionContainer>

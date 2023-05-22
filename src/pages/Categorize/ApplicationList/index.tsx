@@ -8,7 +8,11 @@ enum State {
   'List',
   'Detail',
 }
-export const ApplicationList = () => {
+
+interface propsType {
+  selectedCategoryId: number;
+}
+export const ApplicationList = ({ selectedCategoryId }: propsType) => {
   const [pageState, setPageState] = useState<State>(State.List);
   const [selectedDetailFormId, setSelectedDetailFormId] = useState<number>(0);
 
@@ -24,12 +28,11 @@ export const ApplicationList = () => {
         </>
       ) : null}
       {pageState === State.Detail ? (
-        <>
-          <ApplicationDetailBox
-            setPageState={setPageState}
-            selectedDetailFormId={selectedDetailFormId}
-          />
-        </>
+        <ApplicationDetailBox
+          setPageState={setPageState}
+          selectedDetailFormId={selectedDetailFormId}
+          selectedCategoryId={selectedCategoryId}
+        />
       ) : null}
     </ApplicationListContainer>
   );

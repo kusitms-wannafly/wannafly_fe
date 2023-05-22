@@ -11,15 +11,20 @@ export interface Category {
   name: string;
 }
 
-export const CategoryEdit = () => {
+interface propsType {
+  selectedCategoryId: number;
+  setSelecteCategorydId: React.Dispatch<React.SetStateAction<number>>;
+}
+export const CategoryEdit = ({
+  selectedCategoryId,
+  setSelecteCategorydId,
+}: propsType) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategoryId, setSelecteCategorydId] = useState<number>(0);
 
   const getAllCategories = () => {
     const apireturn = getAllCategoriesAPI();
     apireturn
       .then((res) => {
-        console.log(res);
         setCategories(res);
         setSelecteCategorydId(res[0].categoryId);
       })
