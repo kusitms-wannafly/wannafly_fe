@@ -78,7 +78,7 @@ export const ApplicationDetailBox = ({
 };
 
 const DetailBoxContainer = styled.div`
-  padding: 0 40px;
+  padding: 0 40px 80px;
 `;
 
 const DetailHeader = styled.div`

@@ -53,6 +53,7 @@ const CategorizedContainer = styled.div`
   width: 100%;
   height: 100%;
   padding-top: 170px;
+  padding-bottom: 40px;
 
   overflow-y: scroll;
   &::-webkit-scrollbar {
