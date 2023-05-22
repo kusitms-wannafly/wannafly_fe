@@ -43,7 +43,7 @@ axiosInstance.interceptors.response.use(
             return axiosInstance(originalRequest);
           } else {
             //로그아웃 처리
-            localStorage.setItem('isLogin', 'false');
+            //localStorage.setItem('isLogin', 'false');
             throw new Error('Maximum retry limit exceeded');
           }
           //return axiosInstance(originalRequest);
@@ -51,7 +51,7 @@ axiosInstance.interceptors.response.use(
       } catch (err) {
         //refresh Token이 만료된 경우 메인 페이지로 이동
         window.location.replace('/');
-        localStorage.setItem('isLogin', 'false');
+        //localStorage.setItem('isLogin', 'false');
         return Promise.reject(err);
       }
     } else {
