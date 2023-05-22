@@ -4,16 +4,21 @@ import plus_icon from '@assets/icons/icon-plus-dark.svg';
 import { useState } from 'react';
 import { postFolderAPI } from '@api/folderAPIS';
 
+interface Folder {
+  year: number;
+  count: number;
+}
 const yearoptions = [
   2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013,
 ];
 
 interface propsType {
+  folders: Folder[];
   getAllFolders: () => void;
 }
-export const YearSelectFolder = ({ getAllFolders }: propsType) => {
+export const YearSelectFolder = ({ folders, getAllFolders }: propsType) => {
   const [selectState, setSelectState] = useState<boolean>(false);
-  const [yearOption, setYearOption] = useState<number>(20);
+  const [yearOption, setYearOption] = useState<number>(2023);
 
   const handleChangeSelectYear = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setYearOption(Number(e.currentTarget.value));
@@ -30,16 +35,24 @@ export const YearSelectFolder = ({ getAllFolders }: propsType) => {
       });
   };
 
+  const filterYearSelectOption = () => {
+    const createdYears = folders.map((row) => row.year);
+    const filteredYears = yearoptions.filter((el) => {
+      return !createdYears.includes(el);
+    });
+    return filteredYears;
+  };
+
   return (
     <YearSelectFolderContainer>
       <img src={grey_folder_img} alt="년도 선택 폴더" />
       {selectState ? (
         <>
           <SelectBox onChange={handleChangeSelectYear}>
-            <option value="" disabled hidden>
+            <option value="" disabled>
               년도 선택
             </option>
-            {yearoptions.map((year) => {
+            {filterYearSelectOption().map((year) => {
               return (
                 <option key={year} value={year}>
                   {year}
