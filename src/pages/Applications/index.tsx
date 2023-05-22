@@ -83,6 +83,7 @@ const ApplicationsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: flex-start;
 
   overflow-y: scroll;
   &::-webkit-scrollbar {
