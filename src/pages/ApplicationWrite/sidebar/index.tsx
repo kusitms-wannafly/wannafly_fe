@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ApplicationSearchHeader } from './components/ApplicationSearchHeader';
 import { ApplicationFolders } from './applications/ApplicationFolders';
 import { ApplicationDetail } from './applications/ApplicationDetail';
-import { Categories } from './category/Categories';
+import { Categories } from './categorized/Categories';
 
 export enum State {
   all = '전체 지원서',
