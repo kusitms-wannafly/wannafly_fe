@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ApplicationListBox } from './ApplicationListBox';
 import { ApplicationDetailBox } from './ApplicationDetailBox';
@@ -15,6 +16,12 @@ interface propsType {
 export const ApplicationList = ({ selectedCategoryId }: propsType) => {
   const [pageState, setPageState] = useState<State>(State.List);
   const [selectedDetailFormId, setSelectedDetailFormId] = useState<number>(0);
+
+  const navigate = useNavigate();
+
+  const handleClickLeaveBtn = () => {
+    navigate('/applications');
+  };
 
   return (
     <ApplicationListContainer>
@@ -34,6 +41,9 @@ export const ApplicationList = ({ selectedCategoryId }: propsType) => {
           selectedCategoryId={selectedCategoryId}
         />
       ) : null}
+      <LeaveBtnContainer>
+        <LeaveBtn onClick={handleClickLeaveBtn}>저장하고 나가기</LeaveBtn>
+      </LeaveBtnContainer>
     </ApplicationListContainer>
   );
 };
@@ -55,10 +65,35 @@ const ApplicationListHeader = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 30px 40px;
+  padding: 30px 50px;
 
   background-color: ${({ theme }) => theme.colors.grey8};
   color: ${({ theme }) => theme.colors.wht};
   font-family: 'PretendardMedium';
   font-size: 20px;
+`;
+
+const LeaveBtnContainer = styled.div`
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(30, 31, 32, 0) 0%, #1e1f20 91.87%);
+  bottom: 0;
+`;
+
+const LeaveBtn = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.navy4};
+  color: ${({ theme }) => theme.colors.wht};
+  font-family: 'PretendardMedium';
+  font-size: 14px;
+  width: 200px;
+  height: 50px;
+  border-radius: 6px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
