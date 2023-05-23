@@ -153,6 +153,7 @@ const EditBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
 `;
 

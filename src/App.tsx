@@ -3,8 +3,6 @@ import GlobalFonts from './assets/fonts/fonts';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
-import { MemberPage } from '@pages/Member/MemberPage';
-
 import { MainPage } from '@pages/Main';
 import { ApplicationsPage } from '@pages/Applications';
 import { NoMatchPage } from '@pages/NoMatch/NoMatchPage';
@@ -21,11 +19,10 @@ function App() {
         <GlobalStyle />
         <GlobalFonts />
         <Routes>
+          <Route path="/token" element={<LoginRedirect />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/applications" element={<ApplicationsPage />} />
           <Route path="/applications/:year" element={<ApplicationsPage />} />
-          <Route path="/member" element={<MemberPage />} />
-          <Route path="/token" element={<LoginRedirect />} />
           <Route path="/write" element={<ApplicationWritePage />} />
           <Route path="/edit/:formId" element={<ApplicationEditPage />} />
           <Route path="/categorize" element={<CategorizePage />} />

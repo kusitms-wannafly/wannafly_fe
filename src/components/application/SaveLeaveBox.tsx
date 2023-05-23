@@ -27,6 +27,7 @@ export const LeaveBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.grey5};
   }
 `;
 
@@ -43,5 +44,6 @@ export const SaveBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
 `;

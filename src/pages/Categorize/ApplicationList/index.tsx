@@ -95,5 +95,6 @@ const LeaveBtn = styled.button`
   border-radius: 6px;
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
 `;
