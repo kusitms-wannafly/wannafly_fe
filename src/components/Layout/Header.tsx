@@ -43,6 +43,8 @@ export const Header = () => {
         navigate('/write');
       } else if (type === 'categorize') {
         navigate('/categorize');
+      } else if (type === 'applications') {
+        navigate('/applications');
       }
     } else {
       setIsOpenLoginModal(true);
@@ -58,17 +60,18 @@ export const Header = () => {
             <Logo src={logo_yello} alt="로고 이미지" />
           </Link>
           <HeaderOptions>
-            <Link to="/applications">
-              <HeaderBtn
-                className={
-                  selection === HeaderSelection.MYAPPLY && isLogin === 'true'
-                    ? 'current'
-                    : ''
-                }
-              >
-                내 지원서
-              </HeaderBtn>
-            </Link>
+            <HeaderBtn
+              className={
+                selection === HeaderSelection.MYAPPLY && isLogin === 'true'
+                  ? 'current'
+                  : ''
+              }
+              onClick={() => {
+                handleClickHeaderBtn('applications');
+              }}
+            >
+              내 지원서
+            </HeaderBtn>
             <HeaderBtn
               className={selection === HeaderSelection.WRITE ? 'current' : ''}
               onClick={() => {

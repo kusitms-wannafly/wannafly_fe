@@ -87,7 +87,7 @@ export const LengthCount = styled.div`
   font-size: 12px;
   div {
     margin: 0 10px;
-    width: 90px;
+    white-space: nowrap;
   }
   span {
     color: ${({ theme }) => theme.colors.navy2};
