@@ -39,6 +39,9 @@ const AllYearsFolderContainer = styled.div`
   }
   &:hover {
     cursor: pointer;
+    img {
+      filter: brightness(95%);
+    }
   }
   position: relative;
 `;

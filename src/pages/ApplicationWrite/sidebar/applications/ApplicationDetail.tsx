@@ -51,8 +51,8 @@ export const ApplicationDetail = ({ detailId, setSearchState }: propsType) => {
         <GoBackBtn onClick={handleClickGoBack}>
           <img src={icon_back} alt="뒤로가기" />
         </GoBackBtn>
-        <Recruiter>{applicationDetail?.recruiter}</Recruiter>
-        <Date>{`${applicationDetail?.year}년 ${
+        <Recruiter>{applicationDetail?.recruiter || ''}</Recruiter>
+        <Date>{`${applicationDetail?.year || ''}년 ${
           applicationDetail?.semester === 'first_half' ? '상반기' : '하반기'
         }`}</Date>
       </DetailHeader>

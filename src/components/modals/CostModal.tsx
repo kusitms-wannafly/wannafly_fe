@@ -39,6 +39,7 @@ const CostModalContainer = styled.div`
 `;
 
 const ModalBackdrop = styled.div`
+  z-index: 1000;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   left: 0;

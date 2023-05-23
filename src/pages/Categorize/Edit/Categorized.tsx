@@ -40,12 +40,11 @@ export const Categorized = ({ selectedCategoryId }: propsType) => {
         <EmptyBox>
           <div>지원항목을 등록해보세요!</div>
         </EmptyBox>
-      ) : null}
-      {categorizedItems?.map((el, idx) => {
-        return (
-          <CategorizedItem key={el.applicationFormId} index={idx} item={el} />
-        );
-      })}
+      ) : (
+        categorizedItems?.map((el, idx) => {
+          return <CategorizedItem key={idx} index={idx} item={el} />;
+        })
+      )}
     </CategorizedContainer>
   );
 };
@@ -54,6 +53,7 @@ const CategorizedContainer = styled.div`
   width: 100%;
   height: 100%;
   padding-top: 170px;
+  padding-bottom: 40px;
 
   overflow-y: scroll;
   &::-webkit-scrollbar {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AllFolderImage from '@assets/images/all-folders.png';
+import AllFolderImage from '@assets/images/all-folders.svg';
 
 export const NotLoginPage = () => {
   return (

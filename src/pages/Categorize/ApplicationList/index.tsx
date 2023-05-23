@@ -76,14 +76,14 @@ const ApplicationListHeader = styled.div`
 const LeaveBtnContainer = styled.div`
   width: 100%;
   height: 80px;
-  position: absolute;
+  position: fixed;
   background: linear-gradient(180deg, rgba(30, 31, 32, 0) 0%, #1e1f20 91.87%);
   bottom: 0;
 `;
 
 const LeaveBtn = styled.button`
-  position: absolute;
-  top: 10px;
+  position: fixed;
+  bottom: 20px;
   right: 20px;
   border: none;
   background-color: ${({ theme }) => theme.colors.navy4};
@@ -95,5 +95,6 @@ const LeaveBtn = styled.button`
   border-radius: 6px;
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
 `;

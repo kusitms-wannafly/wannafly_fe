@@ -102,6 +102,7 @@ const NotDeleteBtn = styled.div`
   line-height: 40px;
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.grey5};
   }
   margin: 0 3px;
 `;

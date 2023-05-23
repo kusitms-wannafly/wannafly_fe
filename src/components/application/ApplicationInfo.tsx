@@ -18,6 +18,9 @@ export const RecruiterInput = styled.input`
   padding: 0 20px;
   font-family: 'PretendardMedium';
   font-size: 16px;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.grey3};
+  }
 `;
 
 export const YearSelect = styled.select`
@@ -27,13 +30,20 @@ export const YearSelect = styled.select`
   &:focus {
     outline: none;
   }
+  &:hover {
+    cursor: pointer;
+  }
+  text-align-last: center;
 
-  width: 140px;
+  width: 100px;
   height: 50px;
   border-radius: 6px;
   padding: 0 20px;
   margin: 0 10px;
   font-family: 'PretendardMedium';
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
 `;
 
 export const SemesterSelectBox = styled.div`

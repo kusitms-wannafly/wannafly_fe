@@ -136,6 +136,9 @@ const EditBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    img {
+      filter: brightness(1.5);
+    }
   }
 `;
 
@@ -150,5 +153,8 @@ const DeleteBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    img {
+      filter: brightness(1.5);
+    }
   }
 `;
