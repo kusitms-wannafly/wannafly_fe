@@ -97,7 +97,7 @@ const EmptyListBox = styled.div`
 const ListBoxContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: 80px 50px 40px;
+  padding: 80px 50px 80px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

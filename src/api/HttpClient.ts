@@ -25,33 +25,34 @@ axiosInstance.interceptors.response.use(
       try {
         const apiresult: Promise<any> = accessTokenAPI();
         return apiresult.then((res) => {
-          const newAccessToken = res.accessToken;
+          if (res.accessToken !== undefined) {
+            const newAccessToken = res.accessToken;
 
-          //새로운 AccessToken으로 원래 요청 재시도
-          originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-          axiosInstance.defaults.headers.common[
-            'Authorization'
-          ] = `Bearer ${newAccessToken}`;
+            //새로운 AccessToken으로 원래 요청 재시도
+            originalRequest.headers[
+              'Authorization'
+            ] = `Bearer ${newAccessToken}`;
+            axiosInstance.defaults.headers.common[
+              'Authorization'
+            ] = `Bearer ${newAccessToken}`;
 
-          //로컬스토리지에 새로운 accessToken 저장
-          localStorage.setItem('accessToken', `Bearer ${newAccessToken}`);
+            //로컬스토리지에 새로운 accessToken 저장
+            localStorage.setItem('accessToken', `Bearer ${newAccessToken}`);
 
-          //재시도 횟수 최대 3번으로 제한
-          if (originalRequest._retryCount < 3) {
-            originalRequest._retryCount = originalRequest._retryCount || 0;
-            originalRequest._retryCount++;
-            return axiosInstance(originalRequest);
-          } else {
-            //로그아웃 처리
-            //localStorage.setItem('isLogin', 'false');
-            throw new Error('Maximum retry limit exceeded');
+            //재시도 횟수 최대 3번으로 제한
+            if (originalRequest._retryCount < 3) {
+              originalRequest._retryCount = originalRequest._retryCount || 0;
+              originalRequest._retryCount++;
+              return axiosInstance(originalRequest);
+            } else {
+              throw new Error('Maximum retry limit exceeded');
+            }
           }
-          //return axiosInstance(originalRequest);
         });
       } catch (err) {
         //refresh Token이 만료된 경우 메인 페이지로 이동
         window.location.replace('/');
-        //localStorage.setItem('isLogin', 'false');
+        localStorage.setItem('isLogin', 'false');
         return Promise.reject(err);
       }
     } else {

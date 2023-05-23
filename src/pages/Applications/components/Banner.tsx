@@ -110,6 +110,10 @@ const WriteBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
+  }
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.navy5};
   }
 `;
 
@@ -129,6 +133,9 @@ const YearBtn = styled.button`
     cursor: pointer;
     background-color: ${({ theme }) => theme.colors.navy4};
     color: ${({ theme }) => theme.colors.wht};
+  }
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.navy5};
   }
 
   &.current {

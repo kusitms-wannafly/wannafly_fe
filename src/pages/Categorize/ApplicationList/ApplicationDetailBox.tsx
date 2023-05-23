@@ -32,7 +32,12 @@ export const ApplicationDetailBox = ({
   setPageState,
   selectedCategoryId,
 }: propsType) => {
-  const [applicationForm, setApplicationForm] = useState<applicationForm>();
+  const [applicationForm, setApplicationForm] = useState<applicationForm>({
+    recruiter: '',
+    year: 2023,
+    semester: 'first_half',
+    applicationItems: [],
+  });
 
   useEffect(() => {
     const apireturn = getApplicationDetailAPI(selectedDetailFormId);
@@ -73,7 +78,7 @@ export const ApplicationDetailBox = ({
 };
 
 const DetailBoxContainer = styled.div`
-  padding: 0 40px;
+  padding: 0 40px 80px;
 `;
 
 const DetailHeader = styled.div`

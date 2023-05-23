@@ -49,7 +49,7 @@ export const YearSelectFolder = ({ folders, getAllFolders }: propsType) => {
       {selectState ? (
         <>
           <SelectBox onChange={handleChangeSelectYear}>
-            <option value="" disabled>
+            <option hidden={true} value="" disabled selected={true}>
               년도 선택
             </option>
             {filterYearSelectOption().map((year) => {
@@ -96,7 +96,7 @@ const DarkBox = styled.button`
   position: absolute;
   background-color: ${({ theme }) => theme.colors.grey8};
   top: 35%;
-  left: 20%;
+  left: 22%;
   width: 120px;
   height: 36px;
   border-radius: 6px;
@@ -122,7 +122,7 @@ const SelectBox = styled.select`
   position: absolute;
   background-color: ${({ theme }) => theme.colors.grey8};
   top: 35%;
-  left: 20%;
+  left: 22%;
   width: 120px;
   height: 36px;
   border-radius: 6px;
@@ -134,6 +134,13 @@ const SelectBox = styled.select`
   &:focus {
     outline: none;
   }
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.grey7};
+  }
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
 `;
 
 const AddFolderBtn = styled.button`
@@ -150,5 +157,9 @@ const AddFolderBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy4};
+  }
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.navy5};
   }
 `;

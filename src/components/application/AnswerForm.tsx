@@ -40,7 +40,7 @@ export const QuestionInput = styled.input`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.grey1};
   &::placeholder {
-    color: ${({ theme }) => theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey3};
   }
   &:focus {
     outline: none;
@@ -57,7 +57,7 @@ export const AnswerInput = styled.textarea`
   border: none;
   color: ${({ theme }) => theme.colors.grey1};
   &::placeholder {
-    color: ${({ theme }) => theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey3};
   }
   &:focus {
     outline: none;
@@ -105,6 +105,8 @@ export const SpellCheckBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    border: 1px solid ${({ theme }) => theme.colors.navy2};
+    color: ${({ theme }) => theme.colors.navy2};
   }
   font-family: 'PretendardMedium';
 `;

@@ -84,6 +84,7 @@ export const NoBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.grey5};
   }
 `;
 
@@ -100,6 +101,7 @@ export const YesBtn = styled.button`
 
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
 `;
 

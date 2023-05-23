@@ -39,6 +39,9 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.navy4};
     color: ${({ theme }) => theme.colors.wht};
   }
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.navy5};
+  }
 
   &.selected {
     background-color: ${({ theme }) => theme.colors.navy4};
