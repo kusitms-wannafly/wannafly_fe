@@ -55,14 +55,16 @@ export const ApplicationBox = styled.div`
 
 export const ApplicationBoxHeader = styled.div`
   display: flex;
-  font-size: 25px;
+  font-size: 19px;
   font-weight: normal;
-  margin-top: 12px;
+  margin-top: 30px;
+  margin-left: 12px;
   color: ${(props) => props.theme.colors.wht};
   font-family: 'PretendardBold';
 `;
 
 export const ApplicationBoxClubName = styled.div`
+  width: 250px;
   display: flex;
 `;
 
@@ -73,7 +75,8 @@ export const IsWritingBox = styled.div`
   font-size: 11px;
   text-align: center;
   margin-left: 5px;
-  margin-top: 2px;
+  padding-top: 5px;
+  border-radius: 4px;
   color: ${(props) => props.theme.colors.yellow5};
   background-color: ${(props) => props.theme.colors.yellow2};
 `;
@@ -83,7 +86,13 @@ export const ApplicationBoxFooter = styled.div`
   display: flex;
   gap: 10px;
   color: ${(props) => props.theme.colors.grey3};
-  margin-top: 80px;
+  margin-top: 60px;
+  margin-right: 15px;
+`;
+
+export const YearSemester = styled.div`
+  font-size: 13px;
+  margin-top: 4px;
 `;
 
 export const BtnsContainer = styled.div``;
@@ -92,7 +101,6 @@ export const NoBtn = styled.button`
   width: 160px;
   height: 50px;
   margin: 0 5px;
-
   border: none;
   border-radius: 4px;
   color: #ffffff;
@@ -123,17 +131,15 @@ export const YesBtn = styled.button`
 `;
 
 export const ButtonsInBox = styled.div`
-  margin-left: 100px;
+  margin-left: 80px;
   display: flex;
   gap: 5px;
 `;
 
 export const EditButton = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 22px;
 `;
 
 export const TrashButton = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 22px;
 `;

@@ -15,6 +15,7 @@ import {
   TrashButton,
   ApplicationBoxClubName,
   IsWritingBox,
+  YearSemester,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
@@ -94,8 +95,11 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
                 </ApplicationBoxClubName>
               </ApplicationBoxHeader>
               <ApplicationBoxFooter>
-                <div>{form.year}</div>
-                <div>{form.semester}</div>
+                <YearSemester>
+                  <div>
+                    {form.year} {form.semester}
+                  </div>
+                </YearSemester>
                 <ButtonsInBox>
                   <EditButton src={edit_icon} alt="수정하기 버튼" />
                   <TrashButton src={delete_icon} alt="삭제하기 버튼" />
