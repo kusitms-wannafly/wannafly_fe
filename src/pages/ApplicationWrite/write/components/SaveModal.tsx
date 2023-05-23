@@ -13,6 +13,8 @@ import {
   ButtonsInBox,
   EditButton,
   TrashButton,
+  ApplicationBoxClubName,
+  IsWritingBox,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
@@ -86,7 +88,10 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
             </GuideText>
             <ApplicationBox>
               <ApplicationBoxHeader>
-                <div>{form.recruiter}</div>
+                <ApplicationBoxClubName>
+                  <div>{form.recruiter}</div>
+                  <IsWritingBox>작성중</IsWritingBox>
+                </ApplicationBoxClubName>
               </ApplicationBoxHeader>
               <ApplicationBoxFooter>
                 <div>{form.year}</div>
@@ -107,4 +112,3 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
     </ModalContainer>
   );
 };
-

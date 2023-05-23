@@ -54,11 +54,28 @@ export const ApplicationBox = styled.div`
 `;
 
 export const ApplicationBoxHeader = styled.div`
+  display: flex;
   font-size: 25px;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-top: 12px;
   color: ${(props) => props.theme.colors.wht};
   font-family: 'PretendardBold';
+`;
+
+export const ApplicationBoxClubName = styled.div`
+  display: flex;
+`;
+
+export const IsWritingBox = styled.div`
+  width: 40px;
+  height: 20px;
+  justify-content: center;
+  font-size: 11px;
+  text-align: center;
+  margin-left: 5px;
+  margin-top: 2px;
+  color: ${(props) => props.theme.colors.yellow5};
+  background-color: ${(props) => props.theme.colors.yellow2};
 `;
 
 export const ApplicationBoxFooter = styled.div`
@@ -109,7 +126,7 @@ export const ButtonsInBox = styled.div`
   margin-left: 100px;
   display: flex;
   gap: 5px;
-`
+`;
 
 export const EditButton = styled.img`
   width: 20px;
