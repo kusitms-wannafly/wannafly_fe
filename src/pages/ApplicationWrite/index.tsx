@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { getAllApplicationAPI } from '@api/applicationAPIS';
 import { PageContainer } from '@components/Layout/PageContainer';
-import { ApplicationSearch } from './search';
+import { ApplicationSearch } from './sidebar';
 import { ApplicationWrite } from './write';
 
 export const ApplicationWritePage = () => {

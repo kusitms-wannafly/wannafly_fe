@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { PageContainer } from '@components/Layout/PageContainer';
-import { ApplicationSearch } from '@pages/ApplicationWrite/search';
+import { ApplicationSearch } from '@pages/ApplicationWrite/sidebar';
 import { getAllApplicationAPI } from '@api/applicationAPIS';
 import { ApplicationEditForm } from './edit';
 
