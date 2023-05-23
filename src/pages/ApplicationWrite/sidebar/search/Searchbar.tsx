@@ -17,7 +17,6 @@ export const Searchbar = ({
 
   const handleKeyPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('검색');
       getApplications();
     }
   };
