@@ -136,6 +136,7 @@ const SelectBox = styled.select`
   }
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.grey7};
   }
   -webkit-appearance: none; /* 크롬 화살표 없애기 */
   -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
