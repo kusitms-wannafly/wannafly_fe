@@ -16,10 +16,12 @@ import {
   ApplicationBoxClubName,
   IsWritingBox,
   YearSemester,
+  ModifiedDateBox,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
+import { getModifiedDateString } from '@pages/Applications/util/getModifiedDateString';
 
 import edit_icon from '@assets/icons/icon-edit.svg';
 import delete_icon from '@assets/icons/icon-trash.svg';
@@ -95,7 +97,9 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
                   <div>{form.recruiter}</div>
                   <IsWritingBox>작성중</IsWritingBox>
                 </ApplicationBoxClubName>
-                {/* <div>{form.lastModifiedTime}</div> */}
+                <ModifiedDateBox>
+                  <div>4월 2일 수정</div>
+                </ModifiedDateBox>
               </ApplicationBoxHeader>
               <ApplicationBoxFooter>
                 <YearSemester>

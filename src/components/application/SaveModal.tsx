@@ -64,8 +64,9 @@ export const ApplicationBoxHeader = styled.div`
 `;
 
 export const ApplicationBoxClubName = styled.div`
-  width: 250px;
+  width: 100px;
   display: flex;
+  margin-right: 70px;
 `;
 
 export const IsWritingBox = styled.div`
@@ -81,13 +82,21 @@ export const IsWritingBox = styled.div`
   background-color: ${(props) => props.theme.colors.yellow2};
 `;
 
+export const ModifiedDateBox = styled.div`
+  font-size: 12px;
+  font-family: 'PretendardLight';
+  padding-top: 4px;
+  margin-right: 30px;
+  color: ${(props) => props.theme.colors.grey3};
+`;
+
 export const ApplicationBoxFooter = styled.div`
   font-family: 'PretendardLight';
   display: flex;
   gap: 10px;
   color: ${(props) => props.theme.colors.grey3};
   margin-top: 60px;
-  margin-right: 15px;
+  margin-right: 20px;
 `;
 
 export const YearSemester = styled.div`
