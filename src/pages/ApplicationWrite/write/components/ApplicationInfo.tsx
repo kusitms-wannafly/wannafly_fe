@@ -35,6 +35,7 @@ export const ApplicationInfo = ({ form, setForm }: propsType) => {
       <RecruiterInput
         value={form?.recruiter}
         onChange={handleChangeRecruiterInput}
+        placeholder="동아리명을 입력해주세요."
         maxLength={30}
       />
       <YearSelect value={form?.year} onChange={handleChangeSelectYear}>

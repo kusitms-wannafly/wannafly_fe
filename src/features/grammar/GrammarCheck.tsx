@@ -80,5 +80,8 @@ const GrammarCheckCloseBtn = styled.button`
   }
   &:hover {
     cursor: pointer;
+    img {
+      filter: brightness(80%);
+    }
   }
 `;

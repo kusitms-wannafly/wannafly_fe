@@ -85,6 +85,9 @@ const PlusBtn = styled.button`
   }
   &:hover {
     cursor: pointer;
+    img {
+      filter: brightness(1.5);
+    }
   }
 `;
 
