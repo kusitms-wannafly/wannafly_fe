@@ -78,6 +78,8 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
       });
   };
 
+  const semesterText = form.semester === 'first_half' ? '상반기' : '하반기';
+
   return (
     <ModalContainer>
       {isOpen ? (
@@ -93,11 +95,12 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
                   <div>{form.recruiter}</div>
                   <IsWritingBox>작성중</IsWritingBox>
                 </ApplicationBoxClubName>
+                {/* <div>{form.lastModifiedTime}</div> */}
               </ApplicationBoxHeader>
               <ApplicationBoxFooter>
                 <YearSemester>
                   <div>
-                    {form.year} {form.semester}
+                    {form.year}년 {semesterText}
                   </div>
                 </YearSemester>
                 <ButtonsInBox>
