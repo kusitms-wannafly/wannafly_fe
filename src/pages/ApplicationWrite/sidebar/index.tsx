@@ -5,6 +5,7 @@ import { ApplicationSearchHeader } from './components/ApplicationSearchHeader';
 import { ApplicationFolders } from './applications/ApplicationFolders';
 import { ApplicationDetail } from './applications/ApplicationDetail';
 import { Categories } from './categorized/Categories';
+import { Search } from './search/Search';
 
 export enum State {
   all = '전체 지원서',
@@ -58,6 +59,8 @@ export const ApplicationSearch = () => {
       ) : null}
       {/* 유형별 카테고리 */}
       {searchState.currentState === State.category ? <Categories /> : null}
+      {/* 키워드 */}
+      {searchState.currentState === State.keyword ? <Search /> : null}
     </ApplicationSearchContainer>
   );
 };
