@@ -53,9 +53,56 @@ export const ApplicationBox = styled.div`
   align-items: center;
 `;
 
-export const ApplicationBoxHeader = styled.div``;
+export const ApplicationBoxHeader = styled.div`
+  display: flex;
+  font-size: 19px;
+  font-weight: normal;
+  margin-top: 30px;
+  margin-left: 12px;
+  color: ${(props) => props.theme.colors.wht};
+  font-family: 'PretendardBold';
+`;
 
-export const ApplicationBoxFooter = styled.div``;
+export const ApplicationBoxClubName = styled.div`
+  width: 100px;
+  display: flex;
+  margin-right: 70px;
+`;
+
+export const IsWritingBox = styled.div`
+  width: 40px;
+  height: 20px;
+  justify-content: center;
+  font-size: 11px;
+  text-align: center;
+  margin-left: 5px;
+  padding-top: 5px;
+  border-radius: 4px;
+  color: ${(props) => props.theme.colors.yellow5};
+  background-color: ${(props) => props.theme.colors.yellow2};
+`;
+
+export const ModifiedDateBox = styled.div`
+  font-size: 12px;
+  font-family: 'PretendardLight';
+  padding-top: 4px;
+  margin-right: 30px;
+  color: ${(props) => props.theme.colors.grey3};
+`;
+
+export const ApplicationBoxFooter = styled.div`
+  font-family: 'PretendardLight';
+  display: flex;
+  gap: 10px;
+  color: ${(props) => props.theme.colors.grey3};
+  margin-top: 60px;
+  margin-right: 20px;
+`;
+
+export const YearSemester = styled.div`
+  font-size: 13px;
+  margin-top: 4px;
+`;
 
 export const BtnsContainer = styled.div``;
 
@@ -63,7 +110,6 @@ export const NoBtn = styled.button`
   width: 160px;
   height: 50px;
   margin: 0 5px;
-
   border: none;
   border-radius: 4px;
   color: #ffffff;
@@ -91,4 +137,18 @@ export const YesBtn = styled.button`
     cursor: pointer;
     background-color: ${({ theme }) => theme.colors.navy3};
   }
+`;
+
+export const ButtonsInBox = styled.div`
+  margin-left: 80px;
+  display: flex;
+  gap: 5px;
+`;
+
+export const EditButton = styled.img`
+  width: 22px;
+`;
+
+export const TrashButton = styled.img`
+  width: 22px;
 `;
