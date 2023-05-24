@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import {
   AnswerFormContainer,
   QuestionAnswerBox,
   Question,
   QuestionNumber,
-  QuestionInput,
+  EditQuestionInput,
   AnswerInput,
   QuestionEtcBox,
   LengthCount,
@@ -25,7 +25,16 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
   const [showGrammarCheck, setShowGrammarCheck] = useState<boolean>(false);
   const [checkedAnswer, setCheckedAnswer] = useState<string>('');
 
-  const handleChangeQuestion = (e: React.FormEvent<HTMLInputElement>) => {
+  const textRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleResizeHeight = useCallback(() => {
+    if (textRef.current) {
+      textRef.current.style.height = '0px';
+      textRef.current.style.height = textRef.current.scrollHeight + 'px';
+    }
+  }, []);
+
+  const handleChangeQuestion = (e: React.FormEvent<HTMLTextAreaElement>) => {
     let newItems = form.applicationItems;
     newItems[index] = {
       ...newItems[index],
@@ -50,15 +59,23 @@ export const AnswerEditForm = ({ index, item, form, setForm }: propsType) => {
     setShowGrammarCheck(true);
   };
 
+  useEffect(() => {
+    if (textRef.current) {
+      textRef.current.style.height = textRef.current.scrollHeight + 'px';
+    }
+  }, []);
+
   return (
     <AnswerFormContainer>
       <QuestionAnswerBox>
         <Question>
           <QuestionNumber>Q{index + 1}</QuestionNumber>
-          <QuestionInput
+          <EditQuestionInput
             placeholder="질문을 입력해주세요."
             value={form.applicationItems[index].applicationQuestion || ''}
             onChange={handleChangeQuestion}
+            ref={textRef}
+            onInput={handleResizeHeight}
           />
         </Question>
         <AnswerInput
