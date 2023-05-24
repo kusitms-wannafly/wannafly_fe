@@ -66,8 +66,8 @@ export const ModalBackdrop = styled.div`
 `;
 
 const ModalView = styled.div`
-  width: 400px;
-  height: 300px;
+  width: 350px;
+  height: 200px;
 
   background-color: rgba(30, 31, 32, 1);
   border: 1px solid #686a70;
@@ -118,6 +118,7 @@ const YesDeleteBtn = styled.div`
   line-height: 40px;
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.navy3};
   }
   margin: 0 3px;
 `;
