@@ -79,6 +79,9 @@ const ApplicationContainer = styled.div`
 const Container_1 = styled.div`
   display: flex;
   height: 80px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Container_2 = styled.div`
@@ -95,6 +98,9 @@ const Recruiter = styled.div`
   span.recruiter {
     margin-right: 8px;
     line-height: 20px;
+  }
+  &:hover {
+    color: ${({ theme }) => theme.colors.navy1};
   }
 `;
 

@@ -30,7 +30,7 @@ export const ApplicationFolder = ({
         handleClickFolder(applicationFormId);
       }}
     >
-      <Recruiter>{recruiter}</Recruiter>
+      <Recruiter className="recruiter">{recruiter}</Recruiter>
       {isCompleted ? null : <Completed>작성중</Completed>}
       <DateInfo>{`${year} ${
         semester === 'first_half' ? '상반기' : '하반기'
@@ -54,6 +54,9 @@ const FolderContainer = styled.div`
 
   &:hover {
     cursor: pointer;
+    div.recruiter {
+      color: ${({ theme }) => theme.colors.navy1};
+    }
   }
 `;
 
