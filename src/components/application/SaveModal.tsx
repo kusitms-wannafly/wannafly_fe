@@ -55,18 +55,17 @@ export const ApplicationBox = styled.div`
 
 export const ApplicationBoxHeader = styled.div`
   display: flex;
+  width: 100%;
   font-size: 19px;
   font-weight: normal;
-  margin-top: 30px;
-  margin-left: 12px;
   color: ${(props) => props.theme.colors.wht};
   font-family: 'PretendardBold';
+  padding: 20px;
 `;
 
 export const ApplicationBoxClubName = styled.div`
   width: 100px;
   display: flex;
-  margin-right: 70px;
 `;
 
 export const IsWritingBox = styled.div`
@@ -86,7 +85,6 @@ export const ModifiedDateBox = styled.div`
   font-size: 12px;
   font-family: 'PretendardLight';
   padding-top: 4px;
-  margin-right: 30px;
   color: ${(props) => props.theme.colors.grey3};
 `;
 
