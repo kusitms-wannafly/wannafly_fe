@@ -10,10 +10,21 @@ import {
   BtnsContainer,
   NoBtn,
   YesBtn,
+  ButtonsInBox,
+  EditButton,
+  TrashButton,
+  ApplicationBoxClubName,
+  IsWritingBox,
+  YearSemester,
+  ModifiedDateBox,
 } from '@components/application/SaveModal';
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
+import { getModifiedDateString } from '@pages/Applications/util/getModifiedDateString';
+
+import edit_icon from '@assets/icons/icon-edit.svg';
+import delete_icon from '@assets/icons/icon-trash.svg';
 
 //TODO: UI 추가 구현 필요
 
@@ -69,6 +80,8 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
       });
   };
 
+  const semesterText = form.semester === 'first_half' ? '상반기' : '하반기';
+
   return (
     <ModalContainer>
       {isOpen ? (
@@ -80,9 +93,25 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
             </GuideText>
             <ApplicationBox>
               <ApplicationBoxHeader>
-                <div>큐시즘</div>
+                <ApplicationBoxClubName>
+                  <div>{form.recruiter}</div>
+                  <IsWritingBox>작성중</IsWritingBox>
+                </ApplicationBoxClubName>
+                <ModifiedDateBox>
+                  <div>4월 2일 수정</div>
+                </ModifiedDateBox>
               </ApplicationBoxHeader>
-              <ApplicationBoxFooter></ApplicationBoxFooter>
+              <ApplicationBoxFooter>
+                <YearSemester>
+                  <div>
+                    {form.year}년 {semesterText}
+                  </div>
+                </YearSemester>
+                <ButtonsInBox>
+                  <EditButton src={edit_icon} alt="수정하기 버튼" />
+                  <TrashButton src={delete_icon} alt="삭제하기 버튼" />
+                </ButtonsInBox>
+              </ApplicationBoxFooter>
             </ApplicationBox>
             <BtnsContainer>
               <NoBtn onClick={handleClickNoBtn}>아니요, 그냥 저장할게요</NoBtn>
