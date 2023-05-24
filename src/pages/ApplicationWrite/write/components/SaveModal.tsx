@@ -96,7 +96,7 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
   );
 };
 
-export const ModalView = styled.div`
+const ModalView = styled.div`
   width: 420px;
   height: 340px;
 
@@ -115,7 +115,7 @@ const InfoText = styled.div`
 `;
 
 const ExampleBox = styled.div`
-  width: 280px;
+  width: 240px;
   height: 100px;
   background-color: #47494b;
   border-radius: 8px;
