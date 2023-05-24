@@ -30,7 +30,7 @@ export const ApplicationBox = ({
   return (
     <ApplicationBoxContainer onClick={handleClickApplicationBox}>
       <MainInfo>
-        <Recruiter>{recruiter}</Recruiter>
+        <Recruiter className="recruiter">{recruiter}</Recruiter>
         {isCompleted ? null : <Completed>작성중</Completed>}
       </MainInfo>
       <DateInfo>{`${year} ${
@@ -51,6 +51,12 @@ const ApplicationBoxContainer = styled.div`
 
   display: flex;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+    div.recruiter {
+      color: ${({ theme }) => theme.colors.navy1};
+    }
+  }
 `;
 
 const MainInfo = styled.div`
