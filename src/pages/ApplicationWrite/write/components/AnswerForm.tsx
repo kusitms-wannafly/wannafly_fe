@@ -1,3 +1,4 @@
+import { useRef, useCallback } from 'react';
 import {
   AnswerFormContainer,
   QuestionAnswerBox,
@@ -25,7 +26,18 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
   const [showGrammarCheck, setShowGrammarCheck] = useState<boolean>(false);
   const [checkedAnswer, setCheckedAnswer] = useState<string>('');
 
-  const handleChangeQuestionInput = (e: React.FormEvent<HTMLInputElement>) => {
+  const textRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleResizeHeight = useCallback(() => {
+    if (textRef.current) {
+      textRef.current.style.height = '0px';
+      textRef.current.style.height = textRef.current.scrollHeight + 'px';
+    }
+  }, []);
+
+  const handleChangeQuestionInput = (
+    e: React.FormEvent<HTMLTextAreaElement>
+  ) => {
     const newItems = [...form.applicationItems];
     newItems[index] = {
       applicationQuestion: e.currentTarget.value,
@@ -61,6 +73,9 @@ export const AnswerForm = ({ index, item, form, setForm }: propsType) => {
             placeholder="질문을 입력해주세요."
             value={form.applicationItems[index].applicationQuestion}
             onChange={handleChangeQuestionInput}
+            ref={textRef}
+            onInput={handleResizeHeight}
+            rows={1}
           />
         </Question>
         <AnswerInput

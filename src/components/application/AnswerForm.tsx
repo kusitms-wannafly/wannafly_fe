@@ -20,7 +20,7 @@ export const QuestionAnswerBox = styled.div`
 export const Question = styled.div`
   display: flex;
 
-  height: 40px;
+  margin-bottom: 5px;
   font-family: 'PretendardMedium';
 `;
 
@@ -34,7 +34,7 @@ export const QuestionNumber = styled.div`
   font-family: 'PretendardMedium';
 `;
 
-export const QuestionInput = styled.input`
+export const EditQuestionInput = styled.textarea`
   flex: 1;
   border: none;
   background-color: transparent;
@@ -47,6 +47,26 @@ export const QuestionInput = styled.input`
   }
   font-family: 'PretendardMedium';
   font-size: 16px;
+  margin-top: 8px;
+  overflow: hidden;
+`;
+
+export const QuestionInput = styled.textarea`
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.grey1};
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.grey3};
+  }
+  &:focus {
+    outline: none;
+  }
+  font-family: 'PretendardMedium';
+  font-size: 16px;
+  margin-top: 8px;
+  height: 30px;
+  overflow: hidden;
 `;
 
 export const AnswerInput = styled.textarea`

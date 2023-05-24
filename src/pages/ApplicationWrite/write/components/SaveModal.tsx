@@ -2,11 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   ModalContainer,
   ModalBackdrop,
-  ModalView,
   GuideText,
-  ApplicationBox,
-  ApplicationBoxHeader,
-  ApplicationBoxFooter,
   BtnsContainer,
   NoBtn,
   YesBtn,
@@ -14,8 +10,10 @@ import {
 import { axiosInstance } from '@api/HttpClient';
 import { patchApplicationStateAPI } from '@api/applicationAPIS';
 import { ApplicationData } from '..';
+import { formatISO } from 'date-fns';
+import { getModifiedDateString } from '@pages/Applications/util/getModifiedDateString';
 
-//TODO: UI 추가 구현 필요
+import styled from 'styled-components';
 
 interface propsType {
   isOpen: boolean;
@@ -75,15 +73,18 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
         <ModalBackdrop onClick={openModalHandler}>
           <ModalView onClick={(e) => e.stopPropagation()}>
             <GuideText>
-              <div>아직 지원서를 작성중이라면</div>
-              <div>아래와 같이 '작성중'을 표시할까요?</div>
+              <InfoText>아직 지원서를 작성중이라면</InfoText>
+              <InfoText>아래와 같이 '작성중'을 표시할까요?</InfoText>
             </GuideText>
-            <ApplicationBox>
-              <ApplicationBoxHeader>
-                <div>큐시즘</div>
-              </ApplicationBoxHeader>
-              <ApplicationBoxFooter></ApplicationBoxFooter>
-            </ApplicationBox>
+            <ExampleBox>
+              <Recruiter>
+                {form.recruiter}
+                <IsWriting>작성중</IsWriting>
+              </Recruiter>
+              <DateInfo>
+                {getModifiedDateString(formatISO(new Date()))}
+              </DateInfo>
+            </ExampleBox>
             <BtnsContainer>
               <NoBtn onClick={handleClickNoBtn}>아니요, 그냥 저장할게요</NoBtn>
               <YesBtn onClick={handleClickYesBtn}>네, 표시해주세요</YesBtn>
@@ -94,3 +95,57 @@ export const SaveModal = ({ isOpen, setIsOpen, form }: propsType) => {
     </ModalContainer>
   );
 };
+
+const ModalView = styled.div`
+  width: 420px;
+  height: 340px;
+
+  background-color: rgba(30, 31, 32, 1);
+  border: 1px solid #686a70;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const InfoText = styled.div`
+  color: ${(props) => props.theme.colors.wht};
+  font-family: 'PretendardMedium';
+`;
+
+const ExampleBox = styled.div`
+  width: 240px;
+  height: 100px;
+  background-color: #47494b;
+  border-radius: 8px;
+  margin: 30px 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const Recruiter = styled.div`
+  color: ${(props) => props.theme.colors.wht};
+  font-family: 'PretendardMedium';
+  line-height: 24px;
+`;
+
+const IsWriting = styled.span`
+  border-radius: 4px;
+  color: ${(props) => props.theme.colors.yellow5};
+  background-color: ${(props) => props.theme.colors.yellow2};
+  font-size: 12px;
+  font-family: 'PretendardMedium';
+  padding: 5px;
+  border-radius: 3px;
+  margin-left: 8px;
+  white-space: nowrap;
+`;
+
+const DateInfo = styled.div`
+  font-size: 12px;
+  font-family: 'PretendardMedium';
+  color: ${(props) => props.theme.colors.grey3};
+`;

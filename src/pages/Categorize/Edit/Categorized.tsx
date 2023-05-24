@@ -42,7 +42,14 @@ export const Categorized = ({ selectedCategoryId }: propsType) => {
         </EmptyBox>
       ) : (
         categorizedItems?.map((el, idx) => {
-          return <CategorizedItem key={idx} index={idx} item={el} />;
+          return (
+            <CategorizedItem
+              key={idx}
+              index={idx}
+              item={el}
+              showMiunusBtn={true}
+            />
+          );
         })
       )}
     </CategorizedContainer>

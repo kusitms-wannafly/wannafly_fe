@@ -1,22 +1,27 @@
 import styled from 'styled-components';
-//import icon_minus from '@assets/icons/icon-minus-black.png';
+import icon_minus from '@assets/icons/icon-minus-black.png';
 
 import { CategorizedItem as CategorizedItemType } from './Categorized';
 
 interface propsType {
   index: number;
   item: CategorizedItemType;
+  showMiunusBtn?: boolean;
 }
 
-export const CategorizedItem = ({ index, item }: propsType) => {
+export const CategorizedItem = ({
+  index,
+  item,
+  showMiunusBtn = false,
+}: propsType) => {
   return (
     <CategorizedItemContainer>
-      <QuestionContainer>
+      <QuestionContainer className={showMiunusBtn === true ? 'padding' : ''}>
         <QuestionNumber>{`Q${index + 1}`}</QuestionNumber>
         <Question>{item.applicationItem.applicationQuestion}</Question>
-        {/* <MinusBtn>
+        <MinusBtn className={showMiunusBtn === false ? 'hide' : ''}>
           <img src={icon_minus} alt="제거하기" />
-        </MinusBtn> */}
+        </MinusBtn>
       </QuestionContainer>
       <Answer>{item.applicationItem.applicationAnswer}</Answer>
       <InfoConatiner>
@@ -44,7 +49,9 @@ const QuestionContainer = styled.div`
   position: relative;
 
   margin-bottom: 30px;
-  padding-right: 100px;
+  &.padding {
+    padding-right: 40px;
+  }
 `;
 
 const QuestionNumber = styled.div`
@@ -58,22 +65,29 @@ const Question = styled.div`
   font-family: 'PretendardMedium';
   flex: 1;
   line-height: 20px;
+  word-break: break-all;
+  &.hide {
+    padding-right: 40px;
+  }
 `;
 
-// const MinusBtn = styled.button`
-//   position: absolute;
-//   right: 0;
+const MinusBtn = styled.button`
+  position: absolute;
+  right: 0;
 
-//   background-color: transparent;
-//   border: none;
-//   margin: 0;
-//   img {
-//     width: 15px;
-//   }
-//   &:hover {
-//     cursor: pointer;
-//   }
-// `;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  img {
+    width: 15px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.hide {
+    display: none;
+  }
+`;
 
 const Answer = styled.div`
   color: ${({ theme }) => theme.colors.grey3};
