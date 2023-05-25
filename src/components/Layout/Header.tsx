@@ -99,7 +99,7 @@ export const Header = () => {
             <LoginButton onClick={handleClickLoginBtn}>로그인</LoginButton>
           )}
         </Right>
-        <Version>version 1.6.0</Version>
+        <Version>version 1.6.1</Version>
       </HeaderContainer>
     </>
   );
