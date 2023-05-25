@@ -6,21 +6,9 @@ interface propsType {
   applications: CategorizedItemType[];
 }
 
-const dummy: CategorizedItemType = {
-  applicationItem: {
-    applicationItemId: 1,
-    applicationQuestion: '지원동는 무엇인가요',
-    applicationAnswer: '저의 지원 동기는...',
-  },
-  applicationFormId: 1,
-  recruiter: '큐시즘',
-  year: 2023,
-  semester: 'first_half',
-};
 export const SearchedApplications = ({ applications }: propsType) => {
   return (
     <ApplicationsContainer>
-      <CategorizedItem key={1} index={1} item={dummy} />
       {applications.map((el, idx) => {
         return <CategorizedItem key={idx} index={idx} item={el} />;
       })}
