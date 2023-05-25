@@ -24,6 +24,8 @@ export const SaveLeaveEditBox = ({ formId, form }: propsType) => {
     );
     if (form?.recruiter !== '' && !hasEmptyQuestion) {
       setIsOpenSaveModal(true);
+    } else {
+      alert('동아리명과 질문을 모두 입력해주세요.');
     }
   };
 
